@@ -7,7 +7,7 @@ const Footer = () => {
                 <li className="text-blue-500 hover:underline hover:text-red-500 font-medium cursor-pointer">Help</li>
             </ul>
 
-            <p className="text-center">© 1996-2024, Amazon.com, Inc. or its affiliates</p>
+            <p className="text-center">© 1996-2024, Infinity.com, Inc. or its affiliates</p>
         </section>
     );
 }
