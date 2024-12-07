@@ -1,11 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./components/Home";
-import Login from "./components/Login";
-import Signup from "./components/Signup";
-import ForgotPassword from "./components/ForgotPassword";
+import Home from "./components/ECommerceFeatures/Home";
+import Login from "./components/UserAuthentication/Login";
+import Signup from "./components/UserAuthentication/Signup";
+import ForgotPassword from "./components/UserAuthentication/ForgotPassword";
 
 const App = () => {
-
   return (
     <>
       <BrowserRouter>
@@ -18,6 +17,6 @@ const App = () => {
       </BrowserRouter>
     </>
   );
-}
+};
 
 export default App;
