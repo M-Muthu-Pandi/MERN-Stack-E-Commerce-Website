@@ -33,30 +33,25 @@ const UserBtn = () => {
   };
 
   return (
-    <>
-      <div className="text-white text-sm font-medium">
-        {log ? (
-          <button className="border border-black p-1 hover:border-white flex flex-col gap-0" onClick={logoutUser}>
-            <span className="text-xs">Hello, {userName}</span>
+    <div className="hidden sm:inline-block text-white text-sm font-medium border border-gray-900 p-1 hover:border-white">
+      {log ? (
+        <button className="flex flex-col" onClick={logoutUser}>
+          <span className="text-xs">Hello, {userName}</span>
+          <span className="font-bold text-orange-300 hover:text-orange-400">
+            Sign Out
+          </span>
+        </button>
+      ) : (
+        <>
+          <button className="flex flex-col" onClick={() => navigate("/login")}>
+            <span className="text-xs">Hello, User</span>
             <span className="font-bold text-orange-300 hover:text-orange-400">
-              Logout
+              Sign In
             </span>
           </button>
-        ) : (
-          <>
-            <button
-              className="border  border-black p-1 hover:border-white flex flex-col gap-0"
-              onClick={() => navigate("/login")}
-            >
-              <span className="text-xs">Hello, User</span>
-              <span className="font-bold text-orange-300 hover:text-orange-400">
-                Sign In
-              </span>
-            </button>
-          </>
-        )}
-      </div>
-    </>
+        </>
+      )}
+    </div>
   );
 };
 

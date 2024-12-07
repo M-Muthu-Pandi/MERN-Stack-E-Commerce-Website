@@ -1,7 +1,6 @@
-import { Link } from "react-router-dom";
 import { useRef } from "react";
-import infinity from "../../../../../assets/infinity-white.png";
 import search from "../../../../../assets/search.png";
+import Logo from "../../Logo";
 
 const LogoAndSearch = () => {
   const containerRef = useRef(null);
@@ -16,27 +15,23 @@ const LogoAndSearch = () => {
 
   return (
     <>
-      <Link to={"/"} className="flex items-center">
-        <img className="w-8 h-8 inline-block" src={infinity} alt="Mu2 Logo" />
-        <h1 className="text-2xl text-white font-medium italic">
-          finity<span className="text-sm">.in</span>
-        </h1>
-      </Link>
+      <div className=" border border-gray-900 p-1 hover:border-white">
+        <Logo />
+      </div>
 
       <form
         ref={containerRef}
-        className="flex mx-10 w-1/2 rounded-sm m-1"
-        tabIndex="0"
+        className="flex md:w-1/3 lg:w-1/2 xl:w-2/3 rounded-sm mx-1"
       >
         <input
-          className="flex-grow basis-full border-none rounded-l-sm focus:outline-none text-sm px-3 py-2"
+          className="flex-grow basis-full border-none rounded-l-sm focus:outline-none text-sm px-3 py-2.5"
           type="text"
           placeholder="Search for products, brands and more..."
           onFocus={handleFocus}
           onBlur={handleBlur}
         />
         <button
-          className="py-2 px-3 rounded-r-sm bg-orange-300 hover:bg-orange-400"
+          className="py-2.5 px-3 rounded-r-sm bg-orange-300 hover:bg-orange-400"
           type="submit"
         >
           <img className="w-5" src={search} alt="Search icon" />
