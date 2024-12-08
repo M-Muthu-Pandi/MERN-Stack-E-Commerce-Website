@@ -54,7 +54,7 @@ const HeaderMain = () => {
 
           return (
             <li
-              className="hidden border border-gray-800 p-1 hover:border-white"
+              className="hidden sm:inline-block border border-gray-800 p-1 hover:border-white"
               key={index}
             >
               <a href={item.route}>{item.list}</a>
