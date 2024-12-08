@@ -21,10 +21,10 @@ const LogoAndSearch = () => {
 
       <form
         ref={containerRef}
-        className="flex md:w-1/3 lg:w-1/2 xl:w-2/3 rounded-sm mx-1"
+        className="flex w-1/2 md:w-1/3 lg:w-1/2 xl:w-2/3 rounded-sm mx-1"
       >
         <input
-          className="w-3/4 sm:flex-grow sm:basis-full border-none rounded-l-sm focus:outline-none text-sm px-3 py-1.5 sm:py-2.5"
+          className="w-4/5 sm:flex-grow sm:basis-full border-none rounded-l-sm focus:outline-none text-sm px-3 py-1.5 sm:py-2.5"
           type="text"
           placeholder="Search for products, brands and more..."
           onFocus={handleFocus}

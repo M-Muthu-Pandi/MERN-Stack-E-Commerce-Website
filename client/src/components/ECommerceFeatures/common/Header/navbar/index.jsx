@@ -16,7 +16,7 @@ const Navbar = () => {
     <>
       <nav
         id="home"
-        className="flex justify-between sm:justify-around items-center bg-gray-900 px-1 sm:px-3 py-2"
+        className="flex justify-between sm:justify-around items-center bg-gray-900 px-2 sm:px-3 py-2"
       >
         <LogoAndSearch />
 
@@ -26,7 +26,7 @@ const Navbar = () => {
 
         <img
           onClick={handleSideNav}
-          className="w-5 sm:hidden cursor-pointer"
+          className="w-6 sm:hidden cursor-pointer"
           src={sideNavbar}
           alt="Navbar"
         />
