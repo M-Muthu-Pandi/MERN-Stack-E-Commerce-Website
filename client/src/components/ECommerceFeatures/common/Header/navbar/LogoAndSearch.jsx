@@ -15,7 +15,7 @@ const LogoAndSearch = () => {
 
   return (
     <>
-      <div className=" border border-gray-900 p-1 hover:border-white">
+      <div className="border border-gray-900 p-1 hover:border-white">
         <Logo />
       </div>
 
@@ -24,17 +24,17 @@ const LogoAndSearch = () => {
         className="flex md:w-1/3 lg:w-1/2 xl:w-2/3 rounded-sm mx-1"
       >
         <input
-          className="flex-grow basis-full border-none rounded-l-sm focus:outline-none text-sm px-3 py-2.5"
+          className="w-3/4 sm:flex-grow sm:basis-full border-none rounded-l-sm focus:outline-none text-sm px-3 py-1.5 sm:py-2.5"
           type="text"
           placeholder="Search for products, brands and more..."
           onFocus={handleFocus}
           onBlur={handleBlur}
         />
         <button
-          className="py-2.5 px-3 rounded-r-sm bg-orange-300 hover:bg-orange-400"
+          className="py-1.5 sm:py-2.5 px-2 sm:px-3 rounded-r-sm bg-orange-300 hover:bg-orange-400"
           type="submit"
         >
-          <img className="w-5" src={search} alt="Search icon" />
+          <img className="w-4 sm:w-5" src={search} alt="Search icon" />
         </button>
       </form>
     </>
