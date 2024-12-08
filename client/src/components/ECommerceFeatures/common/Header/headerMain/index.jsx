@@ -37,12 +37,12 @@ const HeaderMain = () => {
 
   return (
     <header>
-      <ul className="hidden sm:flex bg-gray-800 pt-1 pb-2 justify-evenly items-center text-sm md:text-base text-white font-medium">
+      <ul className="flex justify-evenly bg-gray-800 pt-1 pb-2 items-center text-sm md:text-base text-white font-medium">
         {headerList.map((item, index) => {
           if (item.list === "Categories") {
             return (
               <li
-                className="border border-gray-800 p-1 hover:border-white cursor-pointer"
+                className="border border-gray-800 px-5 sm:p-1 hover:border-white cursor-pointer"
                 key={index}
                 onClick={toggleVisibility}
               >
@@ -54,7 +54,7 @@ const HeaderMain = () => {
 
           return (
             <li
-              className="border border-gray-800 p-1 hover:border-white"
+              className="hidden border border-gray-800 p-1 hover:border-white"
               key={index}
             >
               <a href={item.route}>{item.list}</a>
