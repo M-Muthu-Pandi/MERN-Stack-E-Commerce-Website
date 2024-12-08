@@ -11,7 +11,7 @@ const Footer = () => {
 
       <FooterContent />
 
-      <div className="flex justify-between px-10 py-5 bg-black">
+      <div className="bg-gray-950 flex justify-between px-10 py-5">
         <Logo />
         <div className="flex items-center">
           <img
