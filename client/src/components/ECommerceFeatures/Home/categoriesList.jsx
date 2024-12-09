@@ -119,7 +119,7 @@ const CategoriesList = () => {
   };
 
   return (
-    <section className="pt-1 pb-5 px-2 sm:px-5 bg-gray-200">
+    <section className="pt-1 pb-5 px-2 sm:px-5 mt-5 bg-blue-100">
       <h2 className="text-xl sm:text-2xl md:text-3xl text-gray-900 mt-5 font-medium">
         Top Picks by Category
       </h2>
@@ -129,7 +129,7 @@ const CategoriesList = () => {
           <div
             key={index}
             id={category.toLowerCase().replace(" ", "-")}
-            className="my-5 px-2 pt-2 pb-3 sm:px-5 sm:py-3 rounded-lg bg-white"
+            className="my-5 px-2 pt-2 pb-3 sm:px-5 sm:py-3 rounded-lg bg-white shadow-[rgba(100,100,111,0.2)_0px_7px_29px_0px]"
           >
             <h3 className="text-lg sm:text-xl md:text-2xl italic font-semibold mb-3 text-gray-900">
               {category}
@@ -153,7 +153,9 @@ const CategoriesList = () => {
                         {item.review} <span className="sm:hidden">Reviews</span>
                       </p>
                     </div>
-                    <p className="font-medium text-sm sm:text-lg mt-1">{item.price}</p>
+                    <p className="font-medium text-sm sm:text-lg mt-1">
+                      {item.price}
+                    </p>
                   </div>
                 );
               })}
