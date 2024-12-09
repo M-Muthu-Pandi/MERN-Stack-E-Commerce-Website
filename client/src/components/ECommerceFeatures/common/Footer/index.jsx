@@ -5,7 +5,7 @@ import FooterContent from "./footer";
 const Footer = () => {
   return (
     <footer className="text-white">
-      <div className="bg-gray-800 py-3 mt-5 text-center hover:bg-gray-700">
+      <div className="bg-gray-800 py-3 text-center hover:bg-gray-700">
         <a className="hover:text-orange-300" href="#home">Back to Top</a>
       </div>
 

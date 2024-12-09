@@ -14,7 +14,7 @@ const HeaderMain = () => {
       list: "Trending",
     },
     {
-      route: "#bestsellers",
+      route: "#best-sellers",
       list: "Best Sellers",
     },
     {
@@ -22,11 +22,11 @@ const HeaderMain = () => {
       list: "Categories",
     },
     {
-      route: "#todaydeals",
+      route: "#today's-deals",
       list: "Today's Deals",
     },
     {
-      route: "#newarrivals",
+      route: "#new-arrivals",
       list: "New Arrivals",
     },
     {
@@ -36,7 +36,7 @@ const HeaderMain = () => {
   ];
 
   return (
-    <header>
+    <header id="home">
       <ul className="flex justify-evenly bg-gray-800 pt-1 pb-2 items-center text-sm md:text-base text-white font-medium">
         {headerList.map((item, index) => {
           if (item.list === "Categories") {
