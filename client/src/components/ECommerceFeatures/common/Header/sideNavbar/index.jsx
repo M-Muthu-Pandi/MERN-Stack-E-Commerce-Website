@@ -18,7 +18,7 @@ const Sidenavbar = ({ handleClose }) => {
 
         <CartAndOrdersSideNav />
 
-        <SideNavHeader />
+        <SideNavHeader handleClose={handleClose} />
       </aside>
     </>
   );

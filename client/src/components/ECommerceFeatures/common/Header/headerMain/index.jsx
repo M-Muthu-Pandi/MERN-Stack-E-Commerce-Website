@@ -10,11 +10,11 @@ const HeaderMain = () => {
 
   const headerList = [
     {
-      route: "#trending",
+      route: "#top-picks",
       list: "Trending",
     },
     {
-      route: "#best-sellers",
+      route: "#top-picks",
       list: "Best Sellers",
     },
     {
@@ -22,11 +22,11 @@ const HeaderMain = () => {
       list: "Categories",
     },
     {
-      route: "#today's-deals",
+      route: "#top-picks",
       list: "Today's Deals",
     },
     {
-      route: "#new-arrivals",
+      route: "#top-picks",
       list: "New Arrivals",
     },
     {

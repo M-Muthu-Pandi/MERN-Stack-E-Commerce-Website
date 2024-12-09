@@ -51,7 +51,7 @@ const ImageCarousel = () => {
       {/* Previous Button */}
       <button
         onClick={handlePrev}
-        className="absolute top-1/2 left-1 transform -translate-y-1/2 px-3 py-10 border-2 border-transparent hover:border-gray-800 hover:ring-2 ring-white"
+        className="absolute top-1/2 left-1 transform -translate-y-1/2 px-2 sm:px-3 py-5 sm:py-10 border-2 border-transparent hover:border-gray-800 hover:ring-2 ring-white"
       >
         <img className="w-5 md:w-8 lg:w-10" src={leftArrow} alt="Left Arrow" />
       </button>
@@ -59,7 +59,7 @@ const ImageCarousel = () => {
       {/* Next Button */}
       <button
         onClick={handleNext}
-        className="absolute top-1/2 right-1 transform -translate-y-1/2 px-3 py-10 border-2 border-transparent hover:border-gray-800 hover:ring-2 ring-white"
+        className="absolute top-1/2 right-1 transform -translate-y-1/2 px-2 sm:px-3 py-5 sm:py-10 border-2 border-transparent hover:border-gray-800 hover:ring-2 ring-white"
       >
         <img className="w-5 md:w-8 lg:w-10" src={rightArrow} alt="Left Arrow" />
       </button>

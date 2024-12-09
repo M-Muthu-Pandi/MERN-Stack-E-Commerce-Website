@@ -1,19 +1,19 @@
-const SideNavHeader = () => {
+const SideNavHeader = ({ handleClose }) => {
   const headerList = [
     {
       route: "#trending",
       list: "Trending",
     },
     {
-      route: "#bestsellers",
+      route: "#best-sellers",
       list: "Best Sellers",
     },
     {
-      route: "#todaydeals",
+      route: "#today's-deals",
       list: "Today's Deals",
     },
     {
-      route: "#newarrivals",
+      route: "#new-arrivals",
       list: "New Arrivals",
     },
     {
@@ -31,7 +31,9 @@ const SideNavHeader = () => {
               className="mx-5 my-3 hover:underline cursor-pointer"
               key={index}
             >
-              <a href={item.route}>{item.list}</a>
+              <a onClick={handleClose} href={item.route}>
+                {item.list}
+              </a>
             </li>
           );
         })}
