@@ -153,7 +153,7 @@ const FeaturedSection = () => {
                         {item.review} <span className="sm:hidden">Reviews</span>
                       </p>
                     </div>
-                    <p>{item.price}</p>
+                    <p className="font-medium text-sm sm:text-lg mt-1">{item.price}</p>
                   </div>
                 );
               })}
