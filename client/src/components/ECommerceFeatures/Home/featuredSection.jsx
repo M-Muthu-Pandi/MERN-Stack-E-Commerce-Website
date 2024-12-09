@@ -127,7 +127,7 @@ const FeaturedSection = () => {
   };
 
   return (
-    <section id="top-picks" className="py-1 px-2 sm:px-3 bg-green-200">
+    <section id="top-picks" className="pt-1 pb-3 px-2 sm:px-3 bg-green-200">
       <h2 className="text-xl sm:text-2xl md:text-3xl text-gray-900 mt-5 font-medium">
         Top Picks for You
       </h2>
