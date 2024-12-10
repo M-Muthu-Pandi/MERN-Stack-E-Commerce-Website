@@ -6,8 +6,10 @@ import luggage from "../../../../../assets/categories/luggage.png";
 import watch from "../../../../../assets/categories/Watches.png";
 import handbag from "../../../../../assets/categories/handbags.png";
 import sunglass from "../../../../../assets/categories/sunglass.png";
+import { useNavigate } from "react-router-dom";
 
 const Categories = () => {
+  const navigate = useNavigate();
   const categorytitle = [
     {
       src: men,
@@ -59,6 +61,7 @@ const Categories = () => {
             href={item.route}
             className="flex flex-col min-w-28 sm:min-w-36 items-center border-2 border-white hover:border-red-500"
             key={index}
+            onClick={() => navigate("/")}
           >
             <img className="w-20 sm:w-28" src={item.src} alt="Categories" />
             <p className="text-xs sm:text-base">{item.title}</p>

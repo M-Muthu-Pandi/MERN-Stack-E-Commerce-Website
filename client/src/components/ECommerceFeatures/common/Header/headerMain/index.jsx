@@ -1,8 +1,10 @@
 import { useState } from "react";
 import Categories from "./categories";
+import { useNavigate } from "react-router-dom";
 
 const HeaderMain = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const navigate = useNavigate();
 
   const toggleVisibility = () => {
     setIsVisible((prev) => !prev);
@@ -57,7 +59,9 @@ const HeaderMain = () => {
               className="hidden sm:inline-block border border-gray-800 p-1 hover:border-white"
               key={index}
             >
-              <a href={item.route}>{item.list}</a>
+              <a href={item.route} onClick={() => navigate("/")}>
+                {item.list}
+              </a>
             </li>
           );
         })}

@@ -1,8 +1,3 @@
-import trend from "../../../assets/Collections/Men/shirt.jpg";
-import bestsell from "../../../assets/Collections/Men/cargo-pant.jpg";
-import todaysdeal from "../../../assets/Collections/Men/hoody.jpg";
-import arrival from "../../../assets/Collections/Men/kurtha.jpg";
-
 const FeaturedSection = () => {
   const features = [
     "Trending",
@@ -13,25 +8,25 @@ const FeaturedSection = () => {
 
   const trending = [
     {
-      image: trend,
+      image: "https://i.imgur.com/Mapffgp.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
       price: "₹.923",
     },
     {
-      image: bestsell,
+      image: "https://i.imgur.com/diOBNEM.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
       price: "₹.923",
     },
     {
-      image: todaysdeal,
+      image: "https://i.imgur.com/diOBNEM.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
       price: "₹.923",
     },
     {
-      image: arrival,
+      image: "https://i.imgur.com/diOBNEM.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
       price: "₹.923",
@@ -40,25 +35,25 @@ const FeaturedSection = () => {
 
   const bestseller = [
     {
-      image: trend,
+      image: "https://i.imgur.com/Mapffgp.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
       price: "₹.923",
     },
     {
-      image: bestsell,
+      image: "https://i.imgur.com/diOBNEM.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
       price: "₹.923",
     },
     {
-      image: todaysdeal,
+      image: "https://i.imgur.com/diOBNEM.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
       price: "₹.923",
     },
     {
-      image: arrival,
+      image: "https://i.imgur.com/diOBNEM.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
       price: "₹.923",
@@ -67,25 +62,25 @@ const FeaturedSection = () => {
 
   const todaydeal = [
     {
-      image: trend,
+      image: "https://i.imgur.com/Mapffgp.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
       price: "₹.923",
     },
     {
-      image: bestsell,
+      image: "https://i.imgur.com/diOBNEM.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
       price: "₹.923",
     },
     {
-      image: todaysdeal,
+      image: "https://i.imgur.com/diOBNEM.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
       price: "₹.923",
     },
     {
-      image: arrival,
+      image: "https://i.imgur.com/diOBNEM.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
       price: "₹.923",
@@ -94,25 +89,25 @@ const FeaturedSection = () => {
 
   const newarrival = [
     {
-      image: trend,
+      image: "https://i.imgur.com/Mapffgp.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
       price: "₹.923",
     },
     {
-      image: bestsell,
+      image: "https://i.imgur.com/diOBNEM.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
       price: "₹.923",
     },
     {
-      image: todaysdeal,
+      image: "https://i.imgur.com/diOBNEM.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
       price: "₹.923",
     },
     {
-      image: arrival,
+      image: "https://i.imgur.com/diOBNEM.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
       price: "₹.923",

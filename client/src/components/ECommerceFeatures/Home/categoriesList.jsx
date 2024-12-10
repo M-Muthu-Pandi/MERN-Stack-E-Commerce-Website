@@ -1,17 +1,9 @@
 import React, { useRef } from "react";
-import rating from "../../../assets/rating-5.png";
-import men from "../../../assets/Collections/Men/shirt.jpg";
-import women from "../../../assets/Collections/Men/cargo-pant.jpg";
-import kid from "../../../assets/Collections/Men/hoody.jpg";
-import footwear from "../../../assets/Collections/Men/kurtha.jpg";
-import luggage from "../../../assets/Collections/Men/kurtha.jpg";
-import watch from "../../../assets/Collections/Men/kurtha.jpg";
-import handbag from "../../../assets/Collections/Men/kurtha.jpg";
-import sunglass from "../../../assets/Collections/Men/kurtha.jpg";
-import rightArrow from "../../../assets/right-arrow.png";
 import leftArrow from "../../../assets/left-arrow.png";
+import rightArrow from "../../../assets/right-arrow.png";
 
 const CategoriesList = () => {
+  const rating = "https://i.imgur.com/7Swhp62.png";
   const categories = [
     "Men's Clothing",
     "Women's Clothing",
@@ -24,7 +16,7 @@ const CategoriesList = () => {
   ];
   const menClothing = [
     {
-      image: men,
+      image: "https://i.imgur.com/Dft4n8I.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
       rating: rating,
@@ -32,7 +24,7 @@ const CategoriesList = () => {
       price: "₹.923",
     },
     {
-      image: women,
+      image: "https://i.imgur.com/ErXWKty.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
       rating: rating,
@@ -40,7 +32,7 @@ const CategoriesList = () => {
       price: "₹.923",
     },
     {
-      image: kid,
+      image: "https://i.imgur.com/nbIb1e8.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
       rating: rating,
@@ -48,7 +40,7 @@ const CategoriesList = () => {
       price: "₹.923",
     },
     {
-      image: footwear,
+      image: "https://i.imgur.com/lCt6tP8.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
       rating: rating,
@@ -56,7 +48,7 @@ const CategoriesList = () => {
       price: "₹.923",
     },
     {
-      image: men,
+      image: "https://i.imgur.com/YPoTHLB.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
       rating: rating,
@@ -64,7 +56,7 @@ const CategoriesList = () => {
       price: "₹.923",
     },
     {
-      image: women,
+      image: "https://i.imgur.com/YOuxh2g.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
       rating: rating,
@@ -72,7 +64,7 @@ const CategoriesList = () => {
       price: "₹.923",
     },
     {
-      image: kid,
+      image: "https://i.imgur.com/h6RuIkH.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
       rating: rating,
@@ -80,7 +72,7 @@ const CategoriesList = () => {
       price: "₹.923",
     },
     {
-      image: footwear,
+      image: "https://i.imgur.com/RZylSqr.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
       rating: rating,
@@ -91,7 +83,7 @@ const CategoriesList = () => {
 
   const womenClothing = [
     {
-      image: women,
+      image: "https://i.imgur.com/r0mvE6L.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
       rating: rating,
@@ -102,7 +94,7 @@ const CategoriesList = () => {
 
   const kids = [
     {
-      image: kid,
+      image: "https://i.imgur.com/jVeXXId.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
       rating: rating,
@@ -113,7 +105,7 @@ const CategoriesList = () => {
 
   const footWear = [
     {
-      image: footwear,
+      image: "https://i.imgur.com/Mapffgp.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
       rating: rating,
@@ -124,7 +116,7 @@ const CategoriesList = () => {
 
   const luggages = [
     {
-      image: luggage,
+      image: "https://i.imgur.com/diOBNEM.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
       rating: rating,
@@ -135,7 +127,7 @@ const CategoriesList = () => {
 
   const watches = [
     {
-      image: watch,
+      image: "https://i.imgur.com/diOBNEM.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
       rating: rating,
@@ -146,7 +138,7 @@ const CategoriesList = () => {
 
   const handbags = [
     {
-      image: handbag,
+      image: "https://i.imgur.com/diOBNEM.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
       rating: rating,
@@ -157,7 +149,7 @@ const CategoriesList = () => {
 
   const sunGlasses = [
     {
-      image: sunglass,
+      image: "https://i.imgur.com/diOBNEM.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
       rating: rating,
@@ -217,11 +209,7 @@ const CategoriesList = () => {
                 aria-label={`Scroll Left for ${category}`}
                 className="absolute top-1/2 left-1 transform -translate-y-1/2 px-1 md:px-2 py-2 md:py-5 border-2 border-transparent hover:border-gray-800 hover:ring-2 ring-white z-10 bg-white opacity-70"
               >
-                <img
-                  className="w-5 lg:w-6"
-                  src={leftArrow}
-                  alt="Left Arrow"
-                />
+                <img className="w-5 lg:w-6" src={leftArrow} alt="Left Arrow" />
               </button>
 
               {/* Right Scroll Button */}
@@ -230,11 +218,7 @@ const CategoriesList = () => {
                 aria-label={`Scroll Right for ${category}`}
                 className="absolute top-1/2 right-1 transform -translate-y-1/2 px-1 md:px-2 py-2 md:py-5 border-2 border-transparent hover:border-gray-800 hover:ring-2 ring-white z-10 bg-white opacity-50"
               >
-                <img
-                  className="w-5 lg:w-6"
-                  src={rightArrow}
-                  alt="Left Arrow"
-                />
+                <img className="w-5 lg:w-6" src={rightArrow} alt="Left Arrow" />
               </button>
               <div
                 ref={refs.current[index]}

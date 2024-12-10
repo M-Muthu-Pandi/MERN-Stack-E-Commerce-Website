@@ -5,6 +5,7 @@ import ForgotPassword from "./components/UserAuthentication/ForgotPassword";
 import Home from "./components/ECommerceFeatures/Home";
 import Orders from "./components/ECommerceFeatures/Orders";
 import Cart from "./components/ECommerceFeatures/AddToCart";
+import PlaceOrder from "./components/ECommerceFeatures/PlaceOrder";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/orders" element={<Orders />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/placeorder" element={<PlaceOrder />} />
         </Routes>
       </BrowserRouter>
     </>
