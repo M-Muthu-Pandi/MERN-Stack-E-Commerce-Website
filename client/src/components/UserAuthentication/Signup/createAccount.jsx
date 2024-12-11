@@ -19,22 +19,6 @@ const CreateAccount = () => {
     });
   }, [navigate]);
 
-  const handleUname = (e) => {
-    setUname(e.target.value);
-  };
-
-  const handleUser = (e) => {
-    setUser(e.target.value);
-  };
-
-  const handlePass = (e) => {
-    setPass(e.target.value);
-  };
-
-  const handleConfirmPass = (e) => {
-    setConfirmPass(e.target.value);
-  };
-
   const signupUser = async (e) => {
     e.preventDefault();
 
@@ -81,7 +65,7 @@ const CreateAccount = () => {
       </label>
       <input
         value={uname}
-        onChange={handleUname}
+        onChange={(e)=>setUname(e.target.value)}
         className="mb-3 p-1 border border-gray-400 rounded focus:ring-emerald-400 focus:ring-1 focus:outline-none focus:bg-emerald-50"
         type="text"
         id="name"
@@ -94,7 +78,7 @@ const CreateAccount = () => {
         Email
       </label>
       <input
-        onChange={handleUser}
+        onChange={(e)=>setUser(e.target.value)}
         className="mb-3 p-1 border border-gray-400 rounded focus:ring-emerald-400 focus:ring-1 focus:outline-none focus:bg-emerald-50"
         type="email"
         id="user"
@@ -108,7 +92,7 @@ const CreateAccount = () => {
       </label>
       <input
         value={pass}
-        onChange={handlePass}
+        onChange={(e)=>setPass(e.target.value)}
         className="mb-3 p-1 border border-gray-400 rounded focus:ring-emerald-400 focus:ring-1 focus:outline-none focus:bg-emerald-50"
         type="password"
         id="password"
@@ -122,7 +106,7 @@ const CreateAccount = () => {
       </label>
       <input
         value={confirmPass}
-        onChange={handleConfirmPass}
+        onChange={(e)=>setConfirmPass(e.target.value)}
         className="mb-5 p-1 border border-gray-400 rounded focus:ring-emerald-400 focus:ring-1 focus:outline-none focus:bg-emerald-50"
         type="password"
         id="confpassword"

@@ -6,6 +6,7 @@ import Home from "./components/ECommerceFeatures/Home";
 import Orders from "./components/ECommerceFeatures/Orders";
 import Cart from "./components/ECommerceFeatures/AddToCart";
 import PlaceOrder from "./components/ECommerceFeatures/PlaceOrder";
+import SingleProduct from "./components/ECommerceFeatures/SingleProduct";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
           <Route path="/orders" element={<Orders />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/placeorder" element={<PlaceOrder />} />
+          <Route path="/product" element={<SingleProduct />} />
         </Routes>
       </BrowserRouter>
     </>

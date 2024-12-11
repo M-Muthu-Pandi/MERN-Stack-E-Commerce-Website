@@ -6,10 +6,6 @@ const Fpassword = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
-
   const handleForgotPassword = async (e) => {
     e.preventDefault();
 
@@ -36,7 +32,7 @@ const Fpassword = () => {
         id="email"
         placeholder="Enter your email"
         value={email}
-        onChange={handleEmailChange}
+        onChange={(e) => setEmail(e.target.value)}
         className="mb-3 p-1 border border-gray-400 rounded focus:ring-emerald-400 focus:ring-1 focus:outline-none focus:bg-emerald-50"
         required
       />
