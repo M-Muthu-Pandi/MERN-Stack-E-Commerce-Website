@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
+import { useCart } from "../common/Context/CartContext";
 
-const ProceedBuy = ({ totalItems, subtotalPrice }) => {
+const ProceedBuy = () => {
+  const { totalItems, subtotalPrice } = useCart();
   const navigate = useNavigate();
 
   return (

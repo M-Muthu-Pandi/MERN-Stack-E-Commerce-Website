@@ -1,15 +1,17 @@
 import plus from "../../../assets/plus.png";
 import minus from "../../../assets/minus.png";
 import { useNavigate } from "react-router-dom";
+import { useCart } from "../common/Context/CartContext";
 
-const ShoppingCart = ({
-  shoppingCart,
-  quantities,
-  incrementQuantity,
-  decrementQuantity,
-  totalItems,
-  subtotalPrice,
-}) => {
+const ShoppingCart = () => {
+  const {
+    shoppingCart,
+    quantities,
+    incrementQuantity,
+    decrementQuantity,
+    totalItems,
+    subtotalPrice,
+  } = useCart();
   const navigate = useNavigate();
   return (
     <section className="p-3 bg-white rounded-md md:flex-grow md:basis-3/4">
