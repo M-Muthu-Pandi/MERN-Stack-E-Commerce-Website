@@ -13,6 +13,7 @@ import OrderDelivered from "./components/ECommerceFeatures/Orders/delivered";
 import OrderReturned from "./components/ECommerceFeatures/Orders/returned";
 import OrderCancelled from "./components/ECommerceFeatures/Orders/cancelled";
 import ProtectedRoute from "./components/Common/ProtectedRoute";
+import SearchAndFilter from "./components/ECommerceFeatures/SearchAndFilter";
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
           <Route path="/forgotpassword" element={<ForgotPassword />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/" element={<Home />} />
+          <Route path="/search" element={<SearchAndFilter />} />
           <Route path="/product" element={<SingleProduct />} />
           <Route
             path="/cart"
