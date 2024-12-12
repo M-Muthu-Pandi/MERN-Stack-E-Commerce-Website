@@ -12,6 +12,7 @@ import PlacedSuccess from "./components/ECommerceFeatures/PlaceOrder/placedSucce
 import OrderDelivered from "./components/ECommerceFeatures/Orders/delivered";
 import OrderReturned from "./components/ECommerceFeatures/Orders/returned";
 import OrderCancelled from "./components/ECommerceFeatures/Orders/cancelled";
+import ProtectedRoute from "./components/Common/ProtectedRoute";
 
 const App = () => {
   return (
@@ -22,14 +23,63 @@ const App = () => {
           <Route path="/forgotpassword" element={<ForgotPassword />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/" element={<Home />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/placeorder" element={<PlaceOrder />} />
-          <Route path="/success" element={<PlacedSuccess />} />
           <Route path="/product" element={<SingleProduct />} />
-          <Route path="/orders" element={<Orders />} />
-          <Route path="/orders/delivered" element={<OrderDelivered />} />
-          <Route path="/orders/returned" element={<OrderReturned />} />
-          <Route path="/orders/cancelled" element={<OrderCancelled />} />
+          <Route
+            path="/cart"
+            element={
+              <ProtectedRoute>
+                <Cart />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/placeorder"
+            element={
+              <ProtectedRoute>
+                <PlaceOrder />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/success"
+            element={
+              <ProtectedRoute>
+                <PlacedSuccess />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/orders"
+            element={
+              <ProtectedRoute>
+                <Orders />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/orders/delivered"
+            element={
+              <ProtectedRoute>
+                <OrderDelivered />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/orders/returned"
+            element={
+              <ProtectedRoute>
+                <OrderReturned />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/orders/cancelled"
+            element={
+              <ProtectedRoute>
+                <OrderCancelled />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </BrowserRouter>
     </CartProvider>
