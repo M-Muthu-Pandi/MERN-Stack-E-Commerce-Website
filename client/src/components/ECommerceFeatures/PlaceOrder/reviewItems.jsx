@@ -19,24 +19,20 @@ const ReviewItems = () => {
                 alt="Cart Product"
               />
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-10 sm:justify-between sm:w-full">
-                <div className="md:w-1/2 lg:w-3/5">
-                  <p className="text-sm sm:text-base">
-                    {cart.title}
-                  </p>
+                <div className="sm:w-1/2 lg:w-3/5">
+                  <p className="text-sm sm:text-base">{cart.title}</p>
                   <p className="text-sm lg:text-base font-bold my-2 sm:my-3">
-                    {cart.currency}
+                    ₹.
                     {cart.price}
                   </p>
-                  <p>
-                    {quantities[index]} items
-                  </p>
+                  <p>{quantities[index]} items</p>
                 </div>
                 <div className="flex items-center gap-1.5 sm:flex-col">
                   <p className="text-sm lg:text-base">
                     Total price<span className="sm:hidden">:</span>
                   </p>
                   <p className="font-bold sm:my-1">
-                    {cart.currency}
+                    ₹.
                     {cart.price * quantities[index]}
                   </p>
                 </div>

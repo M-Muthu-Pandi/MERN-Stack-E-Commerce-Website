@@ -11,7 +11,7 @@ const PlaceOrder = () => {
     <>
       <Header />
       <main className="bg-gray-200 p-3 sm:p-5 md:flex justify-between items-start gap-5 text-gray-900">
-        <section className="rounded-md md:flex-grow md:basis-3/5">
+        <section className="md:flex-grow md:basis-3/5">
           <DeliveryDetails />
           <ReviewItems />
         </section>

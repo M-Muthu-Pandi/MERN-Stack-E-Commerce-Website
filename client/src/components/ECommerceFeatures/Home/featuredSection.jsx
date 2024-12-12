@@ -11,25 +11,25 @@ const FeaturedSection = () => {
       image: "https://i.imgur.com/Mapffgp.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
-      price: "₹.923",
+      price: 923,
     },
     {
       image: "https://i.imgur.com/diOBNEM.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
-      price: "₹.923",
+      price: 923,
     },
     {
       image: "https://i.imgur.com/diOBNEM.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
-      price: "₹.923",
+      price: 923,
     },
     {
       image: "https://i.imgur.com/diOBNEM.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
-      price: "₹.923",
+      price: 923,
     },
   ];
 
@@ -38,25 +38,25 @@ const FeaturedSection = () => {
       image: "https://i.imgur.com/Mapffgp.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
-      price: "₹.923",
+      price: 923,
     },
     {
       image: "https://i.imgur.com/diOBNEM.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
-      price: "₹.923",
+      price: 923,
     },
     {
       image: "https://i.imgur.com/diOBNEM.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
-      price: "₹.923",
+      price: 923,
     },
     {
       image: "https://i.imgur.com/diOBNEM.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
-      price: "₹.923",
+      price: 923,
     },
   ];
 
@@ -65,25 +65,25 @@ const FeaturedSection = () => {
       image: "https://i.imgur.com/Mapffgp.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
-      price: "₹.923",
+      price: 923,
     },
     {
       image: "https://i.imgur.com/diOBNEM.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
-      price: "₹.923",
+      price: 923,
     },
     {
       image: "https://i.imgur.com/diOBNEM.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
-      price: "₹.923",
+      price: 923,
     },
     {
       image: "https://i.imgur.com/diOBNEM.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
-      price: "₹.923",
+      price: 923,
     },
   ];
 
@@ -92,25 +92,25 @@ const FeaturedSection = () => {
       image: "https://i.imgur.com/Mapffgp.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
-      price: "₹.923",
+      price: 923,
     },
     {
       image: "https://i.imgur.com/diOBNEM.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
-      price: "₹.923",
+      price: 923,
     },
     {
       image: "https://i.imgur.com/diOBNEM.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
-      price: "₹.923",
+      price: 923,
     },
     {
       image: "https://i.imgur.com/diOBNEM.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
-      price: "₹.923",
+      price: 923,
     },
   ];
 
@@ -151,7 +151,7 @@ const FeaturedSection = () => {
                       />
                       <p className="mt-2 text-xs md:text-sm">{item.subtitle}</p>
                       <p className="font-medium text-xs md:text-base mt-1">
-                        {item.price}
+                        ₹.{item.price}
                       </p>
                     </div>
                   );

@@ -11,15 +11,15 @@ const FooterContent = () => {
     "Orders",
   ];
   const moneyWithUs = [
-    "Sell on Amazon",
-    "Sell under Amazon Accelerator",
+    "Sell on Infinity",
+    "Sell under Infinity Accelerator",
     "Protect and Build Your Brand",
-    "Amazon Global Selling",
-    "Supply to Amazon",
+    "Infinity Global Selling",
+    "Supply to Infinity",
     "Become an Affiliate",
-    "Fulfilment by Amazon",
+    "Fulfilment by Infinity",
     "Advertise Your Products",
-    "Amazon Pay on Merchants",
+    "Infinity Pay on Merchants",
   ];
 
   return (

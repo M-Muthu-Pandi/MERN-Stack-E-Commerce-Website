@@ -1,34 +1,35 @@
 import { createContext, useContext, useState } from "react";
 
-// Create the CartContext
 const CartContext = createContext();
 
-// Create a provider component
 export const CartProvider = ({ children }) => {
   const shoppingCart = [
     {
+      id: 1,
       image: "https://i.imgur.com/Dft4n8I.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
-      currency: "₹.",
       price: 923,
     },
     {
+      id: 2,
       image: "https://i.imgur.com/ErXWKty.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
-      currency: "₹.",
       price: 1224,
     },
     {
+      id: 3,
       image: "https://i.imgur.com/diOBNEM.jpeg",
-      title: "Allen Solly Men Sweatshirt",
+      title:
+        "SMOWKLY Men's Pyjama Set || T-Shirt and Shorts Set for Men || Night Wear for Men || Night Suit for Men",
       subtitle: "Sweatshirt",
-      currency: "₹.",
       price: 699,
     },
   ];
 
+  const [activeOrders, setActiveOrders] = useState(shoppingCart);
+  const [cancelledOrders, setCancelledOrders] = useState([]);
   const [quantities, setQuantities] = useState(shoppingCart.map(() => 1));
 
   const incrementQuantity = (index) => {
@@ -49,15 +50,24 @@ export const CartProvider = ({ children }) => {
   );
   const totalItems = quantities.reduce((total, qty) => total + qty, 0);
 
+  const cancelOrder = (index) => {
+    setCancelledOrders((prev) => [...prev, activeOrders[index]]);
+    setActiveOrders((prev) => prev.filter((_, i) => i !== index));
+    setQuantities((prev) => prev.filter((_, i) => i !== index));
+  };
+
   return (
     <CartContext.Provider
       value={{
         shoppingCart,
+        activeOrders,
+        cancelledOrders,
         quantities,
         incrementQuantity,
         decrementQuantity,
         subtotalPrice,
         totalItems,
+        cancelOrder,
       }}
     >
       {children}

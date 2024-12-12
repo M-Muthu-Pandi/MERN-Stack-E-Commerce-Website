@@ -21,7 +21,7 @@ const CategoriesList = () => {
       subtitle: "Sweatshirt",
       rating: rating,
       review: 2000,
-      price: "₹.923",
+      price: 923,
     },
     {
       image: "https://i.imgur.com/ErXWKty.jpeg",
@@ -29,7 +29,7 @@ const CategoriesList = () => {
       subtitle: "Sweatshirt",
       rating: rating,
       review: 2000,
-      price: "₹.923",
+      price: 923,
     },
     {
       image: "https://i.imgur.com/nbIb1e8.jpeg",
@@ -37,7 +37,7 @@ const CategoriesList = () => {
       subtitle: "Sweatshirt",
       rating: rating,
       review: 2000,
-      price: "₹.923",
+      price: 923,
     },
     {
       image: "https://i.imgur.com/lCt6tP8.jpeg",
@@ -45,7 +45,7 @@ const CategoriesList = () => {
       subtitle: "Sweatshirt",
       rating: rating,
       review: 2000,
-      price: "₹.923",
+      price: 923,
     },
     {
       image: "https://i.imgur.com/YPoTHLB.jpeg",
@@ -53,7 +53,7 @@ const CategoriesList = () => {
       subtitle: "Sweatshirt",
       rating: rating,
       review: 2000,
-      price: "₹.923",
+      price: 923,
     },
     {
       image: "https://i.imgur.com/YOuxh2g.jpeg",
@@ -61,7 +61,7 @@ const CategoriesList = () => {
       subtitle: "Sweatshirt",
       rating: rating,
       review: 2000,
-      price: "₹.923",
+      price: 923,
     },
     {
       image: "https://i.imgur.com/h6RuIkH.jpeg",
@@ -69,7 +69,7 @@ const CategoriesList = () => {
       subtitle: "Sweatshirt",
       rating: rating,
       review: 2000,
-      price: "₹.923",
+      price: 923,
     },
     {
       image: "https://i.imgur.com/RZylSqr.jpeg",
@@ -77,7 +77,7 @@ const CategoriesList = () => {
       subtitle: "Sweatshirt",
       rating: rating,
       review: 2000,
-      price: "₹.923",
+      price: 923,
     },
   ];
 
@@ -88,7 +88,7 @@ const CategoriesList = () => {
       subtitle: "Sweatshirt",
       rating: rating,
       review: 2000,
-      price: "₹.923",
+      price: 923,
     },
   ];
 
@@ -99,7 +99,7 @@ const CategoriesList = () => {
       subtitle: "Sweatshirt",
       rating: rating,
       review: 2000,
-      price: "₹.923",
+      price: 923,
     },
   ];
 
@@ -110,7 +110,7 @@ const CategoriesList = () => {
       subtitle: "Sweatshirt",
       rating: rating,
       review: 2000,
-      price: "₹.923",
+      price: 923,
     },
   ];
 
@@ -121,7 +121,7 @@ const CategoriesList = () => {
       subtitle: "Sweatshirt",
       rating: rating,
       review: 2000,
-      price: "₹.923",
+      price: 923,
     },
   ];
 
@@ -132,7 +132,7 @@ const CategoriesList = () => {
       subtitle: "Sweatshirt",
       rating: rating,
       review: 2000,
-      price: "₹.923",
+      price: 923,
     },
   ];
 
@@ -143,7 +143,7 @@ const CategoriesList = () => {
       subtitle: "Sweatshirt",
       rating: rating,
       review: 2000,
-      price: "₹.923",
+      price: 923,
     },
   ];
 
@@ -154,7 +154,7 @@ const CategoriesList = () => {
       subtitle: "Sweatshirt",
       rating: rating,
       review: 2000,
-      price: "₹.923",
+      price: 923,
     },
   ];
 
@@ -244,7 +244,7 @@ const CategoriesList = () => {
                         </p>
                       </div>
                       <p className="font-medium text-sm sm:text-lg mt-1">
-                        {item.price}
+                        ₹.{item.price}
                       </p>
                     </div>
                   );

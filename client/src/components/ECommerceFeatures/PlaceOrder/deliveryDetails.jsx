@@ -9,6 +9,17 @@ const DeliveryDetails = () => {
   const [city, setCity] = useState("");
   const [code, setCode] = useState("");
   const [state, setState] = useState("");
+  const [addAddress, setAddAddress] = useState([
+    {
+      name: "Muthupandi M",
+      number: 9003183706,
+      address: "200/129, 2nd floor, Mettu street lane, Ayanavaram",
+      landmark: "Near Vanniyar kalyana mandapam.",
+      city: "Chennai",
+      code: 600023,
+      state: "Tamil Nadu",
+    },
+  ]);
 
   const toggleVisibility = () => {
     setIsVisible((prev) => !prev);
@@ -16,6 +27,18 @@ const DeliveryDetails = () => {
 
   const handleAddAddress = (e) => {
     e.preventDefault();
+    setAddAddress([
+      ...addAddress,
+      {
+        name: name,
+        number: number,
+        address: address,
+        landmark: landmark,
+        city: city,
+        code: code,
+        state: state,
+      },
+    ]);
     setName("");
     setNumber("");
     setAddress("");
@@ -106,20 +129,28 @@ const DeliveryDetails = () => {
         </form>
       )}
 
-      <div className="text-sm lg:text-base mt-5 pt-3 flex gap-4 border-t border-t-gray-300">
-        <input className="w-4" id="address" type="radio" />
-        <label
-          htmlFor="address"
-          className="cursor-pointer hover:text-blue-500 flex flex-col"
-        >
-          <span className="font-medium text-lg">Muthupandi M - 9003183706</span>
-          <span>
-            200/129, 2nd floor, Mettu street lane, Ayanavaram, Chennai, Tamil
-            Nadu - 600023.
-          </span>
-          <span>(Near Vanniyar kalyana mandapam.)</span>
-        </label>
-      </div>
+      {addAddress.map((item, index) => {
+        return (
+          <div
+            key={index}
+            className="text-sm lg:text-base mt-5 pt-3 flex gap-4 border-t border-t-gray-300"
+          >
+            <input className="w-4" id="address" type="radio" />
+            <label
+              htmlFor="address"
+              className="cursor-pointer hover:text-blue-500 flex flex-col"
+            >
+              <span className="font-medium text-lg">
+                {item.name} - {item.number}
+              </span>
+              <span>
+                {item.address}, {item.city}, {item.state} - {item.code}.
+              </span>
+              <span>({item.landmark})</span>
+            </label>
+          </div>
+        );
+      })}
     </div>
   );
 };
