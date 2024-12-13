@@ -135,9 +135,9 @@ const DeliveryDetails = () => {
             key={index}
             className="text-sm lg:text-base mt-5 pt-3 flex gap-4 border-t border-t-gray-300"
           >
-            <input className="w-4" id="address" type="radio" />
+            <input className="w-4" id={`address${index}`} type="radio" name="address" />
             <label
-              htmlFor="address"
+              htmlFor={`address${index}`}
               className="cursor-pointer hover:text-blue-500 flex flex-col"
             >
               <span className="font-medium text-lg">

@@ -1,8 +1,11 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import leftArrow from "../../../assets/left-arrow.png";
 import rightArrow from "../../../assets/right-arrow.png";
+import SingleProduct from "../common/SingleProduct";
 
 const CategoriesList = () => {
+  const [selectedProduct, setSelectedProduct] = useState(null);
+
   const rating = "https://i.imgur.com/7Swhp62.png";
   const categories = [
     "Men's Clothing",
@@ -17,7 +20,8 @@ const CategoriesList = () => {
   const menClothing = [
     {
       image: "https://i.imgur.com/Dft4n8I.jpeg",
-      title: "Allen Solly Men Sweatshirt",
+      title:
+        "SMOWKLY Men's Pyjama Set || T-Shirt and Shorts Set for Men || Night Wear for Men || Night Suit for Men",
       subtitle: "Sweatshirt",
       rating: rating,
       review: 2000,
@@ -117,7 +121,8 @@ const CategoriesList = () => {
   const luggages = [
     {
       image: "https://i.imgur.com/diOBNEM.jpeg",
-      title: "Allen Solly Men Sweatshirt",
+      title:
+        "SMOWKLY Men's Pyjama Set || T-Shirt and Shorts Set for Men || Night Wear for Men || Night Suit for Men",
       subtitle: "Sweatshirt",
       rating: rating,
       review: 2000,
@@ -128,7 +133,8 @@ const CategoriesList = () => {
   const watches = [
     {
       image: "https://i.imgur.com/diOBNEM.jpeg",
-      title: "Allen Solly Men Sweatshirt",
+      title:
+        "SMOWKLY Men's Pyjama Set || T-Shirt and Shorts Set for Men || Night Wear for Men || Night Suit for Men",
       subtitle: "Sweatshirt",
       rating: rating,
       review: 2000,
@@ -139,7 +145,8 @@ const CategoriesList = () => {
   const handbags = [
     {
       image: "https://i.imgur.com/diOBNEM.jpeg",
-      title: "Allen Solly Men Sweatshirt",
+      title:
+        "SMOWKLY Men's Pyjama Set || T-Shirt and Shorts Set for Men || Night Wear for Men || Night Suit for Men",
       subtitle: "Sweatshirt",
       rating: rating,
       review: 2000,
@@ -150,7 +157,8 @@ const CategoriesList = () => {
   const sunGlasses = [
     {
       image: "https://i.imgur.com/diOBNEM.jpeg",
-      title: "Allen Solly Men Sweatshirt",
+      title:
+        "SMOWKLY Men's Pyjama Set || T-Shirt and Shorts Set for Men || Night Wear for Men || Night Suit for Men",
       subtitle: "Sweatshirt",
       rating: rating,
       review: 2000,
@@ -224,11 +232,12 @@ const CategoriesList = () => {
                 ref={refs.current[index]}
                 className="flex gap-2 sm:gap-5 text-xs sm:text-base overflow-x-auto scrollbar-hide scroll-smooth"
               >
-                {categoryItems.map((item, index) => {
+                {categoryItems.map((item, idx) => {
                   return (
                     <div
                       className="flex flex-col w-32 min-w-32 sm:min-w-52 md:min-w-60 border rounded-md p-2"
-                      key={index}
+                      key={idx}
+                      onClick={() => setSelectedProduct(item)}
                     >
                       <img
                         className="h-28 sm:h-40 md:h-56 rounded-md"
@@ -254,6 +263,11 @@ const CategoriesList = () => {
           </div>
         );
       })}
+
+      <SingleProduct
+        selectedProduct={selectedProduct}
+        setSelectedProduct={setSelectedProduct}
+      />
     </section>
   );
 };

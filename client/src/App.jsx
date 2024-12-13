@@ -7,7 +7,6 @@ import Home from "./components/ECommerceFeatures/Home";
 import Orders from "./components/ECommerceFeatures/Orders";
 import Cart from "./components/ECommerceFeatures/AddToCart";
 import PlaceOrder from "./components/ECommerceFeatures/PlaceOrder";
-import SingleProduct from "./components/ECommerceFeatures/SingleProduct";
 import PlacedSuccess from "./components/ECommerceFeatures/PlaceOrder/placedSuccess";
 import OrderDelivered from "./components/ECommerceFeatures/Orders/delivered";
 import OrderReturned from "./components/ECommerceFeatures/Orders/returned";
@@ -25,7 +24,6 @@ const App = () => {
           <Route path="/signup" element={<Signup />} />
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<SearchAndFilter />} />
-          <Route path="/product" element={<SingleProduct />} />
           <Route
             path="/cart"
             element={

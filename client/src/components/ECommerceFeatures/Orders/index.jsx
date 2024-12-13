@@ -42,6 +42,10 @@ const Orders = () => {
                             {cart.price}
                           </p>
                           <p>{quantities[index]} items</p>
+                          <p className="text-sm md:text-base mt-1 sm:mt-3 text-green-600">
+                            Your order is on its way and will reach you in 2
+                            days.
+                          </p>
                         </div>
 
                         <div>

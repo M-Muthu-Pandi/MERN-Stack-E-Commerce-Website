@@ -41,6 +41,9 @@ const OrderCancelled = () => {
                           ₹.
                           {cart.price}
                         </p>
+                        <p className="text-sm md:text-base mt-1 sm:mt-3 text-red-600">
+                          Your order has been cancelled successfully.
+                        </p>
                       </div>
                     </div>
                   );

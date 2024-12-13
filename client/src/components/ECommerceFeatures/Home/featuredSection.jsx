@@ -1,4 +1,10 @@
+import { useState } from "react";
+import SingleProduct from "../common/SingleProduct";
+
 const FeaturedSection = () => {
+  const [selectedProduct, setSelectedProduct] = useState(null);
+
+  const rating = "https://i.imgur.com/7Swhp62.png";
   const features = [
     "Trending",
     "Best Sellers",
@@ -11,24 +17,32 @@ const FeaturedSection = () => {
       image: "https://i.imgur.com/Mapffgp.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
+      rating: rating,
+      review: 2000,
       price: 923,
     },
     {
       image: "https://i.imgur.com/diOBNEM.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
+      rating: rating,
+      review: 2000,
       price: 923,
     },
     {
       image: "https://i.imgur.com/diOBNEM.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
+      rating: rating,
+      review: 2000,
       price: 923,
     },
     {
       image: "https://i.imgur.com/diOBNEM.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
+      rating: rating,
+      review: 2000,
       price: 923,
     },
   ];
@@ -38,24 +52,32 @@ const FeaturedSection = () => {
       image: "https://i.imgur.com/Mapffgp.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
+      rating: rating,
+      review: 2000,
       price: 923,
     },
     {
       image: "https://i.imgur.com/diOBNEM.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
+      rating: rating,
+      review: 2000,
       price: 923,
     },
     {
       image: "https://i.imgur.com/diOBNEM.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
+      rating: rating,
+      review: 2000,
       price: 923,
     },
     {
       image: "https://i.imgur.com/diOBNEM.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
+      rating: rating,
+      review: 2000,
       price: 923,
     },
   ];
@@ -65,24 +87,32 @@ const FeaturedSection = () => {
       image: "https://i.imgur.com/Mapffgp.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
+      rating: rating,
+      review: 2000,
       price: 923,
     },
     {
       image: "https://i.imgur.com/diOBNEM.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
+      rating: rating,
+      review: 2000,
       price: 923,
     },
     {
       image: "https://i.imgur.com/diOBNEM.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
+      rating: rating,
+      review: 2000,
       price: 923,
     },
     {
       image: "https://i.imgur.com/diOBNEM.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
+      rating: rating,
+      review: 2000,
       price: 923,
     },
   ];
@@ -92,24 +122,32 @@ const FeaturedSection = () => {
       image: "https://i.imgur.com/Mapffgp.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
+      rating: rating,
+      review: 2000,
       price: 923,
     },
     {
       image: "https://i.imgur.com/diOBNEM.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
+      rating: rating,
+      review: 2000,
       price: 923,
     },
     {
       image: "https://i.imgur.com/diOBNEM.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
+      rating: rating,
+      review: 2000,
       price: 923,
     },
     {
       image: "https://i.imgur.com/diOBNEM.jpeg",
       title: "Allen Solly Men Sweatshirt",
       subtitle: "Sweatshirt",
+      rating: rating,
+      review: 2000,
       price: 923,
     },
   ];
@@ -138,11 +176,12 @@ const FeaturedSection = () => {
                 {feature}
               </h3>
               <div className="flex flex-wrap gap-1 sm:gap-2 text-xs sm:text-base">
-                {featureItems.map((item, index) => {
+                {featureItems.map((item, idx) => {
                   return (
                     <div
                       className="flex-grow basis-1/3 flex flex-col items-center border rounded-md p-2"
-                      key={index}
+                      key={idx}
+                      onClick={() => setSelectedProduct(item)}
                     >
                       <img
                         className="w-3/4 h-20 min-[400px]:h-28 rounded-md"
@@ -161,6 +200,10 @@ const FeaturedSection = () => {
           );
         })}
       </div>
+      <SingleProduct
+        selectedProduct={selectedProduct}
+        setSelectedProduct={setSelectedProduct}
+      />
     </section>
   );
 };
