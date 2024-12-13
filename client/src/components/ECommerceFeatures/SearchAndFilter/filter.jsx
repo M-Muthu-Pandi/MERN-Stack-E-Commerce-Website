@@ -18,7 +18,7 @@ const Filter = () => {
   ];
 
   return (
-    <section className="bg-white sm:flex-grow sm:basis-1/4 border-r border-r-gray-300 p-2 sm:px-5 sm:pb-5">
+    <section className="sm:flex-grow sm:basis-1/4 border-r border-r-gray-300 p-2 sm:px-5 sm:pb-5">
       <h2 className="pt-3 sticky top-12 sm:top-16 z-40 bg-white text-lg sm:text-xl md:text-2xl text-gray-900 font-medium border-b border-b-gray-300 pb-1 sm:pb-3">
         <a className="hover:text-green-500 hover:underline" href="#home">
           Filters

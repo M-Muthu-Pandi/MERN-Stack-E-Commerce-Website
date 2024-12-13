@@ -7,7 +7,7 @@ const SearchAndFilter = () => {
   return (
     <>
       <Header />
-      <main className="flex bg-gray-200">
+      <main className="flex">
         <Filter />
         <Products />
       </main>
