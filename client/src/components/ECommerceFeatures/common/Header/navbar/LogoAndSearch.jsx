@@ -1,12 +1,15 @@
 import { useRef } from "react";
 import search from "../../../../../assets/search.png";
 import Logo from "../../Logo";
+import { useNavigate } from "react-router-dom";
 
 const LogoAndSearch = () => {
   const containerRef = useRef(null);
+  const navigate = useNavigate();
 
   const handleFocus = () => {
     containerRef.current.classList.add("ring-2", "ring-orange-300");
+    navigate("/search");
   };
 
   const handleBlur = () => {

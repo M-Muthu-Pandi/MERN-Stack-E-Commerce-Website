@@ -1,11 +1,16 @@
 import Header from "../common/Header";
 import Footer from "../common/Footer";
+import Filter from "./filter";
+import Products from "./products";
 
 const SearchAndFilter = () => {
   return (
     <>
       <Header />
-      <h1 className="text-3xl">Search And Filter</h1>
+      <main className="flex bg-gray-200">
+        <Filter />
+        <Products />
+      </main>
       <Footer />
     </>
   );
