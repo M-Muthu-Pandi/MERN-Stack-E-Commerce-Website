@@ -13,6 +13,7 @@ import OrderReturned from "./components/ECommerceFeatures/Orders/returned";
 import OrderCancelled from "./components/ECommerceFeatures/Orders/cancelled";
 import ProtectedRoute from "./components/Common/ProtectedRoute";
 import SearchAndFilter from "./components/ECommerceFeatures/SearchAndFilter";
+import HelpAndSettings from "./components/ECommerceFeatures/HelpAndSettings";
 
 const App = () => {
   return (
@@ -77,6 +78,14 @@ const App = () => {
             element={
               <ProtectedRoute>
                 <OrderCancelled />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/settings"
+            element={
+              <ProtectedRoute>
+                <HelpAndSettings />
               </ProtectedRoute>
             }
           />

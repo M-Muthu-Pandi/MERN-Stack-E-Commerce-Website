@@ -12,6 +12,10 @@ const Navbar = () => {
     setIsSideNavVisible(!isSideNavVisible);
   };
 
+  const handleClose = () => {
+    setIsSideNavVisible(false);
+  };
+
   return (
     <>
       <nav className="flex justify-between sm:justify-around items-center bg-gray-900 px-2 sm:px-3 py-2 sticky top-0 z-50">
@@ -29,7 +33,10 @@ const Navbar = () => {
         />
 
         {isSideNavVisible && (
-          <Sidenavbar handleClose={() => setIsSideNavVisible(false)} />
+          <Sidenavbar
+            setIsSideNavVisible={setIsSideNavVisible}
+            handleClose={handleClose}
+          />
         )}
       </nav>
     </>

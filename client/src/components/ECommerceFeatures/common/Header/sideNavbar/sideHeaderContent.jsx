@@ -1,4 +1,8 @@
-const SideNavHeader = ({ handleClose }) => {
+import { useNavigate } from "react-router-dom";
+
+const SideNavHeader = ({ handleClose, setIsSideNavVisible }) => {
+  const navigate = useNavigate();
+
   const headerList = [
     {
       route: "#top-picks",
@@ -22,10 +26,28 @@ const SideNavHeader = ({ handleClose }) => {
     },
   ];
 
+  const handleHelp = () => {
+    navigate("/settings");
+    setIsSideNavVisible(false);
+  };
+
   return (
     <div>
       <ul className="pt-1 pb-2 md:text-base text-white font-medium">
         {headerList.map((item, index) => {
+          if (item.list === "Help & Settings") {
+            return (
+              <li
+                className="mx-5 my-3 hover:underline cursor-pointer"
+                key={index}
+              >
+                <a href={item.route} onClick={handleHelp}>
+                  {item.list}
+                </a>
+              </li>
+            );
+          }
+
           return (
             <li
               className="mx-5 my-3 hover:underline cursor-pointer"

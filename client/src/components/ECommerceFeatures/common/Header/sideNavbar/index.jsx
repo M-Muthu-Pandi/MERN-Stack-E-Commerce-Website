@@ -2,7 +2,7 @@ import CartAndOrdersSideNav from "./CartAndOrderSideNav";
 import SideNavHeader from "./sideHeaderContent";
 import SidenavUserBtn from "./SideNavUser";
 
-const Sidenavbar = ({ handleClose }) => {
+const Sidenavbar = ({ handleClose, setIsSideNavVisible }) => {
   return (
     <>
       <aside className="bg-gray-950 sm:hidden w-3/4 h-screen fixed top-0 left-0 z-40">
@@ -18,7 +18,10 @@ const Sidenavbar = ({ handleClose }) => {
 
         <CartAndOrdersSideNav />
 
-        <SideNavHeader handleClose={handleClose} />
+        <SideNavHeader
+          handleClose={handleClose}
+          setIsSideNavVisible={setIsSideNavVisible}
+        />
       </aside>
     </>
   );

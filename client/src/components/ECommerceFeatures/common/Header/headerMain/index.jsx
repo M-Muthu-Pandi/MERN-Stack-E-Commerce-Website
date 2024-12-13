@@ -54,6 +54,19 @@ const HeaderMain = () => {
             );
           }
 
+          if (item.list === "Help & Settings") {
+            return (
+              <li
+                className="hidden sm:inline-block border border-gray-800 p-1 hover:border-white"
+                key={index}
+              >
+                <a href={item.route} onClick={() => navigate("/settings")}>
+                  {item.list}
+                </a>
+              </li>
+            );
+          }
+
           return (
             <li
               className="hidden sm:inline-block border border-gray-800 p-1 hover:border-white"
