@@ -1,10 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import SingleProduct from "../common/SingleProduct";
+import axios from "axios";
 
 const FeaturedSection = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
-
-  const rating = "https://i.imgur.com/7Swhp62.png";
   const features = [
     "Trending",
     "Best Sellers",
@@ -12,145 +11,28 @@ const FeaturedSection = () => {
     "New Arrivals",
   ];
 
-  const trending = [
-    {
-      image: "https://i.imgur.com/Mapffgp.jpeg",
-      title: "Allen Solly Men Sweatshirt",
-      subtitle: "Sweatshirt",
-      rating: rating,
-      review: 2000,
-      price: 923,
-    },
-    {
-      image: "https://i.imgur.com/diOBNEM.jpeg",
-      title: "Allen Solly Men Sweatshirt",
-      subtitle: "Sweatshirt",
-      rating: rating,
-      review: 2000,
-      price: 923,
-    },
-    {
-      image: "https://i.imgur.com/diOBNEM.jpeg",
-      title: "Allen Solly Men Sweatshirt",
-      subtitle: "Sweatshirt",
-      rating: rating,
-      review: 2000,
-      price: 923,
-    },
-    {
-      image: "https://i.imgur.com/diOBNEM.jpeg",
-      title: "Allen Solly Men Sweatshirt",
-      subtitle: "Sweatshirt",
-      rating: rating,
-      review: 2000,
-      price: 923,
-    },
-  ];
+  const [trending, setTrending] = useState([]);
+  const [bestseller, setBestseller] = useState([]);
+  const [todaydeal, setTodaydeal] = useState([]);
+  const [newarrival, setNewarrival] = useState([]);
 
-  const bestseller = [
-    {
-      image: "https://i.imgur.com/Mapffgp.jpeg",
-      title: "Allen Solly Men Sweatshirt",
-      subtitle: "Sweatshirt",
-      rating: rating,
-      review: 2000,
-      price: 923,
-    },
-    {
-      image: "https://i.imgur.com/diOBNEM.jpeg",
-      title: "Allen Solly Men Sweatshirt",
-      subtitle: "Sweatshirt",
-      rating: rating,
-      review: 2000,
-      price: 923,
-    },
-    {
-      image: "https://i.imgur.com/diOBNEM.jpeg",
-      title: "Allen Solly Men Sweatshirt",
-      subtitle: "Sweatshirt",
-      rating: rating,
-      review: 2000,
-      price: 923,
-    },
-    {
-      image: "https://i.imgur.com/diOBNEM.jpeg",
-      title: "Allen Solly Men Sweatshirt",
-      subtitle: "Sweatshirt",
-      rating: rating,
-      review: 2000,
-      price: 923,
-    },
-  ];
-
-  const todaydeal = [
-    {
-      image: "https://i.imgur.com/Mapffgp.jpeg",
-      title: "Allen Solly Men Sweatshirt",
-      subtitle: "Sweatshirt",
-      rating: rating,
-      review: 2000,
-      price: 923,
-    },
-    {
-      image: "https://i.imgur.com/diOBNEM.jpeg",
-      title: "Allen Solly Men Sweatshirt",
-      subtitle: "Sweatshirt",
-      rating: rating,
-      review: 2000,
-      price: 923,
-    },
-    {
-      image: "https://i.imgur.com/diOBNEM.jpeg",
-      title: "Allen Solly Men Sweatshirt",
-      subtitle: "Sweatshirt",
-      rating: rating,
-      review: 2000,
-      price: 923,
-    },
-    {
-      image: "https://i.imgur.com/diOBNEM.jpeg",
-      title: "Allen Solly Men Sweatshirt",
-      subtitle: "Sweatshirt",
-      rating: rating,
-      review: 2000,
-      price: 923,
-    },
-  ];
-
-  const newarrival = [
-    {
-      image: "https://i.imgur.com/Mapffgp.jpeg",
-      title: "Allen Solly Men Sweatshirt",
-      subtitle: "Sweatshirt",
-      rating: rating,
-      review: 2000,
-      price: 923,
-    },
-    {
-      image: "https://i.imgur.com/diOBNEM.jpeg",
-      title: "Allen Solly Men Sweatshirt",
-      subtitle: "Sweatshirt",
-      rating: rating,
-      review: 2000,
-      price: 923,
-    },
-    {
-      image: "https://i.imgur.com/diOBNEM.jpeg",
-      title: "Allen Solly Men Sweatshirt",
-      subtitle: "Sweatshirt",
-      rating: rating,
-      review: 2000,
-      price: 923,
-    },
-    {
-      image: "https://i.imgur.com/diOBNEM.jpeg",
-      title: "Allen Solly Men Sweatshirt",
-      subtitle: "Sweatshirt",
-      rating: rating,
-      review: 2000,
-      price: 923,
-    },
-  ];
+  useEffect(() => {
+    Promise.all([
+      axios.get("http://localhost:4000/api/trending"),
+      axios.get("http://localhost:4000/api/bestseller"),
+      axios.get("http://localhost:4000/api/todaydeals"),
+      axios.get("http://localhost:4000/api/newarrival"),
+    ])
+      .then(([trendingRes, bestsellerRes, todaydealRes, newarrivalRes]) => {
+        setTrending(trendingRes.data);
+        setBestseller(bestsellerRes.data);
+        setTodaydeal(todaydealRes.data);
+        setNewarrival(newarrivalRes.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching data", err);
+      });
+  }, []);
 
   const featureMapping = {
     Trending: trending,

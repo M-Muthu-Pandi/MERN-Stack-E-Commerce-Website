@@ -1,12 +1,12 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import leftArrow from "../../../assets/left-arrow.png";
 import rightArrow from "../../../assets/right-arrow.png";
 import SingleProduct from "../common/SingleProduct";
+import axios from "axios";
 
 const CategoriesList = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
 
-  const rating = "https://i.imgur.com/7Swhp62.png";
   const categories = [
     "Men's Clothing",
     "Women's Clothing",
@@ -17,154 +17,52 @@ const CategoriesList = () => {
     "Handbags",
     "Sunglasses",
   ];
-  const menClothing = [
-    {
-      image: "https://i.imgur.com/Dft4n8I.jpeg",
-      title:
-        "SMOWKLY Men's Pyjama Set || T-Shirt and Shorts Set for Men || Night Wear for Men || Night Suit for Men",
-      subtitle: "Sweatshirt",
-      rating: rating,
-      review: 2000,
-      price: 923,
-    },
-    {
-      image: "https://i.imgur.com/ErXWKty.jpeg",
-      title: "Allen Solly Men Sweatshirt",
-      subtitle: "Sweatshirt",
-      rating: rating,
-      review: 2000,
-      price: 923,
-    },
-    {
-      image: "https://i.imgur.com/nbIb1e8.jpeg",
-      title: "Allen Solly Men Sweatshirt",
-      subtitle: "Sweatshirt",
-      rating: rating,
-      review: 2000,
-      price: 923,
-    },
-    {
-      image: "https://i.imgur.com/lCt6tP8.jpeg",
-      title: "Allen Solly Men Sweatshirt",
-      subtitle: "Sweatshirt",
-      rating: rating,
-      review: 2000,
-      price: 923,
-    },
-    {
-      image: "https://i.imgur.com/YPoTHLB.jpeg",
-      title: "Allen Solly Men Sweatshirt",
-      subtitle: "Sweatshirt",
-      rating: rating,
-      review: 2000,
-      price: 923,
-    },
-    {
-      image: "https://i.imgur.com/YOuxh2g.jpeg",
-      title: "Allen Solly Men Sweatshirt",
-      subtitle: "Sweatshirt",
-      rating: rating,
-      review: 2000,
-      price: 923,
-    },
-    {
-      image: "https://i.imgur.com/h6RuIkH.jpeg",
-      title: "Allen Solly Men Sweatshirt",
-      subtitle: "Sweatshirt",
-      rating: rating,
-      review: 2000,
-      price: 923,
-    },
-    {
-      image: "https://i.imgur.com/RZylSqr.jpeg",
-      title: "Allen Solly Men Sweatshirt",
-      subtitle: "Sweatshirt",
-      rating: rating,
-      review: 2000,
-      price: 923,
-    },
-  ];
 
-  const womenClothing = [
-    {
-      image: "https://i.imgur.com/r0mvE6L.jpeg",
-      title: "Allen Solly Men Sweatshirt",
-      subtitle: "Sweatshirt",
-      rating: rating,
-      review: 2000,
-      price: 923,
-    },
-  ];
+  const [menClothing, setMenclothing] = useState([]);
+  const [womenClothing, setWomenclothing] = useState([]);
+  const [kids, setKids] = useState([]);
+  const [footWear, setFootwear] = useState([]);
+  const [luggages, setLuggages] = useState([]);
+  const [watches, setWatches] = useState([]);
+  const [handbags, setHandbags] = useState([]);
+  const [sunGlasses, setSunGlasses] = useState([]);
 
-  const kids = [
-    {
-      image: "https://i.imgur.com/jVeXXId.jpeg",
-      title: "Allen Solly Men Sweatshirt",
-      subtitle: "Sweatshirt",
-      rating: rating,
-      review: 2000,
-      price: 923,
-    },
-  ];
-
-  const footWear = [
-    {
-      image: "https://i.imgur.com/Mapffgp.jpeg",
-      title: "Allen Solly Men Sweatshirt",
-      subtitle: "Sweatshirt",
-      rating: rating,
-      review: 2000,
-      price: 923,
-    },
-  ];
-
-  const luggages = [
-    {
-      image: "https://i.imgur.com/diOBNEM.jpeg",
-      title:
-        "SMOWKLY Men's Pyjama Set || T-Shirt and Shorts Set for Men || Night Wear for Men || Night Suit for Men",
-      subtitle: "Sweatshirt",
-      rating: rating,
-      review: 2000,
-      price: 923,
-    },
-  ];
-
-  const watches = [
-    {
-      image: "https://i.imgur.com/diOBNEM.jpeg",
-      title:
-        "SMOWKLY Men's Pyjama Set || T-Shirt and Shorts Set for Men || Night Wear for Men || Night Suit for Men",
-      subtitle: "Sweatshirt",
-      rating: rating,
-      review: 2000,
-      price: 923,
-    },
-  ];
-
-  const handbags = [
-    {
-      image: "https://i.imgur.com/diOBNEM.jpeg",
-      title:
-        "SMOWKLY Men's Pyjama Set || T-Shirt and Shorts Set for Men || Night Wear for Men || Night Suit for Men",
-      subtitle: "Sweatshirt",
-      rating: rating,
-      review: 2000,
-      price: 923,
-    },
-  ];
-
-  const sunGlasses = [
-    {
-      image: "https://i.imgur.com/diOBNEM.jpeg",
-      title:
-        "SMOWKLY Men's Pyjama Set || T-Shirt and Shorts Set for Men || Night Wear for Men || Night Suit for Men",
-      subtitle: "Sweatshirt",
-      rating: rating,
-      review: 2000,
-      price: 923,
-    },
-  ];
+  useEffect(() => {
+    Promise.all([
+      axios.get("http://localhost:4000/api/men"),
+      axios.get("http://localhost:4000/api/women"),
+      axios.get("http://localhost:4000/api/kids"),
+      axios.get("http://localhost:4000/api/footwear"),
+      axios.get("http://localhost:4000/api/luggages"),
+      axios.get("http://localhost:4000/api/watches"),
+      axios.get("http://localhost:4000/api/handbags"),
+      axios.get("http://localhost:4000/api/sunglass"),
+    ])
+      .then(
+        ([
+          menRes,
+          womenRes,
+          kidsRes,
+          footwearRes,
+          luggageRes,
+          watchRes,
+          handbagRes,
+          sunglassRes,
+        ]) => {
+          setMenclothing(menRes.data);
+          setWomenclothing(womenRes.data);
+          setKids(kidsRes.data);
+          setFootwear(footwearRes.data);
+          setLuggages(luggageRes.data);
+          setWatches(watchRes.data);
+          setHandbags(handbagRes.data);
+          setSunGlasses(sunglassRes.data);
+        }
+      )
+      .catch((err) => {
+        console.error("Error fetching data", err);
+      });
+  }, []);
 
   const categoryMapping = {
     "Men's Clothing": menClothing,

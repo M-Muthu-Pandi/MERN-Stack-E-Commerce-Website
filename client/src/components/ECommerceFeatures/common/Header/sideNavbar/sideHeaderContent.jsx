@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-const SideNavHeader = ({ handleClose, setIsSideNavVisible }) => {
+const SideNavHeader = ({ setIsSideNavVisible }) => {
   const navigate = useNavigate();
 
   const headerList = [
@@ -31,6 +31,11 @@ const SideNavHeader = ({ handleClose, setIsSideNavVisible }) => {
     setIsSideNavVisible(false);
   };
 
+  const handleHeader = () => {
+    navigate("/");
+    setIsSideNavVisible(false);
+  };
+
   return (
     <div>
       <ul className="pt-1 pb-2 md:text-base text-white font-medium">
@@ -53,7 +58,7 @@ const SideNavHeader = ({ handleClose, setIsSideNavVisible }) => {
               className="mx-5 my-3 hover:underline cursor-pointer"
               key={index}
             >
-              <a onClick={handleClose} href={item.route}>
+              <a onClick={handleHeader} href={item.route}>
                 {item.list}
               </a>
             </li>

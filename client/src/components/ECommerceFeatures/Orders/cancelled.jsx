@@ -1,6 +1,6 @@
 import Footer from "../common/Footer";
 import Header from "../common/Header";
-import OrderTitles from "./orderTitles";
+import OrderTitles from "./common/orderTitles";
 import { useCart } from "../common/Context/CartContext";
 import NoResult from "./common/noResult";
 

@@ -2,6 +2,7 @@ import Footer from "../common/Footer";
 import Header from "../common/Header";
 import { useState } from "react";
 import DeleteAccountButton from "./DeleteAccount";
+import AdminButton from "./adminAccessBtn";
 
 const HelpAndSettings = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -30,6 +31,8 @@ const HelpAndSettings = () => {
             </p>
             {isVisible && <DeleteAccountButton />}
           </div>
+
+          <AdminButton />
         </section>
       </main>
       <Footer />

@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
 const SignIn = () => {
-  const [user, setUser] = useState();
-  const [pass, setPass] = useState();
+  const [user, setUser] = useState("");
+  const [pass, setPass] = useState("");
   const [err, setErr] = useState("");
   const navigate = useNavigate();
 

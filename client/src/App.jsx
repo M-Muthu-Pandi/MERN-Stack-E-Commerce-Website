@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CartProvider } from "./components/ECommerceFeatures/common/Context/CartContext";
+import ProtectedRoute from "./components/Common/ProtectedRoute";
 import Login from "./components/UserAuthentication/Login";
 import Signup from "./components/UserAuthentication/Signup";
 import ForgotPassword from "./components/UserAuthentication/ForgotPassword";
@@ -11,9 +12,9 @@ import PlacedSuccess from "./components/ECommerceFeatures/PlaceOrder/placedSucce
 import OrderDelivered from "./components/ECommerceFeatures/Orders/delivered";
 import OrderReturned from "./components/ECommerceFeatures/Orders/returned";
 import OrderCancelled from "./components/ECommerceFeatures/Orders/cancelled";
-import ProtectedRoute from "./components/Common/ProtectedRoute";
 import SearchAndFilter from "./components/ECommerceFeatures/SearchAndFilter";
 import HelpAndSettings from "./components/ECommerceFeatures/HelpAndSettings";
+import ProductUpload from "./components/AdminAccess/ProductUpload";
 
 const App = () => {
   return (
@@ -86,6 +87,14 @@ const App = () => {
             element={
               <ProtectedRoute>
                 <HelpAndSettings />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/adminaccess"
+            element={
+              <ProtectedRoute>
+                <ProductUpload />
               </ProtectedRoute>
             }
           />

@@ -16,12 +16,9 @@ const Sidenavbar = ({ handleClose, setIsSideNavVisible }) => {
         </div>
         <SidenavUserBtn />
 
-        <CartAndOrdersSideNav />
+        <CartAndOrdersSideNav handleClose={handleClose} />
 
-        <SideNavHeader
-          handleClose={handleClose}
-          setIsSideNavVisible={setIsSideNavVisible}
-        />
+        <SideNavHeader setIsSideNavVisible={setIsSideNavVisible} />
       </aside>
     </>
   );
