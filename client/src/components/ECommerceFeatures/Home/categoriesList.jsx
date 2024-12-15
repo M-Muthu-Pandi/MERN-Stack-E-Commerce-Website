@@ -130,11 +130,11 @@ const CategoriesList = () => {
                 ref={refs.current[index]}
                 className="flex gap-2 sm:gap-5 text-xs sm:text-base overflow-x-auto scrollbar-hide scroll-smooth"
               >
-                {categoryItems.map((item, idx) => {
+                {categoryItems.map((item) => {
                   return (
                     <div
                       className="flex flex-col w-32 min-w-32 sm:min-w-52 md:min-w-60 border rounded-md p-2"
-                      key={idx}
+                      key={item._id}
                       onClick={() => setSelectedProduct(item)}
                     >
                       <img

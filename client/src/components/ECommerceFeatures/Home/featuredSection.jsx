@@ -58,11 +58,11 @@ const FeaturedSection = () => {
                 {feature}
               </h3>
               <div className="flex flex-wrap gap-1 sm:gap-2 text-xs sm:text-base">
-                {featureItems.map((item, idx) => {
+                {featureItems.map((item) => {
                   return (
                     <div
                       className="flex-grow basis-1/3 flex flex-col items-center border rounded-md p-2"
-                      key={idx}
+                      key={item._id}
                       onClick={() => setSelectedProduct(item)}
                     >
                       <img

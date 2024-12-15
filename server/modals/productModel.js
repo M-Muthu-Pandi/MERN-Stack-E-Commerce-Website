@@ -1,6 +1,6 @@
 import { Schema, model } from "mongoose";
 
-const schema = new Schema({
+const productSchema = new Schema({
   image: String,
   title: String,
   subtitle: String,
@@ -10,17 +10,17 @@ const schema = new Schema({
 });
 
 // Categories
-export const Men = model("Men", schema, "men");
-export const Women = model("Women", schema, "women");
-export const Kids = model("Kids", schema, "kids");
-export const Footwear = model("Footwear", schema, "footwear");
-export const Luggage = model("Luggage", schema, "luggage");
-export const Watch = model("Watch", schema, "watch");
-export const Handbag = model("Handbag", schema, "handbag");
-export const Sunglass = model("Sunglass", schema, "sunglass");
+export const Men = model("Men", productSchema, "men");
+export const Women = model("Women", productSchema, "women");
+export const Kids = model("Kids", productSchema, "kids");
+export const Footwear = model("Footwear", productSchema, "footwear");
+export const Luggage = model("Luggage", productSchema, "luggage");
+export const Watch = model("Watch", productSchema, "watch");
+export const Handbag = model("Handbag", productSchema, "handbag");
+export const Sunglass = model("Sunglass", productSchema, "sunglass");
 
 // Top picks
-export const Trending = model("Trending", schema, "trending");
-export const Bestseller = model("Bestseller", schema, "bestseller");
-export const Todaydeals = model("Todaydeals", schema, "todaydeals");
-export const Newarrival = model("Newarrival", schema, "newarrival");
+export const Trending = model("Trending", productSchema, "trending");
+export const Bestseller = model("Bestseller", productSchema, "bestseller");
+export const Todaydeals = model("Todaydeals", productSchema, "todaydeals");
+export const Newarrival = model("Newarrival", productSchema, "newarrival");

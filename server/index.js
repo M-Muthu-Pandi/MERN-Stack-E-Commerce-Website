@@ -13,6 +13,7 @@ import trendingRoutes from "./toppicksroutes/trendingRoutes.js";
 import bestsellerRoutes from "./toppicksroutes/bestsellerRoutes.js";
 import todaydealRoutes from "./toppicksroutes/todaydealRoutes.js";
 import newarrivalRoutes from "./toppicksroutes/newarrivalRoutes.js";
+import deliveryAddressRoutes from "./addressroutes/deliveryAddressRoutes.js";
 
 const app = express();
 app.use(cors());
@@ -41,6 +42,9 @@ app.use("/api/trending", trendingRoutes);
 app.use("/api/bestseller", bestsellerRoutes);
 app.use("/api/todaydeals", todaydealRoutes);
 app.use("/api/newarrival", newarrivalRoutes);
+
+// Delivery Details
+app.use("/api/deliverydetails", deliveryAddressRoutes);
 
 const port = 4000;
 app.listen(port, () => {

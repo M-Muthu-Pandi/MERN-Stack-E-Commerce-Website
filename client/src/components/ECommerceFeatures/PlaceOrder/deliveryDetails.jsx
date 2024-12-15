@@ -1,4 +1,5 @@
-import { useState } from "react";
+import axios from "axios";
+import { useState, useEffect } from "react";
 
 const DeliveryDetails = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -9,44 +10,56 @@ const DeliveryDetails = () => {
   const [city, setCity] = useState("");
   const [code, setCode] = useState("");
   const [state, setState] = useState("");
-  const [addAddress, setAddAddress] = useState([
-    {
-      name: "Muthupandi M",
-      number: 9003183706,
-      address: "200/129, 2nd floor, Mettu street lane, Ayanavaram",
-      landmark: "Near Vanniyar kalyana mandapam.",
-      city: "Chennai",
-      code: 600023,
-      state: "Tamil Nadu",
-    },
-  ]);
+  const [addAddress, setAddAddress] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:4000/api/deliverydetails")
+      .then((res) => {
+        setAddAddress(res.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching data", err);
+      });
+  }, []);
 
   const toggleVisibility = () => {
     setIsVisible((prev) => !prev);
   };
 
-  const handleAddAddress = (e) => {
-    e.preventDefault();
-    setAddAddress([
-      ...addAddress,
-      {
-        name: name,
-        number: number,
-        address: address,
-        landmark: landmark,
-        city: city,
-        code: code,
-        state: state,
-      },
-    ]);
-    setName("");
-    setNumber("");
-    setAddress("");
-    setLandmark("");
-    setCity("");
-    setCode("");
-    setState("");
-    setIsVisible((prev) => !prev);
+  const handleAddAddress = async (e) => {
+    const deliveryData = {
+      name: name,
+      number: parseFloat(number),
+      address: address,
+      landmark: landmark,
+      city: city,
+      code: parseFloat(code),
+      state: state,
+    };
+
+    if (number.length !== 10) {
+      alert("Enter a valid 10-digit mobile number");
+      e.preventDefault();
+      return;
+    }
+    if (code.length !== 6) {
+      alert("Enter a valid 6-digit pin code");
+      e.preventDefault();
+      return;
+    }
+
+    try {
+      const response = await axios.post(
+        "http://localhost:4000/api/deliverydetails",
+        deliveryData
+      );
+      alert("Address added successfully!");
+      console.log(response.data);
+    } catch (error) {
+      alert("Failed to add address. Check the console for details.");
+      console.error(error);
+    }
   };
 
   return (
@@ -74,13 +87,15 @@ const DeliveryDetails = () => {
               className="p-1 sm:p-2 rounded-md mx-3 sm:mx-1 my-1 w-11/12 sm:w-48 lg:w-60 border border-gray-400"
               type="text"
               placeholder="Name"
+              required
             />
             <input
               value={number}
               onChange={(e) => setNumber(e.target.value)}
               className="p-1 sm:p-2 rounded-md mx-3 sm:mx-1 my-1 w-11/12 sm:w-48 lg:w-60 border border-gray-400"
-              type="text"
+              type="number"
               placeholder="10-digit mobile number"
+              required
             />
             <br />
             <textarea
@@ -88,6 +103,7 @@ const DeliveryDetails = () => {
               onChange={(e) => setAddress(e.target.value)}
               className="p-1 sm:p-2 rounded-md mx-3 sm:mx-1 mt-1.5 w-11/12 sm:w-[98%] lg:w-[98.3%] border border-gray-400"
               placeholder="Address (House No., Floor, Street and Area)"
+              required
             />
             <br />
             <input
@@ -103,14 +119,16 @@ const DeliveryDetails = () => {
               className="p-1 sm:p-2 rounded-md mx-3 sm:mx-1 my-1 w-11/12 sm:w-48 lg:w-60 border border-gray-400"
               type="text"
               placeholder="City/District/Town"
+              required
             />
             <br />
             <input
               value={code}
               onChange={(e) => setCode(e.target.value)}
               className="p-1 sm:p-2 rounded-md mx-3 sm:mx-1 my-1 w-11/12 sm:w-48 lg:w-60 border border-gray-400"
-              type="text"
+              type="number"
               placeholder="Pin Code"
+              required
             />
             <input
               value={state}
@@ -118,6 +136,7 @@ const DeliveryDetails = () => {
               className="p-1 sm:p-2 rounded-md mx-3 sm:mx-1 my-1 w-11/12 sm:w-48 lg:w-60 border border-gray-400"
               type="text"
               placeholder="State"
+              required
             />
           </div>
           <button
@@ -129,15 +148,20 @@ const DeliveryDetails = () => {
         </form>
       )}
 
-      {addAddress.map((item, index) => {
+      {addAddress.map((item) => {
         return (
           <div
-            key={index}
+            key={item._id}
             className="text-sm lg:text-base mt-5 pt-3 flex gap-4 border-t border-t-gray-300"
           >
-            <input className="w-4" id={`address${index}`} type="radio" name="address" />
+            <input
+              className="w-4"
+              id={`address${item._id}`}
+              type="radio"
+              name="address"
+            />
             <label
-              htmlFor={`address${index}`}
+              htmlFor={`address${item._id}`}
               className="cursor-pointer hover:text-blue-500 flex flex-col"
             >
               <span className="font-medium text-lg">
@@ -146,7 +170,7 @@ const DeliveryDetails = () => {
               <span>
                 {item.address}, {item.city}, {item.state} - {item.code}.
               </span>
-              <span>({item.landmark})</span>
+              <span>{item.landmark}</span>
             </label>
           </div>
         );

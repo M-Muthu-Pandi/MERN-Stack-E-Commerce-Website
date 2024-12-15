@@ -51,6 +51,7 @@ const MenProductUpload = () => {
             className="mb-3 p-1 border border-gray-400 rounded focus:ring-emerald-400 focus:ring-1 focus:outline-none focus:bg-emerald-50"
             type="text"
             placeholder="Product Image URL"
+            required
           />
           <textarea
             value={desc}
@@ -58,6 +59,7 @@ const MenProductUpload = () => {
             className="mb-3 p-1 border border-gray-400 rounded focus:ring-emerald-400 focus:ring-1 focus:outline-none focus:bg-emerald-50"
             name="description"
             placeholder="Description"
+            required
           ></textarea>
           <input
             value={title}
@@ -65,6 +67,7 @@ const MenProductUpload = () => {
             className="mb-3 p-1 border border-gray-400 rounded focus:ring-emerald-400 focus:ring-1 focus:outline-none focus:bg-emerald-50"
             type="text"
             placeholder="Title"
+            required
           />
           <input
             value={rating}
@@ -72,6 +75,7 @@ const MenProductUpload = () => {
             className="mb-3 p-1 border border-gray-400 rounded focus:ring-emerald-400 focus:ring-1 focus:outline-none focus:bg-emerald-50"
             type="text"
             placeholder="Rating Image URL"
+            required
           />
           <input
             value={review}
@@ -79,6 +83,7 @@ const MenProductUpload = () => {
             className="mb-3 p-1 border border-gray-400 rounded focus:ring-emerald-400 focus:ring-1 focus:outline-none focus:bg-emerald-50"
             type="number"
             placeholder="Reviews"
+            required
           />
           <input
             value={price}
@@ -86,6 +91,7 @@ const MenProductUpload = () => {
             className="mb-3 p-1 border border-gray-400 rounded focus:ring-emerald-400 focus:ring-1 focus:outline-none focus:bg-emerald-50"
             type="number"
             placeholder="Price (Numbers only)"
+            required
           />
 
           <button

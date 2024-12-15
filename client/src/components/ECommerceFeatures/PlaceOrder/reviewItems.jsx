@@ -4,7 +4,7 @@ const ReviewItems = () => {
   const { shoppingCart, quantities } = useCart();
   return (
     <div className="bg-white p-5 rounded-lg mt-5">
-      <h2 className="text-gray-500 font-medium mb-2 pb-2">REVIEW ITEMS</h2>
+      <h2 className="text-gray-500 font-medium mb-2 pb-2">ORDER SUMMARY</h2>
 
       <div className="flex flex-col">
         {shoppingCart.map((cart, index) => {
