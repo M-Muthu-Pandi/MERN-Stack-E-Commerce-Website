@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { CartProvider } from "./components/ECommerceFeatures/common/Context/CartContext";
+import { ProductProvider } from "./components/ECommerceFeatures/common/Context/ProductsContext";
 import ProtectedRoute from "./components/Common/ProtectedRoute";
 import Login from "./components/UserAuthentication/Login";
 import Signup from "./components/UserAuthentication/Signup";
@@ -18,7 +18,7 @@ import ProductUpload from "./components/AdminAccess/ProductUpload";
 
 const App = () => {
   return (
-    <CartProvider>
+    <ProductProvider>
       <BrowserRouter>
         <Routes>
           <Route path="/login" element={<Login />} />
@@ -100,7 +100,7 @@ const App = () => {
           />
         </Routes>
       </BrowserRouter>
-    </CartProvider>
+    </ProductProvider>
   );
 };
 

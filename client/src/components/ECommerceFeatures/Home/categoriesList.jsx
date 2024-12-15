@@ -1,79 +1,12 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef } from "react";
 import leftArrow from "../../../assets/left-arrow.png";
 import rightArrow from "../../../assets/right-arrow.png";
 import SingleProduct from "../common/SingleProduct";
-import axios from "axios";
+import { useCart } from "../common/Context/ProductsContext";
 
 const CategoriesList = () => {
-  const [selectedProduct, setSelectedProduct] = useState(null);
-
-  const categories = [
-    "Men's Clothing",
-    "Women's Clothing",
-    "Kid's Fashion",
-    "Footwear",
-    "Luggage Bags",
-    "Watches",
-    "Handbags",
-    "Sunglasses",
-  ];
-
-  const [menClothing, setMenclothing] = useState([]);
-  const [womenClothing, setWomenclothing] = useState([]);
-  const [kids, setKids] = useState([]);
-  const [footWear, setFootwear] = useState([]);
-  const [luggages, setLuggages] = useState([]);
-  const [watches, setWatches] = useState([]);
-  const [handbags, setHandbags] = useState([]);
-  const [sunGlasses, setSunGlasses] = useState([]);
-
-  useEffect(() => {
-    Promise.all([
-      axios.get("http://localhost:4000/api/men"),
-      axios.get("http://localhost:4000/api/women"),
-      axios.get("http://localhost:4000/api/kids"),
-      axios.get("http://localhost:4000/api/footwear"),
-      axios.get("http://localhost:4000/api/luggages"),
-      axios.get("http://localhost:4000/api/watches"),
-      axios.get("http://localhost:4000/api/handbags"),
-      axios.get("http://localhost:4000/api/sunglass"),
-    ])
-      .then(
-        ([
-          menRes,
-          womenRes,
-          kidsRes,
-          footwearRes,
-          luggageRes,
-          watchRes,
-          handbagRes,
-          sunglassRes,
-        ]) => {
-          setMenclothing(menRes.data);
-          setWomenclothing(womenRes.data);
-          setKids(kidsRes.data);
-          setFootwear(footwearRes.data);
-          setLuggages(luggageRes.data);
-          setWatches(watchRes.data);
-          setHandbags(handbagRes.data);
-          setSunGlasses(sunglassRes.data);
-        }
-      )
-      .catch((err) => {
-        console.error("Error fetching data", err);
-      });
-  }, []);
-
-  const categoryMapping = {
-    "Men's Clothing": menClothing,
-    "Women's Clothing": womenClothing,
-    "Kid's Fashion": kids,
-    Footwear: footWear,
-    "Luggage Bags": luggages,
-    Watches: watches,
-    Handbags: handbags,
-    Sunglasses: sunGlasses,
-  };
+  const { selectedProduct, setSelectedProduct, categories, categoryMapping } =
+    useCart();
 
   const refs = useRef(categories.map(() => React.createRef()));
 

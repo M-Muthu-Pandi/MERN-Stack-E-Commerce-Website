@@ -1,4 +1,4 @@
-import { useCart } from "../common/Context/CartContext";
+import { useCart } from "../common/Context/ProductsContext";
 
 const PriceDetails = () => {
   const { totalItems, subtotalPrice } = useCart();

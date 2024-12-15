@@ -1,7 +1,7 @@
 import plus from "../../../assets/plus.png";
 import minus from "../../../assets/minus.png";
 import { useNavigate } from "react-router-dom";
-import { useCart } from "../common/Context/CartContext";
+import { useCart } from "../common/Context/ProductsContext";
 
 const ShoppingCart = () => {
   const {

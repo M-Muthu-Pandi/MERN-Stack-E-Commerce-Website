@@ -1,45 +1,9 @@
-import { useState, useEffect } from "react";
 import SingleProduct from "../common/SingleProduct";
-import axios from "axios";
+import { useCart } from "../common/Context/ProductsContext";
 
 const FeaturedSection = () => {
-  const [selectedProduct, setSelectedProduct] = useState(null);
-  const features = [
-    "Trending",
-    "Best Sellers",
-    "Today's deals",
-    "New Arrivals",
-  ];
-
-  const [trending, setTrending] = useState([]);
-  const [bestseller, setBestseller] = useState([]);
-  const [todaydeal, setTodaydeal] = useState([]);
-  const [newarrival, setNewarrival] = useState([]);
-
-  useEffect(() => {
-    Promise.all([
-      axios.get("http://localhost:4000/api/trending"),
-      axios.get("http://localhost:4000/api/bestseller"),
-      axios.get("http://localhost:4000/api/todaydeals"),
-      axios.get("http://localhost:4000/api/newarrival"),
-    ])
-      .then(([trendingRes, bestsellerRes, todaydealRes, newarrivalRes]) => {
-        setTrending(trendingRes.data);
-        setBestseller(bestsellerRes.data);
-        setTodaydeal(todaydealRes.data);
-        setNewarrival(newarrivalRes.data);
-      })
-      .catch((err) => {
-        console.error("Error fetching data", err);
-      });
-  }, []);
-
-  const featureMapping = {
-    Trending: trending,
-    "Best Sellers": bestseller,
-    "Today's deals": todaydeal,
-    "New Arrivals": newarrival,
-  };
+  const { selectedProduct, setSelectedProduct, features, featureMapping } =
+    useCart();
 
   return (
     <section id="top-picks" className="pt-1 pb-3 px-2 sm:px-3 bg-green-200">
