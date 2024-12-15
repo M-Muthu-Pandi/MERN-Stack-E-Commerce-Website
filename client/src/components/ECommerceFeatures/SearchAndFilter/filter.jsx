@@ -20,7 +20,10 @@ const Filter = () => {
   return (
     <section className="sm:flex-grow basis-1/4 md:basis-1/5 border-r border-r-gray-300 p-2 sm:px-5 sm:pb-5">
       <h2 className="pt-3 sticky top-12 sm:top-16 z-40 bg-white text-lg sm:text-xl md:text-2xl text-gray-900 font-medium border-b border-b-gray-300 pb-1 sm:pb-3">
-        <a className="hover:text-green-500 hover:underline hover:underline-offset-4" href="#home">
+        <a
+          className="hover:text-green-500 hover:underline hover:underline-offset-4"
+          href="#home"
+        >
           Filters
         </a>
       </h2>
@@ -67,7 +70,7 @@ const Filter = () => {
         </div>
       </div>
 
-      <div>
+      {/* <div>
         <h3 className="text-sm sm:text-base text-gray-500 font-medium py-2">
           PRICE RANGE
         </h3>
@@ -84,7 +87,7 @@ const Filter = () => {
             placeholder="Max (₹.)"
           />
         </div>
-      </div>
+      </div> */}
     </section>
   );
 };

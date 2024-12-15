@@ -4,6 +4,9 @@ import axios from "axios";
 const ProductContext = createContext();
 
 export const ProductProvider = ({ children }) => {
+  // Search functionalities
+  const [filteredProducts, setFilteredProducts] = useState([]);
+
   // Products
   // Categories
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -171,6 +174,10 @@ export const ProductProvider = ({ children }) => {
   return (
     <ProductContext.Provider
       value={{
+        // Filtered Products
+        filteredProducts,
+        setFilteredProducts,
+
         // Products
         selectedProduct,
         setSelectedProduct,

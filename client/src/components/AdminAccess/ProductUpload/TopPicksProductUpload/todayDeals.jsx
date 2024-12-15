@@ -5,7 +5,7 @@ const TodayDealProductUpload = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [product, setProduct] = useState("");
   const [desc, setDesc] = useState("");
-  const [title, setTitle] = useState("");
+  const [title, setTitle] = useState("todaydeals");
   const [rating, setRating] = useState("");
   const [review, setReview] = useState("");
   const [price, setPrice] = useState("");
