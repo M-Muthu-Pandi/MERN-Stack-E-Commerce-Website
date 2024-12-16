@@ -1,9 +1,10 @@
 import express from "express";
 import { Cart } from "../modals/cartModel.js";
+import { Orders } from "../modals/orderModel.js";
 
 const router = express.Router();
 
-// Get all men products
+// Get all cart items
 router.get("/", async (req, res) => {
   try {
     const cart = await Cart.find({});
@@ -32,6 +33,31 @@ router.post("/", async (req, res) => {
       .json({ message: "Card added successfully", details: newCart });
   } catch (err) {
     res.status(500).json({ message: err.message });
+  }
+});
+
+// Place order and move from cart to orders
+router.post("/place-order", async (req, res) => {
+  try {
+    // Fetch all items from the cart collection
+    const cartItems = await Cart.find({});
+
+    if (cartItems.length === 0) {
+      return res.status(400).json({ message: "No items in the cart" });
+    }
+
+    // Insert cart items into the orders collection
+    await Orders.insertMany(cartItems);
+
+    // Clear the cart collection
+    await Cart.deleteMany({});
+
+    res.status(200).json({ message: "Order placed successfully" });
+  } catch (err) {
+    console.error(err);
+    res
+      .status(500)
+      .json({ message: "Failed to place order", error: err.message });
   }
 });
 

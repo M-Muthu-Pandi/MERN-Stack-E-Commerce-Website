@@ -9,15 +9,36 @@ const Orders = () => {
   const [activeOrders, setActiveOrders] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:4000/api/ordered")
-      .then((res) => {
-        setActiveOrders(res.data);
-      })
-      .catch((err) => {
-        console.error("Error fetching data", err);
-      });
+    fetchOrders();
   }, []);
+
+  const fetchOrders = async () => {
+    try {
+      const res = await axios.get("http://localhost:4000/api/ordered");
+      setActiveOrders(res.data);
+    } catch (err) {
+      console.error("Error fetching data", err);
+    }
+  };
+
+  const cancelOrder = async (id) => {
+    try {
+      // Call the backend to cancel the order
+      const res = await axios.post(
+        `http://localhost:4000/api/ordered/cancel/${id}`
+      );
+      if (res.status === 200) {
+        alert(res.data.message);
+        // Update the activeOrders state after cancellation
+        setActiveOrders((prevOrders) =>
+          prevOrders.filter((order) => order._id !== id)
+        );
+      }
+    } catch (err) {
+      console.error("Error cancelling order", err);
+      alert("Failed to cancel the order");
+    }
+  };
 
   return (
     <>
@@ -70,7 +91,7 @@ const Orders = () => {
                             </p>
                           </div>
                           <button
-                            // onClick={() => cancelOrder()}
+                            onClick={() => cancelOrder(order._id)}
                             className="border-2 border-gray-300 rounded-3xl p-1 sm:p-2 text-xs hover:bg-gray-300 mt-5 mb-2"
                           >
                             Cancel Order

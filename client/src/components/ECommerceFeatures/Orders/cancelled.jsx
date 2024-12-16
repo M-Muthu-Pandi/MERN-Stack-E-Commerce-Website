@@ -8,16 +8,40 @@ import NoResult from "./common/noResult";
 const OrderCancelled = () => {
   const [cancelledOrders, setCancelledOrders] = useState([]);
 
+  // useEffect(() => {
+  //   axios
+  //     .get("http://localhost:4000/api/cancelled")
+  //     .then((res) => {
+  //       setCancelledOrders(res.data);
+  //     })
+  //     .catch((err) => {
+  //       console.error("Error fetching data", err);
+  //     });
+  // }, []);
+
   useEffect(() => {
-    axios
-      .get("http://localhost:4000/api/cancelled")
-      .then((res) => {
-        setCancelledOrders(res.data);
-      })
-      .catch((err) => {
-        console.error("Error fetching data", err);
-      });
+    fetchCancelledOrders();
   }, []);
+
+  const fetchCancelledOrders = async () => {
+    try {
+      const res = await axios.get("http://localhost:4000/api/cancelled");
+      setCancelledOrders(res.data);
+    } catch (err) {
+      console.error("Error fetching data", err);
+    }
+  };
+
+  const handleRemoveOrder = async (id) => {
+    try {
+      await axios.delete(`http://localhost:4000/api/cancelled/${id}`);
+      setCancelledOrders(cancelledOrders.filter((order) => order._id !== id));
+      alert("Order removed successfully!");
+    } catch (err) {
+      console.error("Error deleting order", err);
+      alert("Failed to remove order.");
+    }
+  };
 
   return (
     <>
@@ -47,16 +71,36 @@ const OrderCancelled = () => {
                         alt="Cart Product"
                       />
 
-                      <div className="sm:w-1/2 lg:w-3/5">
-                        <p className="text-sm sm:text-base">{cancel.title}</p>
-                        <p className="text-sm lg:text-base font-bold my-2 sm:my-3">
-                          ₹.
-                          {cancel.price}
-                        </p>
-                        <p>{cancel.noOfItems} items</p>
-                        <p className="text-sm md:text-base mt-1 sm:mt-3 text-red-600">
-                          Your order has been cancelled successfully.
-                        </p>
+                      <div className="flex flex-col sm:flex-row gap-3 sm:gap-5 md:gap-10 sm:justify-between sm:w-full">
+                        <div className="sm:w-1/2 lg:w-3/5">
+                          <p className="text-sm sm:text-base">{cancel.title}</p>
+                          <p className="text-sm lg:text-base font-bold my-2 sm:my-3">
+                            ₹.
+                            {cancel.price}
+                          </p>
+                          <p>{cancel.noOfItems} items</p>
+                          <p className="text-sm md:text-base mt-1 sm:mt-3 text-red-600">
+                            Your order has been cancelled successfully.
+                          </p>
+                        </div>
+
+                        <div>
+                          <div className="flex items-center gap-1.5 sm:flex-col">
+                            <p className="text-sm lg:text-base">
+                              Total price<span className="sm:hidden">:</span>
+                            </p>
+                            <p className="font-bold sm:my-1">
+                              ₹.
+                              {cancel.price * cancel.noOfItems}
+                            </p>
+                          </div>
+                          <button
+                            onClick={() => handleRemoveOrder(cancel._id)}
+                            className="border-2 border-gray-300 rounded-3xl p-1 sm:p-2 text-xs hover:bg-gray-300 mt-5 mb-2"
+                          >
+                            Remove Order history
+                          </button>
+                        </div>
                       </div>
                     </div>
                   );

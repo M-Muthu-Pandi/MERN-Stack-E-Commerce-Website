@@ -1,4 +1,4 @@
-const PaymentMethod = () => {
+const PaymentMethod = ({ setSelectedPaymentMethod }) => {
   return (
     <div className="p-5 bg-white rounded-lg mt-5">
       <h2 className="text-gray-500 font-medium mb-2 pb-2 border-b border-b-gray-300">
@@ -26,7 +26,13 @@ const PaymentMethod = () => {
         </label>
       </div>
       <div className="flex gap-4 mb-2 pt-1 pb-3 text-sm lg:text-base border-b border-b-gray-300">
-        <input className="w-4" id="net-banking" type="radio" name="payment" disabled />
+        <input
+          className="w-4"
+          id="net-banking"
+          type="radio"
+          name="payment"
+          disabled
+        />
         <label
           htmlFor="net-banking"
           className="cursor-pointer font-medium text-gray-500"
@@ -35,7 +41,13 @@ const PaymentMethod = () => {
         </label>
       </div>
       <div className="flex gap-4 mb-2 pt-1 pb-3 text-sm lg:text-base border-b border-b-gray-300">
-        <input className="w-4" id="cod" type="radio" name="payment" />
+        <input
+          className="w-4"
+          id="cod"
+          type="radio"
+          name="payment"
+          onChange={() => setSelectedPaymentMethod("COD")}
+        />
         <label
           htmlFor="cod"
           className="cursor-pointer hover:text-blue-500 font-medium"

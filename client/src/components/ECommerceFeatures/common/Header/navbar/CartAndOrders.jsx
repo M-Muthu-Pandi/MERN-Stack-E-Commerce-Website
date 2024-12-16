@@ -1,7 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import cartLogo from "../../../../../assets/shopping-cart.png";
 
 const CartAndOrders = () => {
+  const navigate = useNavigate();
+
+  const handleCart = () => {
+    navigate("/cart");
+    window.location.reload();
+  };
   return (
     <>
       <Link
@@ -14,13 +20,13 @@ const CartAndOrders = () => {
         </p>
       </Link>
 
-      <Link
-        className="hidden sm:flex border border-gray-900 p-1 hover:border-white items-end text-white text-sm font-medium"
-        to={"/cart"}
+      <div
+        className="cursor-pointer hidden sm:flex border border-gray-900 p-1 hover:border-white items-end text-white text-sm font-medium"
+        onClick={handleCart}
       >
         <img className="w-8" src={cartLogo} alt="Cart Logo" />
         <span className="font-bold hidden md:inline-block">Cart</span>
-      </Link>
+      </div>
     </>
   );
 };

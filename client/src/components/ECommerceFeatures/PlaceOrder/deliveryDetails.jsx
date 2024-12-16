@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-const DeliveryDetails = () => {
+const DeliveryDetails = ({ setSelectedAddress }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
@@ -159,6 +159,7 @@ const DeliveryDetails = () => {
               id={`address${item._id}`}
               type="radio"
               name="address"
+              onChange={() => setSelectedAddress(item)}
             />
             <label
               htmlFor={`address${item._id}`}

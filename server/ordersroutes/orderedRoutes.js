@@ -1,9 +1,9 @@
 import express from "express";
-import { Orders } from "../modals/orderModel.js";
+import { Orders, CancelledOrders } from "../modals/orderModel.js";
 
 const router = express.Router();
 
-// Get all men products
+// Get all active orders
 router.get("/", async (req, res) => {
   try {
     const orders = await Orders.find({});
@@ -13,23 +13,30 @@ router.get("/", async (req, res) => {
   }
 });
 
-// Add a new men product
-router.post("/", async (req, res) => {
+// Cancel an order
+router.post("/cancel/:id", async (req, res) => {
   try {
-    const { image, title, subtitle, price, noOfItems } = req.body;
+    const orderId = req.params.id;
 
-    const newOrders = new Orders({
-      image,
-      title,
-      subtitle,
-      price,
-      noOfItems,
+    // Find the order by ID in the Orders collection
+    const order = await Orders.findById(orderId);
+    if (!order) {
+      return res.status(404).json({ message: "Order not found" });
+    }
+
+    // Create a new document in the CancelledOrders collection
+    const cancelledOrder = new CancelledOrders({
+      image: order.image,
+      title: order.title,
+      price: order.price,
+      noOfItems: order.noOfItems,
     });
+    await cancelledOrder.save();
 
-    await newOrders.save();
-    res
-      .status(201)
-      .json({ message: "Address added successfully", details: newOrders });
+    // Remove the order from the Orders collection
+    await Orders.findByIdAndDelete(orderId);
+
+    res.status(200).json({ message: "Order cancelled successfully" });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
