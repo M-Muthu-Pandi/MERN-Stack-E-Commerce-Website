@@ -1,7 +1,7 @@
-import { useCart } from "../common/Context/ProductsContext";
+import { useCart } from "../common/Context/CartContext";
 
 const ReviewItems = () => {
-  const { shoppingCart, quantities } = useCart();
+  const { shoppingCart } = useCart();
   return (
     <div className="bg-white p-5 rounded-lg mt-5">
       <h2 className="text-gray-500 font-medium mb-2 pb-2">ORDER SUMMARY</h2>
@@ -10,11 +10,11 @@ const ReviewItems = () => {
         {shoppingCart.map((cart, index) => {
           return (
             <div
-              className="flex flex-col items-center sm:items-start sm:flex-row gap-3 lg:gap-20 border-y border-y-gray-300 px-5 py-3"
+              className="flex flex-col items-center sm:items-start sm:flex-row gap-3 lg:gap-10 border-y border-y-gray-300 px-5 py-3"
               key={index}
             >
               <img
-                className="w-36 sm:32 h-40 sm:36"
+                className="w-32 sm:w-28"
                 src={cart.image}
                 alt="Cart Product"
               />
@@ -25,7 +25,7 @@ const ReviewItems = () => {
                     ₹.
                     {cart.price}
                   </p>
-                  <p>{quantities[index]} items</p>
+                  <p>{cart.noOfItems} items</p>
                 </div>
                 <div className="flex items-center gap-1.5 sm:flex-col">
                   <p className="text-sm lg:text-base">
@@ -33,7 +33,7 @@ const ReviewItems = () => {
                   </p>
                   <p className="font-bold sm:my-1">
                     ₹.
-                    {cart.price * quantities[index]}
+                    {cart.price * cart.noOfItems}
                   </p>
                 </div>
               </div>

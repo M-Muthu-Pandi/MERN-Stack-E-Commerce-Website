@@ -1,7 +1,7 @@
-import { useCart } from "../common/Context/ProductsContext";
+import { useProduct } from "../common/Context/ProductsContext";
 
 const TopPicksItems = () => {
-  const { setSelectedProduct, features, featureMapping } = useCart();
+  const { setSelectedProduct, features, featureMapping } = useProduct();
 
   return (
     <div>

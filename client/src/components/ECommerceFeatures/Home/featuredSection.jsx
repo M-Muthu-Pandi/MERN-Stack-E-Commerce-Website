@@ -1,9 +1,9 @@
 import SingleProduct from "../common/SingleProduct";
-import { useCart } from "../common/Context/ProductsContext";
+import { useProduct } from "../common/Context/ProductsContext";
 
 const FeaturedSection = () => {
   const { selectedProduct, setSelectedProduct, features, featureMapping } =
-    useCart();
+    useProduct();
 
   return (
     <section id="top-picks" className="pt-1 pb-3 px-2 sm:px-3 bg-green-200">

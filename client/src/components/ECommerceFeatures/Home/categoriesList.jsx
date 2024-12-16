@@ -2,11 +2,11 @@ import React, { useRef } from "react";
 import leftArrow from "../../../assets/left-arrow.png";
 import rightArrow from "../../../assets/right-arrow.png";
 import SingleProduct from "../common/SingleProduct";
-import { useCart } from "../common/Context/ProductsContext";
+import { useProduct } from "../common/Context/ProductsContext";
 
 const CategoriesList = () => {
   const { selectedProduct, setSelectedProduct, categories, categoryMapping } =
-    useCart();
+  useProduct();
 
   const refs = useRef(categories.map(() => React.createRef()));
 

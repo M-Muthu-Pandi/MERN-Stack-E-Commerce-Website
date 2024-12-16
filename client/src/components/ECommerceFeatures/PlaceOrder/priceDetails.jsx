@@ -1,7 +1,7 @@
-import { useCart } from "../common/Context/ProductsContext";
+import { useCart } from "../common/Context/CartContext";
 
 const PriceDetails = () => {
-  const { totalItems, subtotalPrice } = useCart();
+  const { totalPrice, totalItems } = useCart();
 
   return (
     <div className="p-5 bg-white rounded-lg mt-5 md:mt-0">
@@ -11,7 +11,7 @@ const PriceDetails = () => {
       <div className="border-b border-b-gray-300 mb-2 pb-2 text-sm lg:text-base">
         <p className="flex justify-between mb-1">
           <span>Price ({totalItems} items)</span>
-          <span>₹.{subtotalPrice.toLocaleString()}</span>
+          <span>₹.{totalPrice.toLocaleString()}</span>
         </p>
         <p className="flex justify-between">
           <span>Delivery Charges</span>
@@ -20,7 +20,7 @@ const PriceDetails = () => {
       </div>
       <h2 className="flex justify-between md:text-lg lg:text-xl font-bold text-red-600">
         <span>Total Amount</span>
-        <span>₹.{subtotalPrice.toLocaleString()}</span>
+        <span>₹.{totalPrice.toLocaleString()}</span>
       </h2>
     </div>
   );

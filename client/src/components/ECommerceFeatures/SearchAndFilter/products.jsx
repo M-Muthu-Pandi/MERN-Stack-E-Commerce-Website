@@ -1,10 +1,11 @@
-import { useCart } from "../common/Context/ProductsContext";
+import { useProduct } from "../common/Context/ProductsContext";
 import SingleProduct from "../common/SingleProduct";
 import CategoryItems from "./categoryProductItem";
 import TopPicksItems from "./toppicksProductItem";
 
 const Products = () => {
-  const { selectedProduct, setSelectedProduct, filteredProducts } = useCart();
+  const { selectedProduct, setSelectedProduct, filteredProducts } =
+    useProduct();
 
   return (
     <section className="flex-grow basis-4/5 p-2 sm:px-5 sm:pb-5">

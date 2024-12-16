@@ -14,6 +14,9 @@ import bestsellerRoutes from "./toppicksroutes/bestsellerRoutes.js";
 import todaydealRoutes from "./toppicksroutes/todaydealRoutes.js";
 import newarrivalRoutes from "./toppicksroutes/newarrivalRoutes.js";
 import deliveryAddressRoutes from "./addressroutes/deliveryAddressRoutes.js";
+import cartPlaceOrderRoutes from "./cartRoutes/cartPlaceOrderRoutes.js";
+import orderedRoutes from "./ordersroutes/orderedRoutes.js";
+import cancelledRoutes from "./ordersroutes/cancelledRoutes.js";
 
 const app = express();
 app.use(cors());
@@ -43,8 +46,15 @@ app.use("/api/bestseller", bestsellerRoutes);
 app.use("/api/todaydeals", todaydealRoutes);
 app.use("/api/newarrival", newarrivalRoutes);
 
-// Delivery Details
+// Delivery Details Route
 app.use("/api/deliverydetails", deliveryAddressRoutes);
+
+// Cart and Place Order Route
+app.use("/api/cartandplaceorder", cartPlaceOrderRoutes);
+
+// Orders Route
+app.use("/api/ordered", orderedRoutes);
+app.use("/api/cancelled", cancelledRoutes);
 
 const port = 4000;
 app.listen(port, () => {

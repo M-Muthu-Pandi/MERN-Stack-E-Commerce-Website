@@ -1,7 +1,7 @@
-import { useCart } from "../common/Context/ProductsContext";
+import { useProduct } from "../common/Context/ProductsContext";
 
 const CategoryItems = () => {
-  const { setSelectedProduct, categories, categoryMapping } = useCart();
+  const { setSelectedProduct, categories, categoryMapping } = useProduct();
 
   return (
     <div>

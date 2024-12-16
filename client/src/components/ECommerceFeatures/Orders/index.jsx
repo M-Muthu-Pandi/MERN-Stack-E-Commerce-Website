@@ -1,18 +1,29 @@
+import axios from "axios";
+import { useState, useEffect } from "react";
 import Footer from "../common/Footer";
 import Header from "../common/Header";
 import OrderTitles from "./common/orderTitles";
-import { useCart } from "../common/Context/ProductsContext";
 import NoResult from "./common/noResult";
 
 const Orders = () => {
-  const { activeOrders, quantities, cancelOrder } = useCart();
+  const [activeOrders, setActiveOrders] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:4000/api/ordered")
+      .then((res) => {
+        setActiveOrders(res.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching data", err);
+      });
+  }, []);
 
   return (
     <>
       <Header />
       <main className="bg-gray-200 p-3 sm:p-5 text-gray-900">
         <OrderTitles ordered={"underline font-bold"} />
-
         {activeOrders.length === 0 ? (
           <NoResult />
         ) : (
@@ -22,26 +33,26 @@ const Orders = () => {
                 ON THE WAY
               </h3>
               <div className="flex flex-col bg-white rounded-b-lg">
-                {activeOrders.map((cart, index) => {
+                {activeOrders.map((order) => {
                   return (
                     <div
-                      className="flex flex-col items-center sm:items-start sm:flex-row gap-3 lg:gap-20 border-t border-t-gray-300 px-5 py-3"
-                      key={cart.id}
+                      className="flex flex-col items-center sm:items-start sm:flex-row gap-3 lg:gap-10 border-t border-t-gray-300 px-5 py-3"
+                      key={order._id}
                     >
                       <img
-                        className="w-36 sm:32 h-40 sm:36"
-                        src={cart.image}
+                        className="w-32 sm:28"
+                        src={order.image}
                         alt="Cart Product"
                       />
 
                       <div className="flex flex-col sm:flex-row gap-3 sm:gap-5 md:gap-10 sm:justify-between sm:w-full">
                         <div className="sm:w-1/2 lg:w-3/5">
-                          <p className="text-sm sm:text-base">{cart.title}</p>
+                          <p className="text-sm sm:text-base">{order.title}</p>
                           <p className="text-sm lg:text-base font-bold my-2 sm:my-3">
                             ₹.
-                            {cart.price}
+                            {order.price}
                           </p>
-                          <p>{quantities[index]} items</p>
+                          <p>{order.noOfItems} items</p>
                           <p className="text-sm md:text-base mt-1 sm:mt-3 text-green-600">
                             Your order is on its way and will reach you in 2
                             days.
@@ -55,11 +66,11 @@ const Orders = () => {
                             </p>
                             <p className="font-bold sm:my-1">
                               ₹.
-                              {cart.price * quantities[index]}
+                              {order.price * order.noOfItems}
                             </p>
                           </div>
                           <button
-                            onClick={() => cancelOrder(index)}
+                            // onClick={() => cancelOrder()}
                             className="border-2 border-gray-300 rounded-3xl p-1 sm:p-2 text-xs hover:bg-gray-300 mt-5 mb-2"
                           >
                             Cancel Order

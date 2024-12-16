@@ -1,7 +1,32 @@
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const SingleProduct = ({ selectedProduct, setSelectedProduct }) => {
   const navigate = useNavigate();
+
+  const handleAddToCart = async (e) => {
+    const cartData = {
+      image: selectedProduct.image,
+      title: selectedProduct.title,
+      subtitle: selectedProduct.subtitle,
+      price: parseFloat(selectedProduct.price),
+      noOfItems: 1,
+    };
+
+    try {
+      const response = await axios.post(
+        "http://localhost:4000/api/cartandplaceorder",
+        cartData
+      );
+      alert("Product Added to Cart");
+      console.log(response.data);
+    } catch (error) {
+      alert("Failed to add cart. Check the console for details.");
+      console.error(error);
+    }
+    navigate("/cart");
+    window.location.reload();
+  };
 
   return (
     <>
@@ -37,7 +62,7 @@ const SingleProduct = ({ selectedProduct, setSelectedProduct }) => {
                 ₹.{selectedProduct.price}
               </p>
               <button
-                onClick={() => navigate("/cart")}
+                onClick={handleAddToCart}
                 className="self-center sm:self-start bg-yellow-400 rounded-3xl p-1 md:p-2 hover:bg-yellow-500 w-1/2 mt-3 md:mt-5 text-sm md:text-base"
               >
                 Add to Cart

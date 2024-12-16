@@ -1,14 +1,15 @@
+import { useCart } from "../common/Context/CartContext";
 import { useNavigate } from "react-router-dom";
-import { useCart } from "../common/Context/ProductsContext";
 
 const ProceedBuy = () => {
-  const { totalItems, subtotalPrice } = useCart();
+  const { totalPrice, totalItems } = useCart();
   const navigate = useNavigate();
 
   return (
     <section className="hidden md:flex p-3 bg-white rounded-lg flex-grow basis-1/4 flex-col items-center">
       <h2 className="text-xl lg:text-2xl font-medium mb-5">
-        Subtotal ({totalItems} items): ₹.{subtotalPrice.toLocaleString()}
+        Subtotal ({totalItems} items): ₹.
+        {totalPrice.toLocaleString()}
       </h2>
       <button
         onClick={() => navigate("/placeorder")}

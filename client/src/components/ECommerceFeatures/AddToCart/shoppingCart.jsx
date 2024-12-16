@@ -1,18 +1,22 @@
 import plus from "../../../assets/plus.png";
 import minus from "../../../assets/minus.png";
 import { useNavigate } from "react-router-dom";
-import { useCart } from "../common/Context/ProductsContext";
+import { useCart } from "../common/Context/CartContext";
 
 const ShoppingCart = () => {
-  const {
-    shoppingCart,
-    quantities,
-    incrementQuantity,
-    decrementQuantity,
-    totalItems,
-    subtotalPrice,
-  } = useCart();
+  const { shoppingCart, updateCart, totalPrice, totalItems } = useCart();
   const navigate = useNavigate();
+
+  const handleIncrement = (id, currentQty) => {
+    updateCart(id, currentQty + 1);
+  };
+
+  const handleDecrement = (id, currentQty) => {
+    if (currentQty > 1) {
+      updateCart(id, currentQty - 1);
+    }
+  };
+
   return (
     <section className="p-3 bg-white rounded-lg flex-grow basis-3/4">
       <h1 className="text-lg md:text-xl lg:text-2xl text-gray-500 font-medium mb-2 pb-2">
@@ -20,14 +24,14 @@ const ShoppingCart = () => {
       </h1>
 
       <div className="flex flex-col">
-        {shoppingCart.map((cart, index) => {
+        {shoppingCart.map((cart) => {
           return (
             <div
               className="flex flex-col items-center sm:items-start sm:flex-row gap-3 sm:gap-20 border-y border-y-gray-300 px-5 py-3"
-              key={index}
+              key={cart._id}
             >
               <img
-                className="w-36 sm:32 h-40 sm:36"
+                className="w-36 sm:w-32"
                 src={cart.image}
                 alt="Cart Product"
               />
@@ -41,17 +45,19 @@ const ShoppingCart = () => {
                     {cart.price}
                   </p>
                   <div className="w-16 sm:w-20 flex justify-between items-center border sm:border-2 border-gray-900 rounded-3xl px-2">
-                    <button onClick={() => decrementQuantity(index)}>
+                    <button
+                      onClick={() => handleDecrement(cart._id, cart.noOfItems)}
+                    >
                       <img
                         className="w-2.5 sm:w-3"
                         src={minus}
                         alt="Minus button"
                       />
                     </button>
-                    <p className="font-medium sm:text-lg">
-                      {quantities[index]}
-                    </p>
-                    <button onClick={() => incrementQuantity(index)}>
+                    <p className="font-medium sm:text-lg">{cart.noOfItems}</p>
+                    <button
+                      onClick={() => handleIncrement(cart._id, cart.noOfItems)}
+                    >
                       <img
                         className="w-2.5 sm:w-3"
                         src={plus}
@@ -66,7 +72,7 @@ const ShoppingCart = () => {
                   </p>
                   <p className="md:text-lg font-bold sm:my-1">
                     ₹.
-                    {cart.price * quantities[index]}
+                    {cart.price * cart.noOfItems}
                   </p>
                 </div>
               </div>
@@ -77,7 +83,8 @@ const ShoppingCart = () => {
 
       <div className="text-center md:text-end m-3">
         <h2 className="text-lg md:text-xl lg:text-2xl font-medium mb-3">
-          Subtotal ({totalItems} items): ₹.{subtotalPrice.toLocaleString()}
+          Subtotal ({totalItems} items): ₹.
+          {totalPrice}
         </h2>
         <button
           onClick={() => navigate("/placeorder")}

@@ -2,12 +2,12 @@ import { useRef, useState } from "react";
 import search from "../../../../../assets/search.png";
 import Logo from "../../Logo";
 import { useNavigate } from "react-router-dom";
-import { useCart } from "../../Context/ProductsContext";
+import { useProduct } from "../../Context/ProductsContext";
 
 const LogoAndSearch = () => {
   const containerRef = useRef(null);
   const navigate = useNavigate();
-  const { categoryMapping, featureMapping, setFilteredProducts } = useCart();
+  const { categoryMapping, featureMapping, setFilteredProducts } = useProduct();
   const [searchQuery, setSearchQuery] = useState("");
 
   const handleFocus = () => {

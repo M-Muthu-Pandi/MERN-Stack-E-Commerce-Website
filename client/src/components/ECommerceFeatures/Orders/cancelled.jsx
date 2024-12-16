@@ -1,11 +1,23 @@
+import axios from "axios";
+import { useState, useEffect } from "react";
 import Footer from "../common/Footer";
 import Header from "../common/Header";
 import OrderTitles from "./common/orderTitles";
-import { useCart } from "../common/Context/ProductsContext";
 import NoResult from "./common/noResult";
 
 const OrderCancelled = () => {
-  const { cancelledOrders } = useCart();
+  const [cancelledOrders, setCancelledOrders] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:4000/api/cancelled")
+      .then((res) => {
+        setCancelledOrders(res.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching data", err);
+      });
+  }, []);
 
   return (
     <>
@@ -23,24 +35,25 @@ const OrderCancelled = () => {
                 CANCELLED ORDERS
               </h3>
               <div className="flex flex-col bg-white rounded-b-lg">
-                {cancelledOrders.map((cart) => {
+                {cancelledOrders.map((cancel) => {
                   return (
                     <div
-                      className="flex flex-col items-center sm:items-start sm:flex-row gap-3 lg:gap-20 border-t border-t-gray-300 px-5 py-3"
-                      key={cart.id}
+                      className="flex flex-col items-center sm:items-start sm:flex-row gap-3 lg:gap-10 border-t border-t-gray-300 px-5 py-3"
+                      key={cancel._id}
                     >
                       <img
-                        className="w-36 sm:32 h-40 sm:36"
-                        src={cart.image}
+                        className="w-32 sm:w-28"
+                        src={cancel.image}
                         alt="Cart Product"
                       />
 
                       <div className="sm:w-1/2 lg:w-3/5">
-                        <p className="text-sm sm:text-base">{cart.title}</p>
+                        <p className="text-sm sm:text-base">{cancel.title}</p>
                         <p className="text-sm lg:text-base font-bold my-2 sm:my-3">
                           ₹.
-                          {cart.price}
+                          {cancel.price}
                         </p>
+                        <p>{cancel.noOfItems} items</p>
                         <p className="text-sm md:text-base mt-1 sm:mt-3 text-red-600">
                           Your order has been cancelled successfully.
                         </p>
