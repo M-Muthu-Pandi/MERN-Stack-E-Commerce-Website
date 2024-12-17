@@ -1,9 +1,14 @@
+import { useEffect } from "react";
 import Header from "../common/Header";
 import Footer from "../common/Footer";
 import SignUpBtn from "../common/signUpButton";
 import Fpassword from "./forgotPass";
 
 const ForgotPassword = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <main className="flex flex-col items-center gap-5">
       <Header />

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Header from "../common/Header";
 import Footer from "../common/Footer";
 import SignInGoogle from "../common/SignInWithGoogle";
@@ -5,6 +6,10 @@ import CreateAccount from "./createAccount";
 import SignInAndService from "./ServiceAndSignIn";
 
 const Signup = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <main className="flex flex-col items-center gap-5">
       <Header />

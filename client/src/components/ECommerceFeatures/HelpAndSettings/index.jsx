@@ -1,11 +1,15 @@
 import Footer from "../common/Footer";
 import Header from "../common/Header";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import DeleteAccountButton from "./DeleteAccount";
 import AdminButton from "./adminAccessBtn";
 
 const HelpAndSettings = () => {
   const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const toggleVisibility = () => {
     setIsVisible((prev) => !prev);

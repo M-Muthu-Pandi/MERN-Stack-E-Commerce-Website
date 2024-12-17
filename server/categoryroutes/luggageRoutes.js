@@ -36,4 +36,20 @@ router.post("/", async (req, res) => {
   }
 });
 
+// Delete an Product by ID
+router.delete("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const deletedLuggage = await Luggage.findByIdAndDelete(id);
+
+    if (!deletedLuggage) {
+      return res.status(404).json({ message: "Luggage not found" });
+    }
+
+    res.status(200).json({ message: "Luggage deleted successfully" });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
 export default router;

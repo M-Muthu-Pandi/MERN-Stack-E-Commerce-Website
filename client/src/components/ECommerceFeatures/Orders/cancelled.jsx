@@ -2,24 +2,15 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import Footer from "../common/Footer";
 import Header from "../common/Header";
-import OrderTitles from "./common/orderTitles";
-import NoResult from "./common/noResult";
+import OrderTitles from "./orderTitles";
+import NoResult from "../common/Others/noResult";
 
 const OrderCancelled = () => {
   const [cancelledOrders, setCancelledOrders] = useState([]);
 
-  // useEffect(() => {
-  //   axios
-  //     .get("http://localhost:4000/api/cancelled")
-  //     .then((res) => {
-  //       setCancelledOrders(res.data);
-  //     })
-  //     .catch((err) => {
-  //       console.error("Error fetching data", err);
-  //     });
-  // }, []);
-
   useEffect(() => {
+    window.scrollTo(0, 0);
+
     fetchCancelledOrders();
   }, []);
 

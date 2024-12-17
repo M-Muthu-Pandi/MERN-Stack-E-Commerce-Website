@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import infinity from "../../../assets//infinity-white.png";
+import infinity from "../../../../assets//infinity-white.png";
 
 const Logo = () => {
   const navigate = useNavigate();

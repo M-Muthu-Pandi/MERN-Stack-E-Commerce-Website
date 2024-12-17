@@ -32,8 +32,8 @@ const AppRoutes = () => {
   return (
     <Routes>
       <Route path="/login" element={<Login />} />
-      <Route path="/forgotpassword" element={<ForgotPassword />} />
       <Route path="/signup" element={<Signup />} />
+      <Route path="/forgotpassword" element={<ForgotPassword />} />
       <Route path="/" element={<Home />} />
       <Route path="/search" element={<SearchAndFilter />} />
       <Route path="/filter/men" element={<MenFilter />} />

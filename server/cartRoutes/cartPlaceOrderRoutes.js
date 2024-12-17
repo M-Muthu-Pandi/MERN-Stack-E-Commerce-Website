@@ -36,7 +36,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-// Delete an address by ID
+// Delete an Cart by ID
 router.delete("/:id", async (req, res) => {
   try {
     const { id } = req.params;

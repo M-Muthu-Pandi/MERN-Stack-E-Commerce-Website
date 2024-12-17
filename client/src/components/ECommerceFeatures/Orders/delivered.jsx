@@ -1,9 +1,14 @@
-import Footer from "../common/Footer";
+import { useEffect } from "react";
 import Header from "../common/Header";
-import OrderTitles from "./common/orderTitles";
-import NoResult from "./common/noResult";
+import Footer from "../common/Footer";
+import OrderTitles from "./orderTitles";
+import NoResult from "../common/Others/noResult";
 
 const OrderDelivered = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       <Header />

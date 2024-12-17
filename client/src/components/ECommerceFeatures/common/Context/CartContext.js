@@ -47,15 +47,13 @@ export const CartProvider = ({ children }) => {
   const totalItems = shoppingCart.length;
 
   const handleRemoveCart = async (id) => {
-    if (window.confirm("Are you sure you want to delete this cart?")) {
-      try {
-        await axios.delete(`http://localhost:4000/api/cartandplaceorder/${id}`);
-        setShoppingCart((prev) => prev.filter((cart) => cart._id !== id));
-        alert("Address removed successfully!");
-      } catch (error) {
-        alert("Failed to remove address. Check the console for details.");
-        console.error(error);
-      }
+    try {
+      await axios.delete(`http://localhost:4000/api/cartandplaceorder/${id}`);
+      setShoppingCart((prev) => prev.filter((cart) => cart._id !== id));
+      alert("Cart removed successfully!");
+    } catch (error) {
+      alert("Failed to remove Cart. Check the console for details.");
+      console.error(error);
     }
   };
 

@@ -1,12 +1,12 @@
 import React, { useRef } from "react";
+import { useProduct } from "../common/Context/ProductsContext";
+import SingleProduct from "../common/SingleProduct";
 import leftArrow from "../../../assets/left-arrow.png";
 import rightArrow from "../../../assets/right-arrow.png";
-import SingleProduct from "../common/SingleProduct";
-import { useProduct } from "../common/Context/ProductsContext";
 
 const CategoriesList = () => {
   const { selectedProduct, setSelectedProduct, categories, categoryMapping } =
-  useProduct();
+    useProduct();
 
   const refs = useRef(categories.map(() => React.createRef()));
 

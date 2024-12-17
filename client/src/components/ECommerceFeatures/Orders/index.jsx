@@ -2,13 +2,15 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import Footer from "../common/Footer";
 import Header from "../common/Header";
-import OrderTitles from "./common/orderTitles";
-import NoResult from "./common/noResult";
+import OrderTitles from "./orderTitles";
+import NoResult from "../common/Others/noResult";
 
 const Orders = () => {
   const [activeOrders, setActiveOrders] = useState([]);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+
     fetchOrders();
   }, []);
 

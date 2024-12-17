@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useAdmin } from "../../ECommerceFeatures/common/Context/AdminContext";
 import { useNavigate } from "react-router-dom";
 import Footer from "../../ECommerceFeatures/common/Footer";
@@ -6,6 +7,10 @@ import CatProductUpload from "./CategoriesProductUpload";
 import TopProductUpload from "./TopPicksProductUpload";
 
 const ProductUpload = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const admin = useAdmin();
   const navigate = useNavigate();
 

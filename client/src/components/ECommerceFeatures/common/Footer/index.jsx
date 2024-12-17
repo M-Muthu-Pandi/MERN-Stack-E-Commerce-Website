@@ -1,4 +1,4 @@
-import Logo from "../Logo";
+import Logo from "../Others/Logo";
 import Mu2 from "../../../../assets/Mu2-dark.png";
 import FooterContent from "./footer";
 

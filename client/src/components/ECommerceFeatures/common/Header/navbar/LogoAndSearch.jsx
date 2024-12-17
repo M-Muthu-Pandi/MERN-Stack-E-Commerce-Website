@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import search from "../../../../../assets/search.png";
-import Logo from "../../Logo";
+import Logo from "../../Others/Logo";
 import { useNavigate } from "react-router-dom";
 import { useProduct } from "../../Context/ProductsContext";
 

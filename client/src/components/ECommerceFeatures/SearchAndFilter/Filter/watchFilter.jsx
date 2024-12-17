@@ -1,16 +1,21 @@
+import axios from "axios";
+import { useState, useEffect } from "react";
 import { useProduct } from "../../common/Context/ProductsContext";
+import { useAdmin } from "../../common/Context/AdminContext";
 import Header from "../../common/Header";
 import Footer from "../../common/Footer";
 import FilterTitles from "../filterTitles";
 import SingleProduct from "../../common/SingleProduct";
-import { useState, useEffect } from "react";
-import axios from "axios";
+import bin from "../../../../assets/bin.png";
 
 const WatchFilter = () => {
+  const admin = useAdmin();
   const { selectedProduct, setSelectedProduct } = useProduct();
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+
     axios
       .get("http://localhost:4000/api/watches")
       .then((res) => {
@@ -20,6 +25,17 @@ const WatchFilter = () => {
         console.error("Error fetching data", err);
       });
   }, []);
+
+  const handleRemoveProduct = async (id) => {
+    try {
+      await axios.delete(`http://localhost:4000/api/watches/${id}`);
+      setProducts((prev) => prev.filter((product) => product._id !== id));
+      alert("Product removed successfully!");
+    } catch (error) {
+      alert("Failed to remove Product. Check the console for details.");
+      console.error(error);
+    }
+  };
 
   return (
     <>
@@ -40,13 +56,13 @@ const WatchFilter = () => {
             {products.map((item) => (
               <div
                 key={item._id}
-                className="flex flex-col basis-[49%] sm:basis-[30%] lg:basis-[23%] border rounded-md p-2"
-                onClick={() => setSelectedProduct(item)}
+                className="relative flex flex-col basis-[49%] sm:basis-[30%] lg:basis-[23%] border rounded-md p-2"
               >
                 <img
-                  className="h-28 sm:h-44 rounded-md"
+                  className="h-28 sm:h-44 rounded-md cursor-pointer"
                   src={item.image}
                   alt={item.subtitle}
+                  onClick={() => setSelectedProduct(item)}
                 />
                 <p className="my-2 text-xs">{item.title}</p>
                 <div className="sm:flex items-center gap-2">
@@ -62,6 +78,20 @@ const WatchFilter = () => {
                 <p className="font-medium text-sm sm:text-base mt-1">
                   ₹.{item.price}
                 </p>
+                {admin ? (
+                  <button
+                    onClick={() => handleRemoveProduct(item._id)}
+                    className="z-30 absolute bottom-2 right-2 border sm:border border-gray-900 hover:bg-gray-300 rounded-full p-1"
+                  >
+                    <img
+                      className="w-3.5 sm:w-4"
+                      src={bin}
+                      alt="Delete button"
+                    />
+                  </button>
+                ) : (
+                  ""
+                )}
               </div>
             ))}
           </div>

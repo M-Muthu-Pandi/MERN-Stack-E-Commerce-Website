@@ -36,4 +36,20 @@ router.post("/", async (req, res) => {
   }
 });
 
+// Delete an Product by ID
+router.delete("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const deletedBestseller = await Bestseller.findByIdAndDelete(id);
+
+    if (!deletedBestseller) {
+      return res.status(404).json({ message: "Bestseller not found" });
+    }
+
+    res.status(200).json({ message: "Bestseller deleted successfully" });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
 export default router;
