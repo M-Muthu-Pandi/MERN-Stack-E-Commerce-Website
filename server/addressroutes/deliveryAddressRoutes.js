@@ -37,4 +37,21 @@ router.post("/", async (req, res) => {
   }
 });
 
+// Delete an address by ID
+router.delete("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    // console.log("ID received in backend:", id);
+    const deletedAddress = await Address.findByIdAndDelete(id);
+
+    if (!deletedAddress) {
+      return res.status(404).json({ message: "Address not found" });
+    }
+
+    res.status(200).json({ message: "Address deleted successfully" });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
 export default router;

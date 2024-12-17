@@ -62,6 +62,19 @@ const DeliveryDetails = ({ setSelectedAddress }) => {
     }
   };
 
+  const handleRemoveAddress = async (id) => {
+    if (window.confirm("Are you sure you want to delete this address?")) {
+      try {
+        await axios.delete(`http://localhost:4000/api/deliverydetails/${id}`);
+        setAddAddress((prev) => prev.filter((address) => address._id !== id));
+        alert("Address removed successfully!");
+      } catch (error) {
+        alert("Failed to remove address. Check the console for details.");
+        console.error(error);
+      }
+    }
+  };
+
   return (
     <div className="bg-white p-5 rounded-lg">
       <h2 className="text-gray-500 font-medium mb-2 pb-2 border-b border-b-gray-300">
@@ -152,27 +165,35 @@ const DeliveryDetails = ({ setSelectedAddress }) => {
         return (
           <div
             key={item._id}
-            className="text-sm lg:text-base mt-5 pt-3 flex gap-4 border-t border-t-gray-300"
+            className="flex flex-col lg:flex-row lg:items-center lg:justify-between border-t border-t-gray-300 mt-5 pt-3"
           >
-            <input
-              className="w-4"
-              id={`address${item._id}`}
-              type="radio"
-              name="address"
-              onChange={() => setSelectedAddress(item)}
-            />
-            <label
-              htmlFor={`address${item._id}`}
-              className="cursor-pointer hover:text-blue-500 flex flex-col"
+            <div className="text-sm lg:text-base flex gap-4">
+              <input
+                className="w-4"
+                id={`address${item._id}`}
+                type="radio"
+                name="address"
+                onChange={() => setSelectedAddress(item)}
+              />
+              <label
+                htmlFor={`address${item._id}`}
+                className="cursor-pointer hover:text-blue-500 flex flex-col"
+              >
+                <span className="font-medium text-lg">
+                  {item.name} - {item.number}
+                </span>
+                <span>
+                  {item.address}, {item.city}, {item.state} - {item.code}.
+                </span>
+                <span>{item.landmark}</span>
+              </label>
+            </div>
+            <button
+              onClick={() => handleRemoveAddress(item._id)}
+              className="lg:min-w-max border-2 border-gray-300 rounded-3xl py-1 px-2 text-xs hover:bg-gray-300 mt-2"
             >
-              <span className="font-medium text-lg">
-                {item.name} - {item.number}
-              </span>
-              <span>
-                {item.address}, {item.city}, {item.state} - {item.code}.
-              </span>
-              <span>{item.landmark}</span>
-            </label>
+              Remove Address
+            </button>
           </div>
         );
       })}

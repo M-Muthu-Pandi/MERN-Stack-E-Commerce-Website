@@ -1,13 +1,22 @@
 import { useState, useEffect } from "react";
-import carouselOne from "../../../assets/carousel/carousel-1.jpg";
-import carouselTwo from "../../../assets/carousel/carousel-2.jpg";
-import carouselThree from "../../../assets/carousel/carousel-3.jpg";
+import axios from "axios";
 import rightArrow from "../../../assets/right-arrow.png";
 import leftArrow from "../../../assets/left-arrow.png";
 
 const ImageCarousel = () => {
-  const images = [carouselOne, carouselTwo, carouselThree];
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [images, setImages] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:4000/api/slider")
+      .then((res) => {
+        setImages(res.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching data", err);
+      });
+  }, []);
 
   const handlePrev = () => {
     setCurrentIndex((prevIndex) =>
@@ -40,8 +49,8 @@ const ImageCarousel = () => {
       >
         {images.map((image, index) => (
           <img
-            key={index}
-            src={image}
+            key={image._id}
+            src={image.image}
             alt={`Slide ${index + 1}`}
             className="w-full"
           />

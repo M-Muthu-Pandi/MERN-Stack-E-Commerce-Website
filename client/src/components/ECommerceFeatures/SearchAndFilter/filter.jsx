@@ -1,20 +1,20 @@
 const Filter = () => {
   const category = [
-    { id: "men", title: "Men Clothing" },
-    { id: "women", title: "Women Clothing" },
-    { id: "kids", title: "Kid's Fashion" },
-    { id: "footwear", title: "Footwear" },
-    { id: "luggage", title: "Luggage & Bags" },
-    { id: "watch", title: "Watches" },
-    { id: "handbag", title: "Handbags" },
-    { id: "sunglass", title: "Sunglasses" },
+    { id: "api/men", title: "Men Clothing" },
+    { id: "api/women", title: "Women Clothing" },
+    { id: "api/kids", title: "Kid's Fashion" },
+    { id: "api/footwear", title: "Footwear" },
+    { id: "api/luggages", title: "Luggage & Bags" },
+    { id: "api/watches", title: "Watches" },
+    { id: "api/handbags", title: "Handbags" },
+    { id: "api/sunglass", title: "Sunglasses" },
   ];
 
   const toppicks = [
-    { id: "trending", title: "Trending" },
-    { id: "bestseller", title: "Best Sellers" },
-    { id: "todaydeals", title: "Today's Deals" },
-    { id: "newarrival", title: "New Arrivals" },
+    { id: "api/trending", title: "Trending" },
+    { id: "api/bestseller", title: "Best Sellers" },
+    { id: "api/todaydeals", title: "Today's Deals" },
+    { id: "api/newarrival", title: "New Arrivals" },
   ];
 
   return (
@@ -40,7 +40,7 @@ const Filter = () => {
                   className="sm:w-4"
                   type="checkbox"
                   name="categories"
-                  id={item.id}
+                  value={item.id}
                 />
                 <label htmlFor={item.id}>{item.title}</label>
               </div>

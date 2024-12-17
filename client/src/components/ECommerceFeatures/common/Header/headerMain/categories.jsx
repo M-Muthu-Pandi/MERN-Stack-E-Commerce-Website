@@ -1,69 +1,34 @@
-import men from "../../../../../assets/categories/men.png";
-import women from "../../../../../assets/categories/women.png";
-import kids from "../../../../../assets/categories/kids.png";
-import footwear from "../../../../../assets/categories/footwear.png";
-import luggage from "../../../../../assets/categories/luggage.png";
-import watch from "../../../../../assets/categories/Watches.png";
-import handbag from "../../../../../assets/categories/handbags.png";
-import sunglass from "../../../../../assets/categories/sunglass.png";
+import axios from "axios";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Categories = () => {
   const navigate = useNavigate();
-  const categorytitle = [
-    {
-      src: men,
-      title: "Men's Clothing",
-      route: "#men's-clothing",
-    },
-    {
-      src: women,
-      title: "Women's Clothing",
-      route: "#women's-clothing",
-    },
-    {
-      src: kids,
-      title: "Kid's Fashion",
-      route: "#kid's-fashion",
-    },
-    {
-      src: footwear,
-      title: "Footwear",
-      route: "#footwear",
-    },
-    {
-      src: luggage,
-      title: "Luggage & Bags",
-      route: "#luggage-bags",
-    },
-    {
-      src: watch,
-      title: "Watches",
-      route: "#watches",
-    },
-    {
-      src: handbag,
-      title: "Handbags",
-      route: "#handbags",
-    },
-    {
-      src: sunglass,
-      title: "Sunglasses",
-      route: "#sunglasses",
-    },
-  ];
+
+  const [categorytitle, setCategorytitle] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:4000/api/categorylist")
+      .then((res) => {
+        setCategorytitle(res.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching data", err);
+      });
+  }, []);
 
   return (
     <div className="flex justify-around mt-5 overflow-x-auto mb-3">
-      {categorytitle.map((item, index) => {
+      {categorytitle.map((item) => {
         return (
           <a
             href={item.route}
             className="flex flex-col min-w-28 sm:min-w-36 items-center border-2 border-white hover:border-red-500"
-            key={index}
+            key={item._id}
             onClick={() => navigate("/")}
           >
-            <img className="w-20 sm:w-28" src={item.src} alt="Categories" />
+            <img className="w-20 sm:w-28" src={item.image} alt="Categories" />
             <p className="text-xs sm:text-base">{item.title}</p>
           </a>
         );

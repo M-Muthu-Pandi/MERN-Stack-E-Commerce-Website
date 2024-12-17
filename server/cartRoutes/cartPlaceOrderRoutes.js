@@ -14,7 +14,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// Add a new men product
+// Add a new cart item
 router.post("/", async (req, res) => {
   try {
     const { image, title, subtitle, price, noOfItems } = req.body;
@@ -31,6 +31,22 @@ router.post("/", async (req, res) => {
     res
       .status(201)
       .json({ message: "Card added successfully", details: newCart });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+// Delete an address by ID
+router.delete("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const deletedCart = await Cart.findByIdAndDelete(id);
+
+    if (!deletedCart) {
+      return res.status(404).json({ message: "Cart not found" });
+    }
+
+    res.status(200).json({ message: "Cart deleted successfully" });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }

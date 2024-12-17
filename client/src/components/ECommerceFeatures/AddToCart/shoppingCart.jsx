@@ -1,10 +1,12 @@
-import plus from "../../../assets/plus.png";
-import minus from "../../../assets/minus.png";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../common/Context/CartContext";
+import plus from "../../../assets/plus.png";
+import minus from "../../../assets/minus.png";
+import bin from "../../../assets/bin.png";
 
 const ShoppingCart = () => {
-  const { shoppingCart, updateCart, totalPrice, totalItems } = useCart();
+  const { shoppingCart, updateCart, totalPrice, totalItems, handleRemoveCart } =
+    useCart();
   const navigate = useNavigate();
 
   const handleIncrement = (id, currentQty) => {
@@ -44,24 +46,40 @@ const ShoppingCart = () => {
                     ₹.
                     {cart.price}
                   </p>
-                  <div className="w-16 sm:w-20 flex justify-between items-center border sm:border-2 border-gray-900 rounded-3xl px-2">
+                  <div className="flex gap-2">
+                    <div className="w-16 sm:w-20 flex justify-between items-center border sm:border-1 border-gray-900 rounded-3xl px-2">
+                      <button
+                        onClick={() =>
+                          handleDecrement(cart._id, cart.noOfItems)
+                        }
+                      >
+                        <img
+                          className="w-2.5 sm:w-3 hover:bg-gray-300"
+                          src={minus}
+                          alt="Minus button"
+                        />
+                      </button>
+                      <p className="font-medium sm:text-lg">{cart.noOfItems}</p>
+                      <button
+                        onClick={() =>
+                          handleIncrement(cart._id, cart.noOfItems)
+                        }
+                      >
+                        <img
+                          className="w-2.5 sm:w-3 hover:bg-gray-300"
+                          src={plus}
+                          alt="Plus button"
+                        />
+                      </button>
+                    </div>
                     <button
-                      onClick={() => handleDecrement(cart._id, cart.noOfItems)}
+                      onClick={() => handleRemoveCart(cart._id)}
+                      className="flex justify-between items-center border sm:border border-gray-900 hover:bg-gray-300 rounded-full px-2"
                     >
                       <img
-                        className="w-2.5 sm:w-3"
-                        src={minus}
-                        alt="Minus button"
-                      />
-                    </button>
-                    <p className="font-medium sm:text-lg">{cart.noOfItems}</p>
-                    <button
-                      onClick={() => handleIncrement(cart._id, cart.noOfItems)}
-                    >
-                      <img
-                        className="w-2.5 sm:w-3"
-                        src={plus}
-                        alt="Plus button"
+                        className="w-3.5 sm:w-4"
+                        src={bin}
+                        alt="Delete button"
                       />
                     </button>
                   </div>

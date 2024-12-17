@@ -2,10 +2,10 @@ import { useAdmin } from "../../ECommerceFeatures/common/Context/AdminContext";
 import { useNavigate } from "react-router-dom";
 import Footer from "../../ECommerceFeatures/common/Footer";
 import Header from "../../ECommerceFeatures/common/Header";
-import CatProductUpload from "./CategoriesProductUpload";
-import TopProductUpload from "./TopPicksProductUpload";
+import CategoryHeadingUpload from "./categoryHeadingUpload";
+import SliderUpload from "./sliderUpload";
 
-const ProductUpload = () => {
+const OtherUpload = () => {
   const admin = useAdmin();
   const navigate = useNavigate();
 
@@ -21,17 +21,18 @@ const ProductUpload = () => {
           <Header />
           <main className="flex flex-col gap-5 items-center p-3 sm:p-5">
             <h1 className="text-lg md:text-xl lg:text-2xl text-gray-500 font-medium">
-              ADD PRODUCTS
+              ADD OTHERS
             </h1>
-
-            <CatProductUpload />
-            <TopProductUpload />
+            <section className="flex flex-col gap-2 p-3 sm:px-5 bg-gray-200 rounded-lg w-full sm:w-4/5">
+              <CategoryHeadingUpload />
+              <SliderUpload />
+            </section>
 
             <button
-              onClick={() => navigate("/adminaccess/others")}
+              onClick={() => navigate("/adminaccess")}
               className="bg-orange-400 rounded-3xl p-2 text-sm hover:bg-orange-500 w-3/4"
             >
-              Add Others Page
+              Add Products Page
             </button>
           </main>
           <Footer />
@@ -53,4 +54,4 @@ const ProductUpload = () => {
   );
 };
 
-export default ProductUpload;
+export default OtherUpload;

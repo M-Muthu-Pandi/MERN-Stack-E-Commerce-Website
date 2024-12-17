@@ -1,6 +1,8 @@
 import express, { json } from "express";
 import { connect } from "mongoose";
 import cors from "cors";
+import categoryheadroutes from "./otherroutes/categoryheadroutes.js";
+import sliderRoutes from "./otherroutes/sliderRoutes.js";
 import menRoutes from "./categoryroutes/menRoutes.js";
 import womenRoutes from "./categoryroutes/womenRoutes.js";
 import kidsRoutes from "./categoryroutes/kidsRoutes.js";
@@ -55,6 +57,10 @@ app.use("/api/cartandplaceorder", cartPlaceOrderRoutes);
 // Orders Route
 app.use("/api/ordered", orderedRoutes);
 app.use("/api/cancelled", cancelledRoutes);
+
+// Other Routes
+app.use("/api/categorylist", categoryheadroutes);
+app.use("/api/slider", sliderRoutes);
 
 const port = 4000;
 app.listen(port, () => {
