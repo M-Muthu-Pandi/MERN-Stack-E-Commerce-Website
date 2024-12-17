@@ -1,14 +1,14 @@
 import Header from "../common/Header";
 import Footer from "../common/Footer";
-import Filter from "./filter";
-import Products from "./products";
+import Products from "./Products/products";
+import FilterTitles from "./filterTitles";
 
 const SearchAndFilter = () => {
   return (
     <>
       <Header />
       <main className="flex">
-        <Filter />
+        <FilterTitles allproducts={"font-bold"} />
         <Products />
       </main>
       <Footer />

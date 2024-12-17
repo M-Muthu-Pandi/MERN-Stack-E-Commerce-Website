@@ -1,4 +1,4 @@
-import { useProduct } from "../common/Context/ProductsContext";
+import { useProduct } from "../../common/Context/ProductsContext";
 
 const CategoryItems = () => {
   const { setSelectedProduct, categories, categoryMapping } = useProduct();

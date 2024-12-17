@@ -1,5 +1,5 @@
-import { useProduct } from "../common/Context/ProductsContext";
-import SingleProduct from "../common/SingleProduct";
+import { useProduct } from "../../common/Context/ProductsContext";
+import SingleProduct from "../../common/SingleProduct";
 import CategoryItems from "./categoryProductItem";
 import TopPicksItems from "./toppicksProductItem";
 
