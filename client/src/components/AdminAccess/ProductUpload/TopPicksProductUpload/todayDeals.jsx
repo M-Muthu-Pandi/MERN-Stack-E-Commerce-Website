@@ -24,7 +24,7 @@ const TodayDealProductUpload = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:4000/api/todaydeals",
+        "https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/todaydeals",
         productData
       );
       alert("Product added successfully!");

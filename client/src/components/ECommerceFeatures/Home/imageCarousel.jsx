@@ -9,7 +9,7 @@ const ImageCarousel = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4000/api/slider")
+      .get("https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/slider")
       .then((res) => {
         setImages(res.data);
       })

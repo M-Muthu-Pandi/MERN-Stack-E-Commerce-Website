@@ -24,7 +24,7 @@ const LuggageProductUpload = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:4000/api/luggages",
+        "https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/luggages",
         productData
       );
       alert("Product added successfully!");

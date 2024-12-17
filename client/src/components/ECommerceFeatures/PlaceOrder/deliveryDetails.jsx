@@ -14,7 +14,7 @@ const DeliveryDetails = ({ setSelectedAddress }) => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4000/api/deliverydetails")
+      .get("https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/deliverydetails")
       .then((res) => {
         setAddAddress(res.data);
       })
@@ -51,7 +51,7 @@ const DeliveryDetails = ({ setSelectedAddress }) => {
 
     try {
       const response = await axios.post(
-        "http://localhost:4000/api/deliverydetails",
+        "https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/deliverydetails",
         deliveryData
       );
       alert("Address added successfully!");
@@ -65,7 +65,7 @@ const DeliveryDetails = ({ setSelectedAddress }) => {
   const handleRemoveAddress = async (id) => {
     if (window.confirm("Are you sure you want to delete this address?")) {
       try {
-        await axios.delete(`http://localhost:4000/api/deliverydetails/${id}`);
+        await axios.delete(`https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/deliverydetails/${id}`);
         setAddAddress((prev) => prev.filter((address) => address._id !== id));
         alert("Address removed successfully!");
       } catch (error) {

@@ -9,7 +9,7 @@ const Categories = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4000/api/categorylist")
+      .get("https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/categorylist")
       .then((res) => {
         setCategorytitle(res.data);
       })

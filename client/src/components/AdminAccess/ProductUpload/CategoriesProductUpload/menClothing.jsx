@@ -24,7 +24,7 @@ const MenProductUpload = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:4000/api/men",
+        "https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/men",
         productData
       );
       alert("Product added successfully!");

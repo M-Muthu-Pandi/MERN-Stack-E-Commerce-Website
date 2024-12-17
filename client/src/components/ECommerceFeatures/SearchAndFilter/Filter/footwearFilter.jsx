@@ -17,7 +17,9 @@ const FootwearFilter = () => {
     window.scrollTo(0, 0);
 
     axios
-      .get("http://localhost:4000/api/footwear")
+      .get(
+        "https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/footwear"
+      )
       .then((res) => {
         setProducts(res.data);
       })
@@ -28,7 +30,9 @@ const FootwearFilter = () => {
 
   const handleRemoveProduct = async (id) => {
     try {
-      await axios.delete(`http://localhost:4000/api/footwear/${id}`);
+      await axios.delete(
+        `https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/footwear/${id}`
+      );
       setProducts((prev) => prev.filter((product) => product._id !== id));
       alert("Product removed successfully!");
     } catch (error) {

@@ -33,14 +33,14 @@ export const ProductProvider = ({ children }) => {
 
   useEffect(() => {
     Promise.all([
-      axios.get("http://localhost:4000/api/men"),
-      axios.get("http://localhost:4000/api/women"),
-      axios.get("http://localhost:4000/api/kids"),
-      axios.get("http://localhost:4000/api/footwear"),
-      axios.get("http://localhost:4000/api/luggages"),
-      axios.get("http://localhost:4000/api/watches"),
-      axios.get("http://localhost:4000/api/handbags"),
-      axios.get("http://localhost:4000/api/sunglass"),
+      axios.get("https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/men"),
+      axios.get("https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/women"),
+      axios.get("https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/kids"),
+      axios.get("https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/footwear"),
+      axios.get("https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/luggages"),
+      axios.get("https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/watches"),
+      axios.get("https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/handbags"),
+      axios.get("https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/sunglass"),
     ])
       .then(
         ([
@@ -94,10 +94,10 @@ export const ProductProvider = ({ children }) => {
 
   useEffect(() => {
     Promise.all([
-      axios.get("http://localhost:4000/api/trending"),
-      axios.get("http://localhost:4000/api/bestseller"),
-      axios.get("http://localhost:4000/api/todaydeals"),
-      axios.get("http://localhost:4000/api/newarrival"),
+      axios.get("https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/trending"),
+      axios.get("https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/bestseller"),
+      axios.get("https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/todaydeals"),
+      axios.get("https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/newarrival"),
     ])
       .then(([trendingRes, bestsellerRes, todaydealRes, newarrivalRes]) => {
         setTrending(trendingRes.data);

@@ -17,7 +17,7 @@ const HandbagFilter = () => {
     window.scrollTo(0, 0);
 
     axios
-      .get("http://localhost:4000/api/handbags")
+      .get("https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/handbags")
       .then((res) => {
         setProducts(res.data);
       })
@@ -28,7 +28,7 @@ const HandbagFilter = () => {
 
   const handleRemoveProduct = async (id) => {
     try {
-      await axios.delete(`http://localhost:4000/api/handbags/${id}`);
+      await axios.delete(`https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/handbags/${id}`);
       setProducts((prev) => prev.filter((product) => product._id !== id));
       alert("Product removed successfully!");
     } catch (error) {

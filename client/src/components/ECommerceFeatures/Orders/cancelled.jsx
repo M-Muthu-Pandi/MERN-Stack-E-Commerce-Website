@@ -16,7 +16,7 @@ const OrderCancelled = () => {
 
   const fetchCancelledOrders = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/api/cancelled");
+      const res = await axios.get("https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/cancelled");
       setCancelledOrders(res.data);
     } catch (err) {
       console.error("Error fetching data", err);
@@ -25,7 +25,7 @@ const OrderCancelled = () => {
 
   const handleRemoveOrder = async (id) => {
     try {
-      await axios.delete(`http://localhost:4000/api/cancelled/${id}`);
+      await axios.delete(`https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/cancelled/${id}`);
       setCancelledOrders(cancelledOrders.filter((order) => order._id !== id));
       alert("Order removed successfully!");
     } catch (err) {

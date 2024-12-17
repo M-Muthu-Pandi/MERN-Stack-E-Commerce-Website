@@ -14,7 +14,7 @@ const SliderUpload = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:4000/api/slider",
+        "https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/slider",
         sliderData
       );
       alert("Slider added successfully!");

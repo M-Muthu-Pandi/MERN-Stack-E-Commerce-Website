@@ -8,7 +8,7 @@ export const CartProvider = ({ children }) => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4000/api/cartandplaceorder")
+      .get("https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/cartandplaceorder")
       .then((res) => {
         setShoppingCart(res.data);
       })
@@ -20,7 +20,7 @@ export const CartProvider = ({ children }) => {
   const updateCart = async (id, updatedQty) => {
     try {
       const response = await axios.put(
-        `http://localhost:4000/api/cartandplaceorder/${id}`,
+        `https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/cartandplaceorder/${id}`,
         {
           noOfItems: updatedQty,
         }
@@ -48,7 +48,9 @@ export const CartProvider = ({ children }) => {
 
   const handleRemoveCart = async (id) => {
     try {
-      await axios.delete(`http://localhost:4000/api/cartandplaceorder/${id}`);
+      await axios.delete(
+        `https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/cartandplaceorder/${id}`
+      );
       setShoppingCart((prev) => prev.filter((cart) => cart._id !== id));
       alert("Cart removed successfully!");
     } catch (error) {

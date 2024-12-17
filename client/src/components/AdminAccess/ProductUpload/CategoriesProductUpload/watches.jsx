@@ -24,7 +24,7 @@ const WatchProductUpload = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:4000/api/watches",
+        "https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/watches",
         productData
       );
       alert("Product added successfully!");

@@ -25,96 +25,92 @@ const ShoppingCart = () => {
         SHOPPING CART
       </h1>
 
-      <>
-        <div className="flex flex-col">
-          {shoppingCart.map((cart) => {
-            return (
-              <div
-                className="flex flex-col items-center sm:items-start sm:flex-row gap-3 sm:gap-20 border-y border-y-gray-300 px-5 py-3"
-                key={cart._id}
-              >
-                <img
-                  className="w-36 sm:w-32"
-                  src={cart.image}
-                  alt="Cart Product"
-                />
-                <div className="flex flex-col sm:flex-row gap-3 sm:gap-10 sm:justify-between sm:w-full">
-                  <div className="sm:w-1/2 lg:w-3/4">
-                    <p className="text-sm sm:text-base lg:text-lg">
-                      {cart.title}
-                    </p>
-                    <p className="text-sm lg:text-lg font-bold my-2 sm:my-3">
-                      ₹.
-                      {cart.price}
-                    </p>
-                    <div className="flex gap-2">
-                      <div className="w-16 sm:w-20 flex justify-between items-center border sm:border-1 border-gray-900 rounded-3xl px-2">
-                        <button
-                          onClick={() =>
-                            handleDecrement(cart._id, cart.noOfItems)
-                          }
-                        >
-                          <img
-                            className="w-2.5 sm:w-3 hover:bg-gray-300"
-                            src={minus}
-                            alt="Minus button"
-                          />
-                        </button>
-                        <p className="font-medium sm:text-lg">
-                          {cart.noOfItems}
-                        </p>
-                        <button
-                          onClick={() =>
-                            handleIncrement(cart._id, cart.noOfItems)
-                          }
-                        >
-                          <img
-                            className="w-2.5 sm:w-3 hover:bg-gray-300"
-                            src={plus}
-                            alt="Plus button"
-                          />
-                        </button>
-                      </div>
+      <div className="flex flex-col">
+        {shoppingCart.map((cart) => {
+          return (
+            <div
+              className="flex flex-col items-center sm:items-start sm:flex-row gap-3 sm:gap-20 border-y border-y-gray-300 px-5 py-3"
+              key={cart._id}
+            >
+              <img
+                className="w-36 sm:w-32"
+                src={cart.image}
+                alt="Cart Product"
+              />
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-10 sm:justify-between sm:w-full">
+                <div className="sm:w-1/2 lg:w-3/4">
+                  <p className="text-sm sm:text-base lg:text-lg">
+                    {cart.title}
+                  </p>
+                  <p className="text-sm lg:text-lg font-bold my-2 sm:my-3">
+                    ₹.
+                    {cart.price}
+                  </p>
+                  <div className="flex gap-2">
+                    <div className="w-16 sm:w-20 flex justify-between items-center border sm:border-1 border-gray-900 rounded-3xl px-2">
                       <button
-                        onClick={() => handleRemoveCart(cart._id)}
-                        className="border sm:border border-gray-900 hover:bg-gray-300 rounded-full px-2"
+                        onClick={() =>
+                          handleDecrement(cart._id, cart.noOfItems)
+                        }
                       >
                         <img
-                          className="w-3.5 sm:w-4"
-                          src={bin}
-                          alt="Delete button"
+                          className="w-2.5 sm:w-3 hover:bg-gray-300"
+                          src={minus}
+                          alt="Minus button"
+                        />
+                      </button>
+                      <p className="font-medium sm:text-lg">{cart.noOfItems}</p>
+                      <button
+                        onClick={() =>
+                          handleIncrement(cart._id, cart.noOfItems)
+                        }
+                      >
+                        <img
+                          className="w-2.5 sm:w-3 hover:bg-gray-300"
+                          src={plus}
+                          alt="Plus button"
                         />
                       </button>
                     </div>
-                  </div>
-                  <div className="flex items-center gap-1.5 sm:flex-col">
-                    <p className="text-sm sm:text-base">
-                      Total price<span className="sm:hidden">:</span>
-                    </p>
-                    <p className="md:text-lg font-bold sm:my-1">
-                      ₹.
-                      {cart.price * cart.noOfItems}
-                    </p>
+                    <button
+                      onClick={() => handleRemoveCart(cart._id)}
+                      className="border sm:border border-gray-900 hover:bg-gray-300 rounded-full px-2"
+                    >
+                      <img
+                        className="w-3.5 sm:w-4"
+                        src={bin}
+                        alt="Delete button"
+                      />
+                    </button>
                   </div>
                 </div>
+                <div className="flex items-center gap-1.5 sm:flex-col">
+                  <p className="text-sm sm:text-base">
+                    Total price<span className="sm:hidden">:</span>
+                  </p>
+                  <p className="md:text-lg font-bold sm:my-1">
+                    ₹.
+                    {cart.price * cart.noOfItems}
+                  </p>
+                </div>
               </div>
-            );
-          })}
-        </div>
+            </div>
+          );
+        })}
+      </div>
 
-        <div className="text-center md:text-end m-3">
-          <h2 className="text-lg md:text-xl lg:text-2xl font-medium mb-3">
-            Subtotal ({totalItems} items): ₹.
-            {totalPrice}
-          </h2>
-          <button
-            onClick={() => navigate("/placeorder")}
-            className="md:hidden bg-yellow-400 rounded-3xl p-2 text-sm hover:bg-yellow-500 w-40"
-          >
-            Proceed to buy
-          </button>
-        </div>
-      </>
+      <div className="text-center md:text-end m-3">
+        <h2 className="text-lg md:text-xl lg:text-2xl font-medium mb-3">
+          Subtotal ({totalItems} items): ₹.
+          {totalPrice}
+        </h2>
+        <button
+          onClick={() => navigate("/placeorder")}
+          className="md:hidden bg-yellow-400 rounded-3xl p-2 text-sm hover:bg-yellow-500 w-40"
+        >
+          Proceed to buy
+        </button>
+      </div>
     </section>
   );
 };

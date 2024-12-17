@@ -17,7 +17,7 @@ const WomenFilter = () => {
     window.scrollTo(0, 0);
 
     axios
-      .get("http://localhost:4000/api/women")
+      .get("https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/women")
       .then((res) => {
         setProducts(res.data);
       })
@@ -28,7 +28,9 @@ const WomenFilter = () => {
 
   const handleRemoveProduct = async (id) => {
     try {
-      await axios.delete(`http://localhost:4000/api/women/${id}`);
+      await axios.delete(
+        `https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/women/${id}`
+      );
       setProducts((prev) => prev.filter((product) => product._id !== id));
       alert("Product removed successfully!");
     } catch (error) {

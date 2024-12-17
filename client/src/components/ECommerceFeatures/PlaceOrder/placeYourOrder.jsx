@@ -7,7 +7,7 @@ const PlaceYourOrder = ({ isOrderPlaceable }) => {
   const placeOrder = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:4000/api/cartandplaceorder/place-order"
+        "https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/cartandplaceorder/place-order"
       );
 
       if (response.status === 200) {

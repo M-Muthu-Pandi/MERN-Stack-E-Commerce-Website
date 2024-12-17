@@ -16,7 +16,7 @@ const Orders = () => {
 
   const fetchOrders = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/api/ordered");
+      const res = await axios.get("https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/ordered");
       setActiveOrders(res.data);
     } catch (err) {
       console.error("Error fetching data", err);
@@ -27,7 +27,7 @@ const Orders = () => {
     try {
       // Call the backend to cancel the order
       const res = await axios.post(
-        `http://localhost:4000/api/ordered/cancel/${id}`
+        `https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/ordered/cancel/${id}`
       );
       if (res.status === 200) {
         alert(res.data.message);

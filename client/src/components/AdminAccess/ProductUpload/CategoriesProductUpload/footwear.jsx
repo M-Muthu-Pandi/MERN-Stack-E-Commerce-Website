@@ -24,7 +24,7 @@ const FootwearProductUpload = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:4000/api/footwear",
+        "https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/footwear",
         productData
       );
       alert("Product added successfully!");
