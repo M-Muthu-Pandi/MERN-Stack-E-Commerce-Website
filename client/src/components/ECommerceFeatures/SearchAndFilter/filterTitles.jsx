@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const FilterTitles = ({
   men,
@@ -15,6 +15,8 @@ const FilterTitles = ({
   newarrival,
   allproducts,
 }) => {
+  const navigate = useNavigate();
+
   const category = [
     {
       navigate: "/filter/men",
@@ -80,6 +82,12 @@ const FilterTitles = ({
       title: "New Arrivals",
     },
   ];
+
+  const handleClick = () => {
+    navigate("/search");
+    window.location.reload();
+  };
+
   return (
     <section className="sm:flex-grow basis-1/4 md:basis-1/5 border-r border-r-gray-300 p-2 sm:px-5 sm:pb-5">
       <h2 className="pt-3 sticky top-12 sm:top-16 z-40 bg-white text-lg sm:text-xl md:text-2xl text-gray-900 font-medium border-b border-b-gray-300 pb-1 sm:pb-3">
@@ -91,13 +99,12 @@ const FilterTitles = ({
         </a>
       </h2>
 
-      <Link to={"/search"}>
-        <p
-          className={`py-3 text-xs md:text-sm lg:text-base hover:text-blue-500 border-b border-b-gray-300 ${allproducts}`}
-        >
-          All Products
-        </p>
-      </Link>
+      <p
+        onClick={handleClick}
+        className={`cursor-pointer py-3 text-xs md:text-sm lg:text-base hover:text-blue-500 border-b border-b-gray-300 ${allproducts}`}
+      >
+        All Products
+      </p>
 
       <div className="border-b border-b-gray-300 pb-3">
         <h3 className="text-sm sm:text-base text-gray-500 font-medium py-2">

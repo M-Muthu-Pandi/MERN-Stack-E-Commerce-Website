@@ -1,7 +1,6 @@
 import { useProduct } from "../../common/Context/ProductsContext";
 import SingleProduct from "../../common/SingleProduct";
 import CategoryItems from "./categoryProductItem";
-import TopPicksItems from "./toppicksProductItem";
 
 const Products = () => {
   const { selectedProduct, setSelectedProduct, filteredProducts } =
@@ -47,7 +46,6 @@ const Products = () => {
       ) : (
         <>
           <CategoryItems />
-          <TopPicksItems />
         </>
       )}
 
