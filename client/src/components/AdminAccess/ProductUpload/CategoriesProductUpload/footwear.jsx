@@ -3,6 +3,8 @@ import axios from "axios";
 
 const FootwearProductUpload = () => {
   const [isVisible, setIsVisible] = useState(false);
+
+  // State variables to manage form inputs
   const [product, setProduct] = useState("");
   const [desc, setDesc] = useState("");
   const [title, setTitle] = useState("footwear");
@@ -10,6 +12,7 @@ const FootwearProductUpload = () => {
   const [review, setReview] = useState("");
   const [price, setPrice] = useState("");
 
+  // Handles form submission to add a new product
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -23,6 +26,7 @@ const FootwearProductUpload = () => {
     };
 
     try {
+      // Send POST request to add product to the backend
       const response = await axios.post(
         "https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/footwear",
         productData
@@ -45,6 +49,7 @@ const FootwearProductUpload = () => {
       </h3>
       {isVisible && (
         <form onSubmit={handleSubmit} className="flex flex-col gap-2 my-5">
+          {/* Input for Product Image URL */}
           <input
             value={product}
             onChange={(e) => setProduct(e.target.value)}
@@ -53,6 +58,7 @@ const FootwearProductUpload = () => {
             placeholder="Product Image URL"
             required
           />
+          {/* Textarea for Description */}
           <textarea
             value={desc}
             onChange={(e) => setDesc(e.target.value)}
@@ -61,6 +67,7 @@ const FootwearProductUpload = () => {
             placeholder="Description"
             required
           ></textarea>
+          {/* Input for Title */}
           <input
             value={title}
             onChange={(e) => setTitle(e.target.value)}
@@ -69,6 +76,7 @@ const FootwearProductUpload = () => {
             placeholder="Title"
             required
           />
+          {/* Input for Rating Image URL */}
           <input
             value={rating}
             onChange={(e) => setRating(e.target.value)}
@@ -77,6 +85,7 @@ const FootwearProductUpload = () => {
             placeholder="Rating Image URL"
             required
           />
+          {/* Input for Number of Reviews */}
           <input
             value={review}
             onChange={(e) => setReview(e.target.value)}
@@ -85,6 +94,7 @@ const FootwearProductUpload = () => {
             placeholder="Reviews"
             required
           />
+          {/* Input for Price */}
           <input
             value={price}
             onChange={(e) => setPrice(e.target.value)}
@@ -94,6 +104,7 @@ const FootwearProductUpload = () => {
             required
           />
 
+          {/* Button to submit the form */}
           <button
             type="submit"
             className="bg-yellow-400 rounded-md p-2 text-sm hover:bg-yellow-500"

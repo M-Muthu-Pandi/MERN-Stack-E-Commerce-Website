@@ -3,7 +3,7 @@ import { Newarrival } from "../modals/productModel.js";
 
 const router = express.Router();
 
-// Get all men products
+// Get all new arrival products
 router.get("/", async (req, res) => {
   try {
     const newarrival = await Newarrival.find({});
@@ -13,7 +13,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// Add a new men product
+// Add a new arrival product
 router.post("/", async (req, res) => {
   try {
     const { image, title, subtitle, rating, review, price } = req.body;
@@ -36,7 +36,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-// Delete an Product by ID
+// Delete a new arrival product by ID
 router.delete("/:id", async (req, res) => {
   try {
     const { id } = req.params;

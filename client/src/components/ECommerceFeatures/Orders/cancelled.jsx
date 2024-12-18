@@ -6,26 +6,33 @@ import OrderTitles from "./orderTitles";
 import NoResult from "../common/Others/noResult";
 
 const OrderCancelled = () => {
-  const [cancelledOrders, setCancelledOrders] = useState([]);
+  const [cancelledOrders, setCancelledOrders] = useState([]); // State to hold the list of cancelled orders
 
+  // Fetch cancelled orders on component mount
   useEffect(() => {
     window.scrollTo(0, 0);
 
-    fetchCancelledOrders();
+    fetchCancelledOrders(); // Fetch cancelled orders
   }, []);
 
+  // Function to fetch cancelled orders
   const fetchCancelledOrders = async () => {
     try {
-      const res = await axios.get("https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/cancelled");
+      const res = await axios.get(
+        "https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/cancelled"
+      );
       setCancelledOrders(res.data);
     } catch (err) {
       console.error("Error fetching data", err);
     }
   };
 
+  // Function to remove cancelled order from history
   const handleRemoveOrder = async (id) => {
     try {
-      await axios.delete(`https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/cancelled/${id}`);
+      await axios.delete(
+        `https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/cancelled/${id}`
+      );
       setCancelledOrders(cancelledOrders.filter((order) => order._id !== id));
       alert("Order removed successfully!");
     } catch (err) {
@@ -42,7 +49,7 @@ const OrderCancelled = () => {
         <OrderTitles cancelled={"underline font-bold"} />
 
         {cancelledOrders.length === 0 ? (
-          <NoResult />
+          <NoResult /> // Display if no cancelled orders
         ) : (
           <section className="p-3 sm:p-5 rounded-b-lg bg-white flex flex-col items-center">
             <div className="w-full md:w-3/4 bg-gray-200 rounded-lg border border-gray-300">
@@ -86,7 +93,7 @@ const OrderCancelled = () => {
                             </p>
                           </div>
                           <button
-                            onClick={() => handleRemoveOrder(cancel._id)}
+                            onClick={() => handleRemoveOrder(cancel._id)} // Remove cancelled order
                             className="border-2 border-gray-300 rounded-3xl p-1 sm:p-2 text-xs hover:bg-gray-300 mt-5 mb-2"
                           >
                             Remove Order history

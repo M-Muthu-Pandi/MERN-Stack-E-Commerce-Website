@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 const OrderTitles = ({ ordered, delivered, cancelled, returned }) => {
+  // Define the navigation links and associated styles
   const orderdetails = [
     {
       navigate: "/orders",

@@ -4,13 +4,13 @@ import axios from "axios";
 const ProductContext = createContext();
 
 export const ProductProvider = ({ children }) => {
-  // Search functionalities
+  // Filtered products for search
   const [filteredProducts, setFilteredProducts] = useState([]);
 
-  // Products
-  // Categories
+  /// Selected product for detailed view
   const [selectedProduct, setSelectedProduct] = useState(null);
 
+  // Category data
   const categories = [
     "Men's Clothing",
     "Women's Clothing",
@@ -31,16 +31,33 @@ export const ProductProvider = ({ children }) => {
   const [handbags, setHandbags] = useState([]);
   const [sunGlasses, setSunGlasses] = useState([]);
 
+  // Fetch category data from API
   useEffect(() => {
     Promise.all([
-      axios.get("https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/men"),
-      axios.get("https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/women"),
-      axios.get("https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/kids"),
-      axios.get("https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/footwear"),
-      axios.get("https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/luggages"),
-      axios.get("https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/watches"),
-      axios.get("https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/handbags"),
-      axios.get("https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/sunglass"),
+      axios.get(
+        "https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/men"
+      ),
+      axios.get(
+        "https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/women"
+      ),
+      axios.get(
+        "https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/kids"
+      ),
+      axios.get(
+        "https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/footwear"
+      ),
+      axios.get(
+        "https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/luggages"
+      ),
+      axios.get(
+        "https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/watches"
+      ),
+      axios.get(
+        "https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/handbags"
+      ),
+      axios.get(
+        "https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/sunglass"
+      ),
     ])
       .then(
         ([
@@ -92,12 +109,21 @@ export const ProductProvider = ({ children }) => {
   const [todaydeal, setTodaydeal] = useState([]);
   const [newarrival, setNewarrival] = useState([]);
 
+  // Fetch featured items from API
   useEffect(() => {
     Promise.all([
-      axios.get("https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/trending"),
-      axios.get("https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/bestseller"),
-      axios.get("https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/todaydeals"),
-      axios.get("https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/newarrival"),
+      axios.get(
+        "https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/trending"
+      ),
+      axios.get(
+        "https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/bestseller"
+      ),
+      axios.get(
+        "https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/todaydeals"
+      ),
+      axios.get(
+        "https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/newarrival"
+      ),
     ])
       .then(([trendingRes, bestsellerRes, todaydealRes, newarrivalRes]) => {
         setTrending(trendingRes.data);
@@ -138,5 +164,5 @@ export const ProductProvider = ({ children }) => {
   );
 };
 
-// Custom hook for consuming the CartContext
+// Hook for consuming ProductContext
 export const useProduct = () => useContext(ProductContext);

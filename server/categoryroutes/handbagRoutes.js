@@ -3,7 +3,7 @@ import { Handbag } from "../modals/productModel.js";
 
 const router = express.Router();
 
-// Get all men products
+// Get all handbags
 router.get("/", async (req, res) => {
   try {
     const handbag = await Handbag.find({});
@@ -13,7 +13,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// Add a new men product
+// Add a new handbag
 router.post("/", async (req, res) => {
   try {
     const { image, title, subtitle, rating, review, price } = req.body;
@@ -36,7 +36,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-// Delete an Product by ID
+// Delete a handbag by ID
 router.delete("/:id", async (req, res) => {
   try {
     const { id } = req.params;

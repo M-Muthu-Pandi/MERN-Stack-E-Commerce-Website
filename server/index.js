@@ -1,6 +1,8 @@
 import express, { json } from "express";
 import { connect } from "mongoose";
 import cors from "cors";
+
+// Import Routes
 import categoryheadroutes from "./otherroutes/categoryheadroutes.js";
 import sliderRoutes from "./otherroutes/sliderRoutes.js";
 import menRoutes from "./categoryroutes/menRoutes.js";
@@ -22,6 +24,8 @@ import cancelledRoutes from "./ordersroutes/cancelledRoutes.js";
 
 const app = express();
 app.use(cors());
+
+// Middleware
 app.use(json());
 
 // MongoDB Connection
@@ -32,7 +36,7 @@ connect(
   .catch(() => console.log("DB failed"));
 
 // Use the routes
-// Category Routes
+// Category Routes (grouped by category)
 app.use("/api/men", menRoutes);
 app.use("/api/women", womenRoutes);
 app.use("/api/kids", kidsRoutes);
@@ -62,6 +66,7 @@ app.use("/api/cancelled", cancelledRoutes);
 app.use("/api/categorylist", categoryheadroutes);
 app.use("/api/slider", sliderRoutes);
 
+// Start server
 const port = 4000;
 app.listen(port, () => {
   console.log(`Server started at port ${port}...`);

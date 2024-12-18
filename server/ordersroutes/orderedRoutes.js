@@ -18,13 +18,12 @@ router.post("/cancel/:id", async (req, res) => {
   try {
     const orderId = req.params.id;
 
-    // Find the order by ID in the Orders collection
     const order = await Orders.findById(orderId);
     if (!order) {
       return res.status(404).json({ message: "Order not found" });
     }
 
-    // Create a new document in the CancelledOrders collection
+    // Create a new document in the CancelledOrders collection with order details
     const cancelledOrder = new CancelledOrders({
       image: order.image,
       title: order.title,

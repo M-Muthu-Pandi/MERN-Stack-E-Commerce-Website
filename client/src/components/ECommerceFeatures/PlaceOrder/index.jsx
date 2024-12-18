@@ -14,6 +14,7 @@ const PlaceOrder = () => {
   const [selectedAddress, setSelectedAddress] = useState(null); // Track selected delivery address
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(null); // Track selected payment method
 
+  // Scroll to top when the component mounts
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -22,6 +23,7 @@ const PlaceOrder = () => {
     <>
       <Header />
 
+      {/* If shopping cart is empty, show 'No Result' */}
       {shoppingCart.length === 0 ? (
         <NoResult />
       ) : (

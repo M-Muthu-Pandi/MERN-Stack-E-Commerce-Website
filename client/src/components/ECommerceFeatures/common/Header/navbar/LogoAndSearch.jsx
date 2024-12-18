@@ -5,19 +5,22 @@ import { useNavigate } from "react-router-dom";
 import { useProduct } from "../../Context/ProductsContext";
 
 const LogoAndSearch = () => {
-  const containerRef = useRef(null);
+  const containerRef = useRef(null); // Reference to the search bar container
   const navigate = useNavigate();
-  const { categoryMapping, setFilteredProducts } = useProduct();
-  const [searchQuery, setSearchQuery] = useState("");
+  const { categoryMapping, setFilteredProducts } = useProduct(); // Product context
+  const [searchQuery, setSearchQuery] = useState(""); // State for search query
 
+  // Highlight search bar on focus
   const handleFocus = () => {
     containerRef.current.classList.add("ring-2", "ring-orange-300");
   };
 
+  // Remove highlight on blur
   const handleBlur = () => {
     containerRef.current.classList.remove("ring-2", "ring-orange-300");
   };
 
+  // Handle search functionality
   const handleSearch = (event) => {
     event.preventDefault();
 
@@ -37,9 +40,10 @@ const LogoAndSearch = () => {
   return (
     <>
       <div className="border border-gray-900 p-1 hover:border-white">
-        <Logo />
+        <Logo /> {/* Company logo */}
       </div>
 
+      {/* Search bar */}
       <form
         ref={containerRef}
         onSubmit={handleSearch}

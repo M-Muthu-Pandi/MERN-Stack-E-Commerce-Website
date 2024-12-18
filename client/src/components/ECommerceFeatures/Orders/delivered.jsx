@@ -5,6 +5,7 @@ import OrderTitles from "./orderTitles";
 import NoResult from "../common/Others/noResult";
 
 const OrderDelivered = () => {
+  // Scroll to top when the component mounts
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

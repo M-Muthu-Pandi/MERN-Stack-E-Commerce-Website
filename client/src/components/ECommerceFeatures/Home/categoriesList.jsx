@@ -8,8 +8,10 @@ const CategoriesList = () => {
   const { selectedProduct, setSelectedProduct, categories, categoryMapping } =
     useProduct();
 
+  // Ref for each category's scrollable list
   const refs = useRef(categories.map(() => React.createRef()));
 
+  // Scroll left for the specified category
   const scrollLeft = (index) => {
     refs.current[index].current.scrollBy({
       left: -300,
@@ -17,6 +19,7 @@ const CategoriesList = () => {
     });
   };
 
+  // Scroll right for the specified category
   const scrollRight = (index) => {
     refs.current[index].current.scrollBy({
       left: 300,

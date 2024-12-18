@@ -1,5 +1,6 @@
 import { Schema, model } from "mongoose";
 
+// Schema for storing delivery address details
 const addressSchema = new Schema({
   name: String,
   number: Number,
@@ -10,5 +11,5 @@ const addressSchema = new Schema({
   state: String,
 });
 
-// Delivery Details
+// Model for the Address collection
 export const Address = model("Address", addressSchema, "deliveryaddress");

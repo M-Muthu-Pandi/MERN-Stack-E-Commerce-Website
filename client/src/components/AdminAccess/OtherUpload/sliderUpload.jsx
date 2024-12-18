@@ -2,9 +2,10 @@ import { useState } from "react";
 import axios from "axios";
 
 const SliderUpload = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const [src, setSrc] = useState("");
+  const [isVisible, setIsVisible] = useState(false); // Track visibility of the form
+  const [src, setSrc] = useState(""); // Store image URL for the slider
 
+  // Handle form submission to add the slider
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -13,6 +14,7 @@ const SliderUpload = () => {
     };
 
     try {
+      // Send POST request to add slider to the backend
       const response = await axios.post(
         "https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/slider",
         sliderData
@@ -34,6 +36,7 @@ const SliderUpload = () => {
         SLIDES
       </h3>
       {isVisible && (
+        // Form for submitting slider data
         <form onSubmit={handleSubmit} className="flex flex-col gap-2 my-5">
           <input
             value={src}

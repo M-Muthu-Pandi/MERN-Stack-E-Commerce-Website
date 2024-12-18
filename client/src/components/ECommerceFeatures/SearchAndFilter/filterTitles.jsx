@@ -17,6 +17,7 @@ const FilterTitles = ({
 }) => {
   const navigate = useNavigate();
 
+  // Categories to be displayed in the sidebar
   const category = [
     {
       navigate: "/filter/men",
@@ -60,6 +61,7 @@ const FilterTitles = ({
     },
   ];
 
+  // Special picks like Trending, Bestsellers, etc.
   const toppicks = [
     {
       navigate: "/filter/trending",
@@ -83,6 +85,7 @@ const FilterTitles = ({
     },
   ];
 
+  // Function to navigate to the search page and refresh
   const handleClick = () => {
     navigate("/search");
     window.location.reload();
@@ -99,6 +102,7 @@ const FilterTitles = ({
         </a>
       </h2>
 
+      {/* Filter option for all products */}
       <p
         onClick={handleClick}
         className={`cursor-pointer py-3 text-xs md:text-sm lg:text-base hover:text-blue-500 border-b border-b-gray-300 ${allproducts}`}
@@ -106,6 +110,7 @@ const FilterTitles = ({
         All Products
       </p>
 
+      {/* Category filters */}
       <div className="border-b border-b-gray-300 pb-3">
         <h3 className="text-sm sm:text-base text-gray-500 font-medium py-2">
           CATEGORIES
@@ -123,6 +128,7 @@ const FilterTitles = ({
         })}
       </div>
 
+      {/* Top picks filters */}
       <div className="border-b border-b-gray-300 pb-3">
         <h3 className="text-sm sm:text-base text-gray-500 font-medium py-2">
           TOP PICKS

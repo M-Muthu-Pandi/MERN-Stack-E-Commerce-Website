@@ -3,10 +3,13 @@ import axios from "axios";
 
 const CategoryHeadingUpload = () => {
   const [isVisible, setIsVisible] = useState(false);
+
+  // State variables to manage form inputs
   const [src, setSrc] = useState("");
   const [title, setTitle] = useState("");
   const [route, setRoute] = useState("");
 
+  // Handle form submission to add the category heading
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -17,6 +20,7 @@ const CategoryHeadingUpload = () => {
     };
 
     try {
+      // Send POST request to add category to the backend
       const response = await axios.post(
         "https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/categorylist",
         categoryData
@@ -38,6 +42,7 @@ const CategoryHeadingUpload = () => {
         CATEGORIES
       </h3>
       {isVisible && (
+        // Form for submitting category data
         <form onSubmit={handleSubmit} className="flex flex-col gap-2 my-5">
           <input
             value={src}

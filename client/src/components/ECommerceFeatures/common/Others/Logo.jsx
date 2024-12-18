@@ -4,6 +4,7 @@ import infinity from "../../../../assets//infinity-white.png";
 const Logo = () => {
   const navigate = useNavigate();
 
+  // Handles click event to navigate to the home page and reload the page.
   const handleClick = () => {
     navigate("/");
     window.location.reload();
@@ -12,6 +13,7 @@ const Logo = () => {
   return (
     <>
       <div onClick={handleClick} className="flex items-center cursor-pointer">
+        {/* Logo */}
         <img
           className="w-6 h-6 sm:w-8 sm:h-8 inline-block"
           src={infinity}

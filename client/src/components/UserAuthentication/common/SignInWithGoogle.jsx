@@ -3,6 +3,7 @@ import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../../../config/firebase";
 
 const SignInGoogle = () => {
+  // Handle Google sign-in process
   const handleSignIn = async () => {
     try {
       const result = await signInWithPopup(auth, provider);

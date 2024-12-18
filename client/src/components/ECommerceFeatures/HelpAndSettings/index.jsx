@@ -7,10 +7,12 @@ import AdminButton from "./adminAccessBtn";
 const HelpAndSettings = () => {
   const [isVisible, setIsVisible] = useState(false);
 
+  // Scroll to top when the component mounts
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
+  // Toggle the visibility of the delete account section
   const toggleVisibility = () => {
     setIsVisible((prev) => !prev);
   };

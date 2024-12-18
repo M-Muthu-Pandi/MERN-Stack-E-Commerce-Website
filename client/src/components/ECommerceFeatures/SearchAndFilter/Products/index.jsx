@@ -17,6 +17,7 @@ const Products = () => {
         </a>
       </h2>
 
+      {/* Display filtered products if available */}
       {filteredProducts.length > 0 ? (
         <div className="rounded-lg bg-white flex justify-around flex-wrap gap-1 sm:gap-5 my-1 sm:my-5">
           {filteredProducts.map((item) => (
@@ -44,11 +45,11 @@ const Products = () => {
           ))}
         </div>
       ) : (
-        <>
-          <CategoryItems />
-        </>
+        // Show category items if no filtered products are found
+        <CategoryItems />
       )}
 
+      {/* Display selected product details */}
       <SingleProduct
         selectedProduct={selectedProduct}
         setSelectedProduct={setSelectedProduct}

@@ -4,9 +4,10 @@ import rightArrow from "../../../assets/right-arrow.png";
 import leftArrow from "../../../assets/left-arrow.png";
 
 const ImageCarousel = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [images, setImages] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState(0); // Track current image index
+  const [images, setImages] = useState([]); // Store carousel images
 
+  // Fetch images from the API
   useEffect(() => {
     axios
       .get("https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/slider")
@@ -18,12 +19,14 @@ const ImageCarousel = () => {
       });
   }, []);
 
+  // Handle previous slide navigation
   const handlePrev = () => {
     setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? images.length - 1 : prevIndex - 1
     );
   };
 
+  // Handle next slide navigation
   const handleNext = () => {
     setCurrentIndex((prevIndex) =>
       prevIndex === images.length - 1 ? 0 : prevIndex + 1
@@ -38,7 +41,7 @@ const ImageCarousel = () => {
       );
     }, 5000);
 
-    return () => clearInterval(interval);
+    return () => clearInterval(interval); // Clear interval on component unmount
   }, [images.length]);
 
   return (

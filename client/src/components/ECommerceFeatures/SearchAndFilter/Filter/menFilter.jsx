@@ -8,14 +8,17 @@ import FilterTitles from "../filterTitles";
 import SingleProduct from "../../common/SingleProduct";
 import bin from "../../../../assets/bin.png";
 
+// Component to display men's clothing filtered products
 const MenFilter = () => {
   const admin = useAdmin();
   const { selectedProduct, setSelectedProduct } = useProduct();
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
+    // Scroll to top when the component mounts
     window.scrollTo(0, 0);
 
+    // Fetching the list of men's products from the backend API
     axios
       .get("https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/men")
       .then((res) => {
@@ -26,9 +29,12 @@ const MenFilter = () => {
       });
   }, []);
 
+  // Function to remove a product by id
   const handleRemoveProduct = async (id) => {
     try {
-      await axios.delete(`https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/men/${id}`);
+      await axios.delete(
+        `https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/men/${id}`
+      );
       setProducts((prev) => prev.filter((product) => product._id !== id));
       alert("Product removed successfully!");
     } catch (error) {
@@ -52,6 +58,8 @@ const MenFilter = () => {
               Men Clothing
             </a>
           </h2>
+
+          {/* Displaying the list of products */}
           <div className="rounded-lg bg-white flex justify-around flex-wrap gap-1 sm:gap-5 my-1 sm:my-5">
             {products.map((item) => (
               <div
@@ -78,6 +86,8 @@ const MenFilter = () => {
                 <p className="font-medium text-sm sm:text-lg mt-1">
                   ₹.{item.price}
                 </p>
+
+                {/* Show delete button for admins */}
                 {admin ? (
                   <button
                     onClick={() => handleRemoveProduct(item._id)}
@@ -95,6 +105,8 @@ const MenFilter = () => {
               </div>
             ))}
           </div>
+
+          {/* Display selected product details */}
           <SingleProduct
             selectedProduct={selectedProduct}
             setSelectedProduct={setSelectedProduct}

@@ -6,10 +6,11 @@ import { useLocation } from "react-router-dom";
 
 const UserBtn = () => {
   const location = useLocation();
-  const [userName, setUserName] = useState("");
-  const [log, setLog] = useState(false);
+  const [userName, setUserName] = useState(""); // State for the user's name
+  const [log, setLog] = useState(false); // State for login status
   const navigate = useNavigate();
 
+  // Fetch user data on component mount
   useEffect(() => {
     if (location.state?.userName) {
       setUserName(location.state.userName);
@@ -27,6 +28,7 @@ const UserBtn = () => {
     }
   }, [location.state]);
 
+  // Log out the user
   const logoutUser = async () => {
     await signOut(auth);
     navigate("/login");

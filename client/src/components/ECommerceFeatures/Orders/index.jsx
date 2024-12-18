@@ -6,32 +6,35 @@ import OrderTitles from "./orderTitles";
 import NoResult from "../common/Others/noResult";
 
 const Orders = () => {
-  const [activeOrders, setActiveOrders] = useState([]);
+  const [activeOrders, setActiveOrders] = useState([]); // State to hold the list of active orders
 
+  // Effect hook to fetch orders when the component mounts
   useEffect(() => {
     window.scrollTo(0, 0);
 
-    fetchOrders();
+    fetchOrders(); // Fetch orders on page load
   }, []);
 
+  // Function to fetch active orders from the backend
   const fetchOrders = async () => {
     try {
-      const res = await axios.get("https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/ordered");
+      const res = await axios.get(
+        "https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/ordered"
+      );
       setActiveOrders(res.data);
     } catch (err) {
       console.error("Error fetching data", err);
     }
   };
 
+  // Function to cancel an order
   const cancelOrder = async (id) => {
     try {
-      // Call the backend to cancel the order
       const res = await axios.post(
         `https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/ordered/cancel/${id}`
       );
       if (res.status === 200) {
         alert(res.data.message);
-        // Update the activeOrders state after cancellation
         setActiveOrders((prevOrders) =>
           prevOrders.filter((order) => order._id !== id)
         );
@@ -48,7 +51,7 @@ const Orders = () => {
       <main className="bg-gray-200 p-3 sm:p-5 text-gray-900">
         <OrderTitles ordered={"underline font-bold"} />
         {activeOrders.length === 0 ? (
-          <NoResult />
+          <NoResult /> // Display when there are no active orders
         ) : (
           <section className="p-3 sm:p-5 rounded-b-lg bg-white flex flex-col items-center">
             <div className="w-full md:w-3/4 bg-gray-200 rounded-lg border border-gray-300">

@@ -14,6 +14,7 @@ const CatProductUpload = () => {
         Categories
       </h2>
 
+      {/* Render product upload components for each category */}
       <MenProductUpload />
       <WomenProductUpload />
       <KidsProductUpload />

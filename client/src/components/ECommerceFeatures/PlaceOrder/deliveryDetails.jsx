@@ -12,9 +12,12 @@ const DeliveryDetails = ({ setSelectedAddress }) => {
   const [state, setState] = useState("");
   const [addAddress, setAddAddress] = useState([]);
 
+  // Fetch delivery addresses from the server
   useEffect(() => {
     axios
-      .get("https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/deliverydetails")
+      .get(
+        "https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/deliverydetails"
+      )
       .then((res) => {
         setAddAddress(res.data);
       })
@@ -23,10 +26,12 @@ const DeliveryDetails = ({ setSelectedAddress }) => {
       });
   }, []);
 
+  // Toggle visibility of the add address form
   const toggleVisibility = () => {
     setIsVisible((prev) => !prev);
   };
 
+  // Add new delivery address
   const handleAddAddress = async (e) => {
     const deliveryData = {
       name: name,
@@ -38,6 +43,7 @@ const DeliveryDetails = ({ setSelectedAddress }) => {
       state: state,
     };
 
+    // Validate inputs before submitting
     if (number.length !== 10) {
       alert("Enter a valid 10-digit mobile number");
       e.preventDefault();
@@ -62,10 +68,13 @@ const DeliveryDetails = ({ setSelectedAddress }) => {
     }
   };
 
+  // Remove a delivery address
   const handleRemoveAddress = async (id) => {
     if (window.confirm("Are you sure you want to delete this address?")) {
       try {
-        await axios.delete(`https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/deliverydetails/${id}`);
+        await axios.delete(
+          `https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/deliverydetails/${id}`
+        );
         setAddAddress((prev) => prev.filter((address) => address._id !== id));
         alert("Address removed successfully!");
       } catch (error) {
@@ -88,6 +97,7 @@ const DeliveryDetails = ({ setSelectedAddress }) => {
         Add Address
       </button>
 
+      {/* Add address form visibility */}
       {isVisible && (
         <form
           onSubmit={handleAddAddress}
@@ -161,6 +171,7 @@ const DeliveryDetails = ({ setSelectedAddress }) => {
         </form>
       )}
 
+      {/* Display existing delivery addresses */}
       {addAddress.map((item) => {
         return (
           <div

@@ -3,13 +3,15 @@ import { auth } from "../../../config/firebase";
 import { sendPasswordResetEmail } from "firebase/auth";
 
 const Fpassword = () => {
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+  const [email, setEmail] = useState(""); // Email input state
+  const [message, setMessage] = useState(""); // Message state to show success/error message
 
+  // Handle password reset request
   const handleForgotPassword = async (e) => {
     e.preventDefault();
 
     try {
+      // Send password reset email
       await sendPasswordResetEmail(auth, email);
       setMessage("Password reset email sent! Check your inbox.");
     } catch (error) {
@@ -45,7 +47,7 @@ const Fpassword = () => {
         Send Reset Email
       </button>
 
-      {/* Message */}
+      {/* Message display */}
       <p className="text-sm text-green-600 mt-3"> {message} </p>
     </form>
   );

@@ -4,11 +4,12 @@ import { useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
 const SignIn = () => {
-  const [user, setUser] = useState("");
-  const [pass, setPass] = useState("");
-  const [err, setErr] = useState("");
+  const [user, setUser] = useState(""); // Email state
+  const [pass, setPass] = useState(""); // Password state
+  const [err, setErr] = useState(""); // Error message state
   const navigate = useNavigate();
 
+  // Redirect to home if the user is already logged in
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       if (user) {
@@ -17,6 +18,7 @@ const SignIn = () => {
     });
   }, [navigate]);
 
+  // Sign-in function
   const loginUser = (e) => {
     e.preventDefault();
 
@@ -33,7 +35,7 @@ const SignIn = () => {
     <form onSubmit={loginUser} className="flex flex-col">
       <h1 className="text-3xl font-medium mb-3">Sign in</h1>
 
-      {/* Email */}
+      {/* Email input */}
       <label htmlFor="user" className="font-semibold mb-1">
         Email
       </label>
@@ -46,7 +48,7 @@ const SignIn = () => {
         required
       />
 
-      {/* Password */}
+      {/* Password input */}
       <label htmlFor="pass" className="font-semibold mb-1">
         Password
       </label>

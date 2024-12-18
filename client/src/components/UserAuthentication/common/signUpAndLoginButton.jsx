@@ -14,7 +14,7 @@ const SignUpBtn = (props) => {
       </div>
 
       <Link
-        to={link}
+        to={link} // Navigate to the specified link
         className="mb-2 rounded-md p-2 text-sm bg-gray-100 hover:bg-gray-200 border border-gray-400"
       >
         <button className="w-full">{btn}</button>

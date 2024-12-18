@@ -31,11 +31,16 @@ import NewArrivalFilter from "../../ECommerceFeatures/SearchAndFilter/Filter/new
 const AppRoutes = () => {
   return (
     <Routes>
+      {/* Public routes for login, signup, and password reset */}
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/forgotpassword" element={<ForgotPassword />} />
+
+      {/* Public home and search routes */}
       <Route path="/" element={<Home />} />
       <Route path="/search" element={<SearchAndFilter />} />
+
+      {/* Routes for different product categories filtering */}
       <Route path="/filter/men" element={<MenFilter />} />
       <Route path="/filter/women" element={<WomenFilter />} />
       <Route path="/filter/kids" element={<KidsFilter />} />
@@ -49,6 +54,7 @@ const AppRoutes = () => {
       <Route path="/filter/todaydeal" element={<TodayDealFilter />} />
       <Route path="/filter/newarrival" element={<NewArrivalFilter />} />
 
+      {/* Protected routes for authenticated users */}
       <Route
         path="/cart"
         element={

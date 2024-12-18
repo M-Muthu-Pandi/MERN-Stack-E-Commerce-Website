@@ -6,9 +6,12 @@ const CartContext = createContext();
 export const CartProvider = ({ children }) => {
   const [shoppingCart, setShoppingCart] = useState([]);
 
+  // Fetch cart data from the API
   useEffect(() => {
     axios
-      .get("https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/cartandplaceorder")
+      .get(
+        "https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/cartandplaceorder"
+      )
       .then((res) => {
         setShoppingCart(res.data);
       })
@@ -17,6 +20,7 @@ export const CartProvider = ({ children }) => {
       });
   }, []);
 
+  // Update the quantity of a product in the cart
   const updateCart = async (id, updatedQty) => {
     try {
       const response = await axios.put(
@@ -37,6 +41,7 @@ export const CartProvider = ({ children }) => {
     }
   };
 
+  // Calculate the total price of items in the cart
   const calculateTotalPrice = () => {
     return shoppingCart.reduce(
       (total, item) => total + item.price * item.noOfItems,
@@ -46,6 +51,7 @@ export const CartProvider = ({ children }) => {
 
   const totalItems = shoppingCart.length;
 
+  // Remove a product from the cart
   const handleRemoveCart = async (id) => {
     try {
       await axios.delete(
@@ -74,4 +80,5 @@ export const CartProvider = ({ children }) => {
   );
 };
 
+// Hook for consuming CartContext
 export const useCart = () => useContext(CartContext);

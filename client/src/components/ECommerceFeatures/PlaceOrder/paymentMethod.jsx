@@ -4,6 +4,8 @@ const PaymentMethod = ({ setSelectedPaymentMethod }) => {
       <h2 className="text-gray-500 font-medium mb-2 pb-2 border-b border-b-gray-300">
         PAYMENT METHOD
       </h2>
+
+      {/* Payment options */}
       <div className="flex gap-4 mb-2 pt-1 pb-3 text-sm lg:text-base border-b border-b-gray-300">
         <input className="w-4" id="upi" type="radio" name="payment" disabled />
         <label

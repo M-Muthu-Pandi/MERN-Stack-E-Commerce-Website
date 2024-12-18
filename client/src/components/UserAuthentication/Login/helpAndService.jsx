@@ -16,7 +16,7 @@ const HelpAndService = () => {
         .
       </p>
 
-      {/* Help */}
+      {/* Forgot Password link */}
       <Link to={"/forgotpassword"} className="text-sm">
         <p className="text-blue-500 hover:underline hover:text-red-500 font-medium cursor-pointer">
           Forgot Password

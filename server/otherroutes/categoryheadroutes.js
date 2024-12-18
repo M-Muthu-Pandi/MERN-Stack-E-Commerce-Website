@@ -13,7 +13,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// Add a new categories
+// Add a new category
 router.post("/", async (req, res) => {
   try {
     const { image, title, subtitle } = req.body;

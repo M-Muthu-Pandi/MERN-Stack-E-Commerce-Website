@@ -1,5 +1,6 @@
 import { useCart } from "../common/Context/CartContext";
 
+// Displays the total price and item count
 const PriceDetails = () => {
   const { totalPrice, totalItems } = useCart();
 
@@ -18,6 +19,7 @@ const PriceDetails = () => {
           <span className="text-green-500">Free</span>
         </p>
       </div>
+      {/* Total amount */}
       <h2 className="flex justify-between md:text-lg lg:text-xl font-bold text-red-600">
         <span>Total Amount</span>
         <span>₹.{totalPrice.toLocaleString()}</span>

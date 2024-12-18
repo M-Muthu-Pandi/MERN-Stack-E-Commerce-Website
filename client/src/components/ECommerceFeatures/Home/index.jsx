@@ -6,6 +6,7 @@ import FeaturedSection from "./featuredSection";
 import ImageCarousel from "./imageCarousel";
 
 const Home = () => {
+  // Scroll to top when the component mounts
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -14,11 +15,9 @@ const Home = () => {
     <>
       <Header />
       <main>
-        <ImageCarousel />
-
-        <FeaturedSection />
-
-        <CategoriesList />
+        <ImageCarousel /> {/* Image carousel section */}
+        <FeaturedSection /> {/* Featured products section */}
+        <CategoriesList /> {/* Categories list section */}
       </main>
       <Footer />
     </>

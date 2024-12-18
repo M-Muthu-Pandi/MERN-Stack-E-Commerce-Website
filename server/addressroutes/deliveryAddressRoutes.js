@@ -3,7 +3,7 @@ import { Address } from "../modals/addressModel.js";
 
 const router = express.Router();
 
-// Get all men products
+// Get all saved addresses
 router.get("/", async (req, res) => {
   try {
     const address = await Address.find({});
@@ -13,7 +13,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// Add a new men product
+// Add a new address
 router.post("/", async (req, res) => {
   try {
     const { name, number, address, landmark, city, code, state } = req.body;
@@ -28,6 +28,7 @@ router.post("/", async (req, res) => {
       state,
     });
 
+    // Saving the new address to the database
     await newAddress.save();
     res
       .status(201)
@@ -37,11 +38,10 @@ router.post("/", async (req, res) => {
   }
 });
 
-// Delete an address by ID
+// Delete an address by its ID
 router.delete("/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    // console.log("ID received in backend:", id);
     const deletedAddress = await Address.findByIdAndDelete(id);
 
     if (!deletedAddress) {

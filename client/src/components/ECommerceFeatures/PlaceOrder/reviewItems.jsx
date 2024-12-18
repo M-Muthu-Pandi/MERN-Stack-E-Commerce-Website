@@ -1,5 +1,6 @@
 import { useCart } from "../common/Context/CartContext";
 
+// Displays a summary of the ordered items
 const ReviewItems = () => {
   const { shoppingCart } = useCart();
   return (

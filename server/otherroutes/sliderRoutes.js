@@ -3,7 +3,7 @@ import { Slider } from "../modals/sliderImageModel.js";
 
 const router = express.Router();
 
-// Get all categories
+// Get all slider images
 router.get("/", async (req, res) => {
   try {
     const slider = await Slider.find({});
@@ -13,7 +13,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// Add a new categories
+// Add a new slider image
 router.post("/", async (req, res) => {
   try {
     const { image } = req.body;

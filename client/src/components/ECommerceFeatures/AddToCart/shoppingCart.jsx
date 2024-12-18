@@ -6,13 +6,15 @@ import bin from "../../../assets/bin.png";
 
 const ShoppingCart = () => {
   const { shoppingCart, updateCart, totalPrice, totalItems, handleRemoveCart } =
-    useCart();
+    useCart(); // Accessing cart data, update and remove functions from context
   const navigate = useNavigate();
 
+  // Increment quantity of a product
   const handleIncrement = (id, currentQty) => {
     updateCart(id, currentQty + 1);
   };
 
+  // Decrement quantity of a product (if quantity > 1)
   const handleDecrement = (id, currentQty) => {
     if (currentQty > 1) {
       updateCart(id, currentQty - 1);
@@ -47,6 +49,7 @@ const ShoppingCart = () => {
                     {cart.price}
                   </p>
                   <div className="flex gap-2">
+                    {/* Buttons for increment and decrement */}
                     <div className="w-16 sm:w-20 flex justify-between items-center border sm:border-1 border-gray-900 rounded-3xl px-2">
                       <button
                         onClick={() =>
@@ -72,6 +75,7 @@ const ShoppingCart = () => {
                         />
                       </button>
                     </div>
+                    {/* Button for removing product from cart */}
                     <button
                       onClick={() => handleRemoveCart(cart._id)}
                       className="border sm:border border-gray-900 hover:bg-gray-300 rounded-full px-2"
@@ -99,13 +103,14 @@ const ShoppingCart = () => {
         })}
       </div>
 
+      {/* Displaying subtotal and proceed to buy button */}
       <div className="text-center md:text-end m-3">
         <h2 className="text-lg md:text-xl lg:text-2xl font-medium mb-3">
           Subtotal ({totalItems} items): ₹.
           {totalPrice}
         </h2>
         <button
-          onClick={() => navigate("/placeorder")}
+          onClick={() => navigate("/placeorder")} // Navigate to place order page
           className="md:hidden bg-yellow-400 rounded-3xl p-2 text-sm hover:bg-yellow-500 w-40"
         >
           Proceed to buy

@@ -17,6 +17,7 @@ const DeleteAccountButton = () => {
   const auth = getAuth();
   const navigate = useNavigate();
 
+  // Set the current user state when authentication state changes
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
@@ -24,6 +25,7 @@ const DeleteAccountButton = () => {
     return () => unsubscribe();
   }, [auth]);
 
+  // Handle account deletion
   const handleDeleteAccount = async () => {
     if (!user) {
       alert("Please log in to delete your account.");
@@ -37,6 +39,7 @@ const DeleteAccountButton = () => {
     if (!confirmDelete) return;
 
     try {
+      // Reauthenticate based on provider type (password or Google)
       if (user.providerData[0]?.providerId === "password") {
         // For email/password accounts
         if (!password) {
@@ -52,6 +55,7 @@ const DeleteAccountButton = () => {
         await reauthenticateWithPopup(auth.currentUser, provider);
       }
 
+      // Delete user account
       await deleteUser(user);
       console.log("User account deleted successfully.");
       alert("Your account has been deleted.");
@@ -59,6 +63,7 @@ const DeleteAccountButton = () => {
     } catch (error) {
       console.error("Error deleting user account:", error);
 
+      // Handle specific error cases
       if (error.code === "auth/wrong-password") {
         alert("Incorrect password. Please try again.");
       } else if (error.code === "auth/requires-recent-login") {

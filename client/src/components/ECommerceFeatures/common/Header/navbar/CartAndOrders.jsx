@@ -4,12 +4,14 @@ import cartLogo from "../../../../../assets/shopping-cart.png";
 const CartAndOrders = () => {
   const navigate = useNavigate();
 
+  // Navigate to cart and reload
   const handleCart = () => {
     navigate("/cart");
     window.location.reload();
   };
   return (
     <>
+      {/* Orders link */}
       <Link
         className="hidden sm:inline-block text-white text-sm font-medium"
         to={"/orders"}
@@ -20,6 +22,7 @@ const CartAndOrders = () => {
         </p>
       </Link>
 
+      {/* Cart button */}
       <div
         className="cursor-pointer hidden sm:flex border border-gray-900 p-1 hover:border-white items-end text-white text-sm font-medium"
         onClick={handleCart}

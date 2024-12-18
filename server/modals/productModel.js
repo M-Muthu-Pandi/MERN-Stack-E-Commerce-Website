@@ -1,5 +1,6 @@
 import { Schema, model } from "mongoose";
 
+// Schema for storing product details
 const productSchema = new Schema({
   image: String,
   title: String,
@@ -9,7 +10,7 @@ const productSchema = new Schema({
   price: Number,
 });
 
-// Categories
+// Models for product categories
 export const Men = model("Men", productSchema, "men");
 export const Women = model("Women", productSchema, "women");
 export const Kids = model("Kids", productSchema, "kids");
@@ -19,7 +20,7 @@ export const Watch = model("Watch", productSchema, "watch");
 export const Handbag = model("Handbag", productSchema, "handbag");
 export const Sunglass = model("Sunglass", productSchema, "sunglass");
 
-// Top picks
+// Models for product top picks
 export const Trending = model("Trending", productSchema, "trending");
 export const Bestseller = model("Bestseller", productSchema, "bestseller");
 export const Todaydeals = model("Todaydeals", productSchema, "todaydeals");

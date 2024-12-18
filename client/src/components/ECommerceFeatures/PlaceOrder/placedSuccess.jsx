@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
+// Success page shown after an order is successfully placed
 const PlacedSuccess = () => {
   const navigate = useNavigate();
 

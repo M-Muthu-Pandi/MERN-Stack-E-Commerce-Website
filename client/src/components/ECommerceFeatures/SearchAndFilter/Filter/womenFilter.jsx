@@ -8,14 +8,17 @@ import FilterTitles from "../filterTitles";
 import SingleProduct from "../../common/SingleProduct";
 import bin from "../../../../assets/bin.png";
 
+// Component to display Women filtered products
 const WomenFilter = () => {
   const admin = useAdmin();
   const { selectedProduct, setSelectedProduct } = useProduct();
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
+    // Scroll to top when the component mounts
     window.scrollTo(0, 0);
 
+    // Fetching the list of Women from the backend API
     axios
       .get("https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/women")
       .then((res) => {
@@ -26,6 +29,7 @@ const WomenFilter = () => {
       });
   }, []);
 
+  // Function to remove a product by id
   const handleRemoveProduct = async (id) => {
     try {
       await axios.delete(
@@ -54,6 +58,8 @@ const WomenFilter = () => {
               Women Clothing
             </a>
           </h2>
+
+          {/* Displaying the list of products */}
           <div className="rounded-lg bg-white flex justify-around flex-wrap gap-1 sm:gap-5 my-1 sm:my-5">
             {products.map((item) => (
               <div
@@ -80,6 +86,8 @@ const WomenFilter = () => {
                 <p className="font-medium text-sm sm:text-base mt-1">
                   ₹.{item.price}
                 </p>
+
+                {/* Show delete button for admins */}
                 {admin ? (
                   <button
                     onClick={() => handleRemoveProduct(item._id)}
@@ -97,6 +105,8 @@ const WomenFilter = () => {
               </div>
             ))}
           </div>
+
+          {/* Display selected product details */}
           <SingleProduct
             selectedProduct={selectedProduct}
             setSelectedProduct={setSelectedProduct}

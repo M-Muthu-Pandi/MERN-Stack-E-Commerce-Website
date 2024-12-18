@@ -8,14 +8,17 @@ import FilterTitles from "../filterTitles";
 import SingleProduct from "../../common/SingleProduct";
 import bin from "../../../../assets/bin.png";
 
+// Component to display Sunglass filtered products
 const SunglassFilter = () => {
   const admin = useAdmin();
   const { selectedProduct, setSelectedProduct } = useProduct();
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
+    // Scroll to top when the component mounts
     window.scrollTo(0, 0);
 
+    // Fetching the list of Sunglass from the backend API
     axios
       .get(
         "https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/sunglass"
@@ -28,6 +31,7 @@ const SunglassFilter = () => {
       });
   }, []);
 
+  // Function to remove a product by id
   const handleRemoveProduct = async (id) => {
     try {
       await axios.delete(
@@ -56,6 +60,8 @@ const SunglassFilter = () => {
               Sunglasses
             </a>
           </h2>
+
+          {/* Displaying the list of products */}
           <div className="rounded-lg bg-white flex justify-around flex-wrap gap-1 sm:gap-5 my-1 sm:my-5">
             {products.map((item) => (
               <div
@@ -82,6 +88,8 @@ const SunglassFilter = () => {
                 <p className="font-medium text-sm sm:text-base mt-1">
                   ₹.{item.price}
                 </p>
+
+                {/* Show delete button for admins */}
                 {admin ? (
                   <button
                     onClick={() => handleRemoveProduct(item._id)}
@@ -99,6 +107,8 @@ const SunglassFilter = () => {
               </div>
             ))}
           </div>
+
+          {/* Display selected product details */}
           <SingleProduct
             selectedProduct={selectedProduct}
             setSelectedProduct={setSelectedProduct}

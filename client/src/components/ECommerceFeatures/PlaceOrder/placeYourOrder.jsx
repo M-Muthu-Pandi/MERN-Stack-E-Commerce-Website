@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
+// Button to place the order after selecting address and payment method
 const PlaceYourOrder = ({ isOrderPlaceable }) => {
   const navigate = useNavigate();
 
@@ -11,7 +12,6 @@ const PlaceYourOrder = ({ isOrderPlaceable }) => {
       );
 
       if (response.status === 200) {
-        alert("Order placed successfully!");
         navigate("/success");
       }
     } catch (err) {
@@ -23,6 +23,7 @@ const PlaceYourOrder = ({ isOrderPlaceable }) => {
   return (
     <>
       <div className="flex justify-center">
+        {/* Place Order button */}
         <button
           onClick={placeOrder}
           className={`rounded-3xl p-2 text-sm w-3/4 mt-5 mb-2 ${

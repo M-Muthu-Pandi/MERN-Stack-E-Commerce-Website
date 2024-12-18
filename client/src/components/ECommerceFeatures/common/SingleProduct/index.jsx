@@ -4,6 +4,7 @@ import axios from "axios";
 const SingleProduct = ({ selectedProduct, setSelectedProduct }) => {
   const navigate = useNavigate();
 
+  // Sends a POST request to the server with product details
   const handleAddToCart = async (e) => {
     const cartData = {
       image: selectedProduct.image,
@@ -18,14 +19,17 @@ const SingleProduct = ({ selectedProduct, setSelectedProduct }) => {
         "https://mu2-infinity-mern-stack-e-commerce.onrender.com/api/cartandplaceorder",
         cartData
       );
-      alert("Product Added to Cart");
       console.log(response.data);
+      navigate("/cart");
+      window.location.reload();
     } catch (error) {
-      alert("Failed to add cart. Check the console for details.");
-      console.error(error);
+      if (error.response && error.response.status === 400) {
+        alert(error.response.data.message); // Show the "already in cart" message
+      } else {
+        alert("Failed to add to cart. Check the console for details.");
+        console.error(error);
+      }
     }
-    navigate("/cart");
-    window.location.reload();
   };
 
   return (
@@ -33,6 +37,7 @@ const SingleProduct = ({ selectedProduct, setSelectedProduct }) => {
       {selectedProduct && (
         <div className="fixed z-40 top-12 sm:top-16 left-0 h-screen w-full bg-gray-200 p-5 sm:p-10">
           <div className="bg-white p-5 sm:p-10 flex flex-col items-center sm:items-start sm:flex-row sm:justify-around rounded-lg relative">
+            {/* Close button to deselect the product */}
             <button
               onClick={() => setSelectedProduct(null)}
               className="absolute top-2 right-2 border-2 border-red-600 hover:bg-red-600 hover:text-white rounded sm:rounded-md px-1 sm:py-1 sm:px-2 text-sm sm:text-base"

@@ -12,6 +12,7 @@ const SidenavUserBtn = () => {
   const [log, setLog] = useState(false);
   const navigate = useNavigate();
 
+  // Check if the user is logged in
   useEffect(() => {
     if (location.state?.userName) {
       setUserName(location.state.userName);
@@ -30,6 +31,7 @@ const SidenavUserBtn = () => {
     }
   }, [location.state]);
 
+  // Sign out the user
   const logoutUser = async () => {
     await signOut(auth);
     navigate("/login");
@@ -39,8 +41,13 @@ const SidenavUserBtn = () => {
     <div className="flex flex-col items-center justify-center sm:hidden text-white font-medium pt-5 border-b border-b-gray-500 pb-2">
       {log ? (
         <>
+          {/* Display user information if logged in */}
           <div className="flex flex-col items-center gap-2 pb-1">
-            <img className="w-20 rounded-full ring ring-white" src={profilePic} alt="Profile Logo" />
+            <img
+              className="w-20 rounded-full ring ring-white"
+              src={profilePic}
+              alt="Profile Logo"
+            />
             <span className="text-lg font-medium">Hello, {userName}</span>
           </div>
           <button
@@ -52,6 +59,7 @@ const SidenavUserBtn = () => {
         </>
       ) : (
         <>
+          {/* Display a generic user profile when logged out */}
           <div className="flex flex-col gap-2 pb-1 items-center">
             <img className="w-20" src={defaultProfile} alt="Profile Logo" />
             <span className="text-lg font-medium">Hello, User</span>

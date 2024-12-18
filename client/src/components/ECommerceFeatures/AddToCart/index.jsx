@@ -7,8 +7,9 @@ import ShoppingCart from "./shoppingCart";
 import NoResult from "../common/Others/noResult";
 
 const Cart = () => {
-  const { shoppingCart } = useCart();
+  const { shoppingCart } = useCart(); // Accessing shopping cart from context
 
+  // Scroll to top when the component mounts
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -17,12 +18,13 @@ const Cart = () => {
     <>
       <Header />
 
+      {/* Conditional rendering if the cart is empty or not */}
       {shoppingCart.length === 0 ? (
         <NoResult />
       ) : (
         <main className="bg-gray-200 p-5 flex justify-between items-start gap-5 text-gray-900">
-          <ShoppingCart />
-          <ProceedBuy />
+          <ShoppingCart /> {/* Display cart items */}
+          <ProceedBuy /> {/* Display checkout option */}
         </main>
       )}
 

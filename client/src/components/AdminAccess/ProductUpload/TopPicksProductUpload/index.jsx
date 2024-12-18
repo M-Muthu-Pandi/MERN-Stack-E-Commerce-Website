@@ -10,9 +10,13 @@ const TopProductUpload = () => {
         Top picks
       </h2>
 
+      {/* Component for Trending products upload */}
       <TrendingProductUpload />
+      {/* Component for Best Seller products upload */}
       <BestSellerProductUpload />
+      {/* Component for Today Deals products upload */}
       <TodayDealProductUpload />
+      {/* Component for New Arrival products upload */}
       <NewArrivalProductUpload />
     </section>
   );

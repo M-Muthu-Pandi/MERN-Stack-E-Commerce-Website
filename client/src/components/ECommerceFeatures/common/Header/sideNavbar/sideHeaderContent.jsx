@@ -26,11 +26,13 @@ const SideNavHeader = ({ setIsSideNavVisible }) => {
     },
   ];
 
+  // Navigate to Help & Settings page
   const handleHelp = () => {
     navigate("/settings");
     setIsSideNavVisible(false);
   };
 
+  // Navigate to homepage
   const handleHeader = () => {
     navigate("/");
     setIsSideNavVisible(false);

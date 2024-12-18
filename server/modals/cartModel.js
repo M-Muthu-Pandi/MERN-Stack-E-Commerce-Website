@@ -1,5 +1,6 @@
 import { Schema, model } from "mongoose";
 
+// Schema for storing cart item details
 const cartSchema = new Schema({
   image: String,
   title: String,
@@ -8,5 +9,5 @@ const cartSchema = new Schema({
   noOfItems: Number,
 });
 
-// Delivery Details
+// Model for the Cart collection
 export const Cart = model("Cart", cartSchema, "cart");

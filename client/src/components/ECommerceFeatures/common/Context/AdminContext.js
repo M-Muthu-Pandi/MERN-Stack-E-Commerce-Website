@@ -6,6 +6,7 @@ const AdminContext = createContext();
 export const AdminProvider = ({ children }) => {
   const [admin, setAdmin] = useState(false);
 
+  // Monitor authentication state to identify the admin user
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       if (user) {
@@ -26,4 +27,5 @@ export const AdminProvider = ({ children }) => {
   );
 };
 
+// Hook for consuming AdminContext
 export const useAdmin = () => useContext(AdminContext);

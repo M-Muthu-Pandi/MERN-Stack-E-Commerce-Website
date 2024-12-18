@@ -19,6 +19,15 @@ router.post("/", async (req, res) => {
   try {
     const { image, title, subtitle, price, noOfItems } = req.body;
 
+    // Check if the product already exists in the cart
+    const existingCartItem = await Cart.findOne({ title, subtitle });
+
+    if (existingCartItem) {
+      return res
+        .status(400)
+        .json({ message: "Product is already in the cart" });
+    }
+
     const newCart = new Cart({
       image,
       title,
@@ -27,6 +36,7 @@ router.post("/", async (req, res) => {
       noOfItems,
     });
 
+    // Saving the new cart item to the database
     await newCart.save();
     res
       .status(201)
@@ -36,7 +46,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-// Delete an Cart by ID
+// Delete a cart item by its ID
 router.delete("/:id", async (req, res) => {
   try {
     const { id } = req.params;
@@ -52,10 +62,9 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-// Place order and move from cart to orders
+// Place order and clear the cart
 router.post("/place-order", async (req, res) => {
   try {
-    // Fetch all items from the cart collection
     const cartItems = await Cart.find({});
 
     if (cartItems.length === 0) {
@@ -77,7 +86,7 @@ router.post("/place-order", async (req, res) => {
   }
 });
 
-// Update noOfItems for a specific cart item
+// Update the quantity of items in a cart item
 router.put("/:id", async (req, res) => {
   const { id } = req.params;
   const { noOfItems } = req.body;

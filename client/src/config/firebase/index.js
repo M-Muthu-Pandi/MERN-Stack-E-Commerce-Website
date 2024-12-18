@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 
+// Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyCWbzCD8kVr_9gpFQTJsrhxcwlr4CKKrmM",
   authDomain: "ecommerce-mu2.firebaseapp.com",
@@ -13,5 +14,9 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+
+// Get authentication instance
 export const auth = getAuth(app);
+
+// Create Google authentication provider
 export const provider = new GoogleAuthProvider();
